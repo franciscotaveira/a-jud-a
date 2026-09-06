@@ -242,7 +242,105 @@ app.get('/api/entities/:id/graph', async (req, res) => {
     });
   } catch (err: any) {
     console.error('Erro no grafo:', err);
-    res.status(500).json({ error: 'Erro ao gerar grafo de relações' });
+    res.status(500).json({ error: 'Erro ao gerar grafo da entidade' });
+  }
+});
+
+// Endpoint de Visão Universal do Grafo (Marco Espacial / Campo 360)
+app.get('/api/graph/universal', async (_req, res) => {
+  try {
+    const entRes = await pool.query(`
+      SELECT e.id, e.canonical_name, e.entity_type, e.jurisdiction
+      FROM entities e
+      ORDER BY e.canonical_name
+    `);
+
+    const relRes = await pool.query(`
+      SELECT r.id, r.subject_entity_id, r.predicate, r.object_entity_id, r.verification_status, r.valid_from,
+             s.canonical_name as subject_name, s.entity_type as subject_type,
+             o.canonical_name as object_name, o.entity_type as object_type
+      FROM relationships r
+      JOIN entities s ON r.subject_entity_id = s.id
+      JOIN entities o ON r.object_entity_id = o.id
+    `);
+
+    const relIds = relRes.rows.map(r => r.id);
+    let evidenceMap = new Map<string, any[]>();
+
+    if (relIds.length > 0) {
+      const evRes = await pool.query(`
+        SELECT re.relationship_id, re.role,
+               e.id as evidence_id, e.excerpt, e.locator, e.extraction_method, e.review_status,
+               d.id as document_id, d.title as doc_title, d.document_type, d.document_date,
+               a.id as artifact_id, a.sha256, a.storage_path, a.media_type,
+               s.name as source_name, s.official as source_official
+        FROM relationship_evidence re
+        JOIN evidence e ON re.evidence_id = e.id
+        JOIN documents d ON e.document_id = d.id
+        JOIN source_artifacts a ON e.artifact_id = a.id
+        JOIN sources s ON a.source_id = s.id
+        WHERE re.relationship_id = ANY($1::uuid[])
+      `, [relIds]);
+
+      for (const row of evRes.rows) {
+        if (!evidenceMap.has(row.relationship_id)) {
+          evidenceMap.set(row.relationship_id, []);
+        }
+        evidenceMap.get(row.relationship_id)!.push({
+          id: row.evidence_id,
+          role: row.role,
+          excerpt: row.excerpt,
+          locator: row.locator,
+          extractionMethod: row.extraction_method,
+          reviewStatus: row.review_status,
+          document: {
+            id: row.document_id,
+            title: row.doc_title,
+            type: row.document_type,
+            date: row.document_date
+          },
+          artifact: {
+            id: row.artifact_id,
+            sha256: row.sha256,
+            storagePath: row.storage_path,
+            mediaType: row.media_type
+          },
+          source: {
+            name: row.source_name,
+            official: row.source_official
+          }
+        });
+      }
+    }
+
+    const relationships = relRes.rows.map(r => {
+      const evidences = evidenceMap.get(r.id) || [];
+      const primaryDate = r.valid_from || evidences[0]?.document?.date || '2024-01-15';
+      return {
+        id: r.id,
+        subjectEntityId: r.subject_entity_id,
+        predicate: r.predicate,
+        objectEntityId: r.object_entity_id,
+        verificationStatus: r.verification_status,
+        subjectName: r.subject_name,
+        objectName: r.object_name,
+        timelineDate: primaryDate,
+        evidences
+      };
+    });
+
+    res.json({
+      nodes: entRes.rows.map(e => ({
+        id: e.id,
+        canonical_name: e.canonical_name,
+        entity_type: e.entity_type,
+        jurisdiction: e.jurisdiction
+      })),
+      relationships
+    });
+  } catch (err: any) {
+    console.error('Erro no grafo universal:', err);
+    res.status(500).json({ error: 'Erro ao gerar visão universal' });
   }
 });
 

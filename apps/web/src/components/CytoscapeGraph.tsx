@@ -5,6 +5,7 @@ interface NodeData {
   id: string;
   label: string;
   type: string;
+  isRoot?: boolean;
 }
 
 interface EdgeData {
@@ -13,12 +14,14 @@ interface EdgeData {
   target: string;
   label: string;
   status: string;
+  date?: string;
 }
 
 interface GraphProps {
   nodes: NodeData[];
   edges: EdgeData[];
   selectedEdgeId?: string | null;
+  selectedNodeId?: string | null;
   onSelectEdge: (edgeId: string) => void;
   onSelectNode: (nodeId: string) => void;
 }
@@ -27,6 +30,7 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
   nodes,
   edges,
   selectedEdgeId,
+  selectedNodeId,
   onSelectEdge,
   onSelectNode
 }) => {
@@ -39,7 +43,12 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
     const elements: cytoscape.ElementDefinition[] = [
       ...nodes.map(n => ({
         group: 'nodes' as const,
-        data: { id: n.id, label: n.label, type: n.type }
+        data: {
+          id: n.id,
+          label: n.label,
+          type: n.type,
+          isRoot: n.isRoot ? 'true' : 'false'
+        }
       })),
       ...edges.map(e => ({
         group: 'edges' as const,
@@ -48,7 +57,8 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
           source: e.source,
           target: e.target,
           label: e.label,
-          status: e.status
+          status: e.status,
+          date: e.date || ''
         }
       }))
     ];
@@ -60,65 +70,94 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
         {
           selector: 'node',
           style: {
-            'background-color': '#ffffff',
-            'border-color': '#19382c',
+            'background-color': '#0f172a',
+            'border-color': '#38bdf8',
             'border-width': 2,
             'label': 'data(label)',
-            'font-family': 'Newsreader, Georgia, serif',
-            'font-size': '12px',
+            'font-family': 'Space Grotesk, sans-serif',
+            'font-weight': 600,
+            'font-size': '11px',
             'text-valign': 'bottom',
-            'text-margin-y': 6,
-            'color': '#1c1b18',
-            'width': 36,
-            'height': 36
-          }
+            'text-margin-y': 8,
+            'color': '#f8fafc',
+            'text-outline-color': '#030712',
+            'text-outline-width': 3,
+            'width': 44,
+            'height': 44,
+            'transition-property': 'background-color, border-color, width, height',
+            'transition-duration': 0.3
+          } as any
         },
         {
           selector: 'node[type = "PERSON"]',
           style: {
             'shape': 'ellipse',
-            'border-color': '#2c4d6f'
-          }
+            'background-color': '#1e1b4b',
+            'border-color': '#818cf8',
+            'width': 40,
+            'height': 40
+          } as any
         },
         {
           selector: 'node[type = "ORGANIZATION"]',
           style: {
             'shape': 'round-rectangle',
-            'border-color': '#19382c'
-          }
+            'background-color': '#0c192c',
+            'border-color': '#0284c7',
+            'corner-radius': '8px'
+          } as any
+        },
+        {
+          selector: 'node[isRoot = "true"], node:selected',
+          style: {
+            'border-color': '#38bdf8',
+            'border-width': 4,
+            'width': 54,
+            'height': 54,
+            'color': '#38bdf8'
+          } as any
         },
         {
           selector: 'edge',
           style: {
             'width': 2,
-            'line-color': '#a3b8ad',
-            'target-arrow-color': '#a3b8ad',
+            'line-color': 'rgba(56, 189, 248, 0.45)',
+            'target-arrow-color': '#38bdf8',
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier',
             'label': 'data(label)',
-            'font-family': 'Inter, sans-serif',
+            'font-family': 'Space Grotesk, sans-serif',
             'font-size': '10px',
+            'font-weight': 500,
             'text-rotation': 'autorotate',
             'text-margin-y': -8,
-            'color': '#68645c'
-          }
+            'color': '#94a3b8',
+            'text-outline-color': '#030712',
+            'text-outline-width': 2,
+            'arrow-scale': 1.2
+          } as any
         },
         {
           selector: 'edge:selected, edge.active',
           style: {
-            'line-color': '#19382c',
-            'target-arrow-color': '#19382c',
-            'width': 3,
-            'color': '#19382c',
-            'font-weight': 'bold'
-          }
+            'line-color': '#f43f5e',
+            'target-arrow-color': '#f43f5e',
+            'width': 3.5,
+            'color': '#fb7185',
+            'font-weight': 'bold',
+            'font-size': '11px',
+            'arrow-scale': 1.4
+          } as any
         }
-      ],
+      ] as any,
       layout: {
-        name: 'breadthfirst',
-        directed: true,
-        padding: 40,
-        spacingFactor: 1.5
+        name: 'concentric',
+        concentric: (node: any) => (node.data('isRoot') === 'true' ? 10 : 2),
+        levelWidth: () => 1,
+        padding: 50,
+        spacingFactor: 1.6,
+        animate: true,
+        animationDuration: 800
       },
       userZoomingEnabled: true,
       userPanningEnabled: true
@@ -152,8 +191,18 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
     }
   }, [selectedEdgeId]);
 
+  useEffect(() => {
+    if (!cyRef.current) return;
+    if (selectedNodeId) {
+      const targetNode = cyRef.current.getElementById(selectedNodeId);
+      if (targetNode) {
+        targetNode.select();
+      }
+    }
+  }, [selectedNodeId]);
+
   const handleFit = () => {
-    if (cyRef.current) cyRef.current.fit(undefined, 30);
+    if (cyRef.current) cyRef.current.fit(undefined, 40);
   };
 
   const handleResetZoom = () => {
@@ -161,10 +210,14 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
   };
 
   return (
-    <div className="graph-wrapper">
+    <div className="graph-wrapper cosmic-graph">
       <div className="graph-controls">
-        <button className="graph-btn" onClick={handleFit}>Enquadrar</button>
-        <button className="graph-btn" onClick={handleResetZoom}>Resetar</button>
+        <button className="graph-btn cosmic-btn" onClick={handleFit}>
+          <span className="ctrl-dot"></span> Re-centrar Campo
+        </button>
+        <button className="graph-btn cosmic-btn" onClick={handleResetZoom}>
+          Resetar Zoom
+        </button>
       </div>
       <div id="cy-container" ref={containerRef} />
     </div>

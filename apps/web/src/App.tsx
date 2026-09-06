@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Search, ShieldAlert, FileText, Database, ExternalLink, RefreshCw, CheckCircle2, AlertTriangle, Bot, Sparkles } from 'lucide-react';
+import {
+  Search, FileText, ExternalLink,
+  RefreshCw, AlertTriangle, Bot, Sparkles,
+  Globe2, Orbit, Calendar, Layers, Activity, ChevronRight
+} from 'lucide-react';
 import { CytoscapeGraph } from './components/CytoscapeGraph.tsx';
 
 interface Identifier {
@@ -58,11 +62,12 @@ interface RelationshipItem {
   verificationStatus: string;
   subjectName: string;
   objectName: string;
+  timelineDate?: string;
   evidences: EvidenceItem[];
 }
 
 interface GraphData {
-  rootEntity: {
+  rootEntity?: {
     id: string;
     canonical_name: string;
     entity_type: string;
@@ -71,12 +76,13 @@ interface GraphData {
     id: string;
     canonical_name: string;
     entity_type: string;
-    isRoot: boolean;
+    isRoot?: boolean;
   }>;
   relationships: RelationshipItem[];
 }
 
 export function App() {
+  const [viewMode, setViewMode] = useState<'UNIVERSAL' | 'FOCUS'>('UNIVERSAL');
   const [searchQuery, setSearchQuery] = useState('33.923.798/0001-00');
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -91,10 +97,65 @@ export function App() {
   const [hermesStatus, setHermesStatus] = useState<any | null>(null);
   const [hermesResult, setHermesResult] = useState<any | null>(null);
 
+  // Carregar dados conforme o modo de visualização
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    setErrorMsg(null);
+
+    const loadData = async () => {
+      try {
+        if (viewMode === 'UNIVERSAL') {
+          // Carregar visão universal com todo o grafo interligado
+          const [uGraphRes, entRes] = await Promise.all([
+            fetch('/api/graph/universal').then(r => r.json()),
+            selectedEntityId ? fetch(`/api/entities/${selectedEntityId}`).then(r => r.json()) : Promise.resolve(null)
+          ]);
+
+          if (!isMounted) return;
+          setGraphData(uGraphRes);
+          if (entRes) setEntityDetail(entRes);
+
+          if (uGraphRes.relationships && uGraphRes.relationships.length > 0 && !selectedRelId) {
+            setSelectedRelId(uGraphRes.relationships[0].id);
+          }
+        } else {
+          // Modo Foco em 1 Salto na entidade
+          if (!selectedEntityId) return;
+          const [entity, graph] = await Promise.all([
+            fetch(`/api/entities/${selectedEntityId}`).then(r => r.json()),
+            fetch(`/api/entities/${selectedEntityId}/graph`).then(r => r.json())
+          ]);
+
+          if (!isMounted) return;
+          setEntityDetail(entity);
+          setGraphData(graph);
+          if (graph.relationships && graph.relationships.length > 0) {
+            setSelectedRelId(graph.relationships[0].id);
+          } else {
+            setSelectedRelId(null);
+          }
+        }
+      } catch (err: any) {
+        if (!isMounted) return;
+        console.error(err);
+        setErrorMsg(err.message || 'Erro ao carregar dados do grafo');
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    loadData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [viewMode, selectedEntityId]);
+
   const handleRunHermes = async () => {
     if (!selectedRelId) return;
     setHermesLoading(true);
-    setHermesStatus({ status: 'INICIANDO', progressPercent: 10, currentStepDescription: 'Enviando solicitação ao Hermes Copilot...' });
+    setHermesStatus({ status: 'INICIANDO', progressPercent: 10, currentStepDescription: 'Enviando ao Hermes Copilot (Nemotron 120B)...' });
     setHermesResult(null);
 
     try {
@@ -107,7 +168,6 @@ export function App() {
       if (!startRes.ok) throw new Error('Falha ao iniciar análise no Hermes');
       const { runId } = await startRes.json();
 
-      // Polling de status
       const interval = setInterval(async () => {
         try {
           const statusRes = await fetch(`/api/analysis/runs/${runId}`);
@@ -137,49 +197,6 @@ export function App() {
     }
   };
 
-  // Carregar entidade e grafo ao selecionar entidade
-  useEffect(() => {
-    if (!selectedEntityId) return;
-
-    let isMounted = true;
-    setLoading(true);
-    setErrorMsg(null);
-
-    Promise.all([
-      fetch(`/api/entities/${selectedEntityId}`).then(r => {
-        if (!r.ok) throw new Error('Falha ao carregar entidade');
-        return r.json();
-      }),
-      fetch(`/api/entities/${selectedEntityId}/graph`).then(r => {
-        if (!r.ok) throw new Error('Falha ao carregar grafo');
-        return r.json();
-      })
-    ])
-      .then(([entity, graph]) => {
-        if (!isMounted) return;
-        setEntityDetail(entity);
-        setGraphData(graph);
-        if (graph.relationships && graph.relationships.length > 0) {
-          setSelectedRelId(graph.relationships[0].id);
-        } else {
-          setSelectedRelId(null);
-        }
-      })
-      .catch(err => {
-        if (!isMounted) return;
-        console.error(err);
-        setErrorMsg(err.message || 'Erro ao conectar com API');
-      })
-      .finally(() => {
-        if (isMounted) setLoading(false);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [selectedEntityId]);
-
-  // Função de busca
   const handleSearch = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!searchQuery.trim()) return;
@@ -194,6 +211,7 @@ export function App() {
 
       if (data.results && data.results.length > 0) {
         setSelectedEntityId(data.results[0].id);
+        setViewMode('FOCUS');
       } else {
         setErrorMsg('Nenhuma entidade encontrada para a consulta.');
       }
@@ -204,11 +222,12 @@ export function App() {
     }
   };
 
-  // Nós e arestas para o componente Cytoscape
+  // Elementos formatados para o Cytoscape
   const cyNodes = graphData?.nodes.map(n => ({
     id: n.id,
     label: n.canonical_name,
-    type: n.entity_type
+    type: n.entity_type,
+    isRoot: n.id === selectedEntityId
   })) || [];
 
   const cyEdges = graphData?.relationships.map(r => ({
@@ -216,176 +235,158 @@ export function App() {
     source: r.subjectEntityId,
     target: r.objectEntityId,
     label: r.predicate.replace(/_/g, ' '),
-    status: r.verificationStatus
+    status: r.verificationStatus,
+    date: r.timelineDate
   })) || [];
 
   const activeRelation = graphData?.relationships.find(r => r.id === selectedRelId);
 
+  // Ordenar linha do tempo completa cronologicamente
+  const timelineEvents = [...(graphData?.relationships || [])].sort((a, b) => {
+    const da = a.timelineDate || '2024-01-01';
+    const db = b.timelineDate || '2024-01-01';
+    return da.localeCompare(db);
+  });
+
   return (
     <div className="app-container">
-      {/* Banner de Proveniência e Auditoria */}
-      <div className="demo-disclaimer-banner">
-        <ShieldAlert size={16} />
-        <span>
-          <strong>Proveniência da Coleta:</strong> Acervo Petição 16.662 / STF divulgado por Poder360.
-          Autenticidade oficial perante autos originais permanece <em>pendente de validação primária</em>.
-        </span>
+      {/* Banner Espacial */}
+      <div className="cosmic-banner">
+        <div className="pulsing-orb"></div>
+        <span>CAMPO DE INTELIGÊNCIA SOBERANA • ACERVO STF PETIÇÃO 16.662 • MOTOR HERMES NEMOTRON 120B</span>
       </div>
 
+      {/* Header Futurista */}
       <header className="app-header">
-        <div className="logo-area">
-          <h1>Public Intelligence Graph Brasil</h1>
-          <span className="logo-tag">M1 DOCKER LIVE</span>
+        <div className="logo-brand">
+          <Orbit size={24} color="#38bdf8" />
+          <h1>Public Intelligence Graph</h1>
+          <span className="logo-badge">Universal Cosmos 360°</span>
         </div>
-        <div style={{ display: 'flex', gap: '16px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-          <span>Unidade Fundamental: <strong>Entidade → Relação → Evidência → Documento</strong></span>
+
+        {/* Abas de Modo de Visualização */}
+        <div className="view-mode-tabs">
+          <button
+            className={`mode-tab-btn ${viewMode === 'UNIVERSAL' ? 'active' : ''}`}
+            onClick={() => setViewMode('UNIVERSAL')}
+          >
+            <Globe2 size={14} />
+            <span>Campo Universal (Tudo Interligado)</span>
+          </button>
+          <button
+            className={`mode-tab-btn ${viewMode === 'FOCUS' ? 'active' : ''}`}
+            onClick={() => setViewMode('FOCUS')}
+          >
+            <Layers size={14} />
+            <span>Foco Radial (1 Salto)</span>
+          </button>
         </div>
       </header>
 
-      {/* Barra de Pesquisa */}
-      <div className="search-container">
-        <form className="search-input-group" onSubmit={handleSearch}>
+      {/* Barra de Pesquisa Cósmica */}
+      <div className="search-cosmos-bar">
+        <form className="search-cosmos-group" onSubmit={handleSearch}>
           <input
             type="text"
-            className="search-input"
+            className="search-cosmos-input"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder="Pesquisar por razão social, nome ou CNPJ (ex: 33.923.798/0001-00 ou Banco Master)..."
+            placeholder="Localizar no campo por CNPJ, Razão Social ou Pessoa (ex: Banco Master, Daniel Vorcaro, Barci de Moraes)..."
           />
-          <button type="submit" className="search-btn" disabled={loading}>
-            {loading ? <RefreshCw size={18} className="animate-spin" /> : <Search size={18} />}
-            <span>Consultar</span>
+          <button type="submit" className="search-cosmos-btn" disabled={loading}>
+            {loading ? <RefreshCw size={14} className="animate-spin" /> : <Search size={14} />}
+            <span>Rastrear</span>
           </button>
         </form>
 
         {searchResults.length > 1 && (
           <div style={{ marginTop: '8px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Resultados:</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Candidatos Detectados:</span>
             {searchResults.map(r => (
               <button
                 key={r.id}
-                onClick={() => setSelectedEntityId(r.id)}
-                style={{
-                  background: r.id === selectedEntityId ? 'var(--accent)' : 'var(--bg-secondary)',
-                  color: r.id === selectedEntityId ? '#fff' : 'inherit',
-                  border: '1px solid var(--border-color)',
-                  borderRadius: '4px',
-                  padding: '2px 8px',
-                  fontSize: '0.78rem',
-                  cursor: 'pointer'
+                onClick={() => {
+                  setSelectedEntityId(r.id);
+                  setViewMode('FOCUS');
                 }}
+                className="cosmic-btn"
+                style={{ fontSize: '0.72rem' }}
               >
                 {r.canonical_name}
               </button>
             ))}
           </div>
         )}
-
-        <div style={{ marginTop: '8px', fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between' }}>
-          <span>Cada conexão aponta para sua fonte e página correspondente no PDF original.</span>
-          <span>Fonte do banco: <strong>PostgreSQL Dedicado (pig_br_db)</strong></span>
-        </div>
       </div>
 
       {errorMsg && (
-        <div style={{ padding: '12px 16px', margin: '0 24px', background: '#fee2e2', color: '#991b1b', borderRadius: '6px', fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <AlertTriangle size={18} />
+        <div style={{ maxWidth: '900px', margin: '0 auto 16px auto', padding: '10px 16px', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid #ef4444', borderRadius: '8px', color: '#fca5a5', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
+          <AlertTriangle size={16} />
           <span>{errorMsg}</span>
         </div>
       )}
 
-      {/* Espaço Principal de Trabalho */}
-      <main className="workspace-grid">
-        <div className="main-column">
-          {/* Card da Entidade Principal */}
-          {entityDetail && (
-            <section className="card-section entity-header">
-              <h2>{entityDetail.canonical_name}</h2>
-              <div className="entity-badges">
-                <span className="badge-id" style={{ background: '#e0e7ff', color: '#3730a3' }}>
-                  TIPO: <strong>{entityDetail.entity_type}</strong>
-                </span>
-                {entityDetail.identifiers && entityDetail.identifiers.map((ident: Identifier, i: number) => (
-                  <span key={i} className="badge-id">
-                    {ident.scheme}: <strong>{ident.normalized_value}</strong>
-                  </span>
-                ))}
-                <span className="badge-id" style={{ color: '#1e5e3a' }}>
-                  JURISDIÇÃO: {entityDetail.jurisdiction}
+      {/* Espaço de Trabalho Universal */}
+      <main className="cosmos-workspace">
+        <div className="cosmos-main">
+          {/* Campo Visual do Grafo */}
+          <section className="glass-panel" style={{ padding: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Activity size={18} color="var(--neon-cyan)" />
+                <span style={{ fontFamily: 'var(--font-orbitron)', fontSize: '0.86rem', letterSpacing: '0.05em', color: '#ffffff' }}>
+                  {viewMode === 'UNIVERSAL' ? 'Constelação Universal de Vínculos Documentados' : `Campo de Foco: ${entityDetail?.canonical_name || 'Entidade'}`}
                 </span>
               </div>
-
-              {entityDetail.facts && entityDetail.facts.length > 0 && (
-                <div className="facts-grid">
-                  {entityDetail.facts.map((fact: Fact, idx: number) => (
-                    <div key={idx} className="fact-box">
-                      <div className="fact-key">{fact.field_name.replace(/_/g, ' ')}</div>
-                      <div className="fact-val">{fact.value}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </section>
-          )}
-
-          {/* Grafo de Relações de 1 Salto */}
-          <section className="card-section">
-            <div className="card-title">
-              <span>Grafo de Relações Documentadas (1 Salto)</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                {cyNodes.length} entidades • {cyEdges.length} relações auditadas
-              </span>
+              <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                {cyNodes.length} NÓS ORBITAIS • {cyEdges.length} VÍNCULOS VERIFICADOS
+              </div>
             </div>
-            {cyNodes.length > 0 ? (
-              <CytoscapeGraph
-                nodes={cyNodes}
-                edges={cyEdges}
-                selectedEdgeId={selectedRelId}
-                onSelectEdge={id => setSelectedRelId(id)}
-                onSelectNode={id => {
-                  if (id !== selectedEntityId) setSelectedEntityId(id);
-                }}
-              />
-            ) : (
-              <div style={{ padding: '32px', textAlign: 'center', color: 'var(--text-muted)' }}>
-                Nenhuma relação encontrada para esta entidade.
-              </div>
-            )}
+
+            <CytoscapeGraph
+              nodes={cyNodes}
+              edges={cyEdges}
+              selectedEdgeId={selectedRelId}
+              selectedNodeId={selectedEntityId}
+              onSelectEdge={id => setSelectedRelId(id)}
+              onSelectNode={id => {
+                setSelectedEntityId(id);
+                fetch(`/api/entities/${id}`).then(r => r.json()).then(setEntityDetail);
+              }}
+            />
           </section>
 
-          {/* Lista Textual Equivalente de Relações */}
-          <section className="card-section">
-            <div className="card-title">
-              <span>Relações em Lista Textual Acessível</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                {graphData?.relationships?.length || 0} relações encontradas
+          {/* Linha do Tempo Espacial Completa */}
+          <section className="timeline-cosmos-card">
+            <div className="timeline-cosmos-title">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Calendar size={16} />
+                <span>Linha Temporal Cronológica dos Atos e Contratos</span>
+              </div>
+              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                {timelineEvents.length} Eventos Mapeados
               </span>
             </div>
-            <div className="relationship-list">
-              {graphData?.relationships?.map((rel: RelationshipItem) => (
+
+            <div className="timeline-rail">
+              {timelineEvents.map((evt) => (
                 <div
-                  key={rel.id}
-                  className={`rel-item ${rel.id === selectedRelId ? 'active' : ''}`}
-                  onClick={() => setSelectedRelId(rel.id)}
+                  key={evt.id}
+                  className={`timeline-node ${evt.id === selectedRelId ? 'active' : ''}`}
+                  onClick={() => setSelectedRelId(evt.id)}
                 >
-                  <div className="rel-meta">
-                    <span className="rel-predicate">{rel.predicate.replace(/_/g, ' ')}</span>
-                    <span className="rel-target">
-                      {rel.subjectEntityId === selectedEntityId ? rel.objectName : rel.subjectName}
-                    </span>
+                  <div className="timeline-node-date">
+                    <span className="ctrl-dot"></span>
+                    <span>{evt.timelineDate || 'DATA N/D'}</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className={`rel-badge ${rel.verificationStatus === 'VERIFIED' ? 'badge-verified' : 'badge-pending-review'}`}>
-                      {rel.verificationStatus === 'VERIFIED' ? (
-                        <CheckCircle2 size={12} style={{ display: 'inline', marginRight: '4px' }} />
-                      ) : (
-                        <AlertTriangle size={12} style={{ display: 'inline', marginRight: '4px' }} />
-                      )}
-                      {rel.verificationStatus}
-                    </span>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                      {rel.evidences.length} evidência(s)
-                    </span>
+                  <div className="timeline-node-pred">{evt.predicate.replace(/_/g, ' ')}</div>
+                  <div className="timeline-node-actors">
+                    <strong style={{ color: '#ffffff' }}>{evt.subjectName}</strong>
+                    <div style={{ color: 'var(--neon-cyan)', fontSize: '0.7rem' }}>→ {evt.objectName}</div>
+                  </div>
+                  <div style={{ marginTop: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.68rem' }}>
+                    <span style={{ color: 'var(--neon-emerald)' }}>{evt.evidences.length} evidência(s)</span>
+                    <ChevronRight size={12} color="var(--text-muted)" />
                   </div>
                 </div>
               ))}
@@ -393,95 +394,93 @@ export function App() {
           </section>
         </div>
 
-        {/* Coluna Lateral: Painel de Evidências */}
-        <aside className="evidence-panel">
-          <section className="card-section" style={{ position: 'sticky', top: '24px' }}>
-            <div className="card-title">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FileText size={20} color="var(--accent)" />
-                <span>Painel de Evidências</span>
+        {/* Sidebar com Evidências e Hermes Copilot */}
+        <aside className="cosmos-sidebar">
+          {/* Card da Entidade em Foco */}
+          {entityDetail && (
+            <div className="glass-panel" style={{ padding: '16px' }}>
+              <div style={{ fontSize: '0.7rem', fontFamily: 'var(--font-orbitron)', color: 'var(--neon-cyan)', letterSpacing: '0.08em', marginBottom: '6px' }}>
+                ENTIDADE ORBITAL SELECIONADA
               </div>
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff', marginBottom: '8px' }}>
+                {entityDetail.canonical_name}
+              </h2>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '10px' }}>
+                <span className="logo-badge" style={{ background: 'rgba(56, 189, 248, 0.15)', borderColor: 'var(--neon-cyan)' }}>
+                  {entityDetail.entity_type}
+                </span>
+                {entityDetail.identifiers?.map((i, idx) => (
+                  <span key={idx} className="logo-badge" style={{ borderColor: 'rgba(255, 255, 255, 0.2)', color: '#e2e8f0' }}>
+                    {i.scheme}: {i.normalized_value}
+                  </span>
+                ))}
+              </div>
+
+              {entityDetail.facts?.length > 0 && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '8px', fontSize: '0.78rem' }}>
+                  {entityDetail.facts.map((f, idx) => (
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span style={{ color: 'var(--text-muted)' }}>{f.field_name.replace(/_/g, ' ')}:</span>
+                      <strong style={{ color: '#ffffff' }}>{f.value}</strong>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Painel de Evidências */}
+          <div className="glass-panel" style={{ padding: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <FileText size={18} color="var(--neon-cyan)" />
+              <span style={{ fontFamily: 'var(--font-orbitron)', fontSize: '0.85rem', color: '#ffffff' }}>
+                Evidências da Conexão
+              </span>
             </div>
 
             {activeRelation ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-                  Relação selecionada: <strong>{activeRelation.predicate.replace(/_/g, ' ')}</strong>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', background: 'rgba(2, 6, 23, 0.8)', padding: '6px 10px', borderRadius: '6px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                  Vínculo: <strong style={{ color: '#ffffff' }}>{activeRelation.subjectName}</strong> [{activeRelation.predicate.replace(/_/g, ' ')}] <strong style={{ color: '#ffffff' }}>{activeRelation.objectName}</strong>
                 </div>
 
-                {activeRelation.evidences.map((ev: EvidenceItem, idx: number) => (
-                  <div key={idx} className="evidence-card">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                        <span className={`evidence-role-tag role-${ev.role}`}>
-                          PAPEL: {ev.role}
-                        </span>
-                        <span style={{ fontSize: '0.68rem', padding: '2px 5px', borderRadius: '3px', background: '#f1f5f9', color: '#475569', fontWeight: 600 }}>
-                          {ev.extractionMethod}
-                        </span>
-                      </div>
-                      <span style={{ fontSize: '0.78rem', color: 'var(--text-subtle)', fontWeight: 600 }}>
-                        {ev.locator.page ? `Página ${ev.locator.page}` : 'Página N/D'}
-                      </span>
+                {activeRelation.evidences.map((ev, idx) => (
+                  <div key={idx} className="evidence-card-cosmic">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.72rem' }}>
+                      <span style={{ color: 'var(--neon-cyan)', fontWeight: 700 }}>PAPEL: {ev.role}</span>
+                      <span style={{ color: 'var(--text-muted)' }}>{ev.locator?.page ? `Pág. ${ev.locator.page}` : 'Pág. N/D'}</span>
                     </div>
 
-                    <div>
-                      <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-subtle)', textTransform: 'uppercase', marginBottom: '4px' }}>
-                        Trecho Literal Extraído:
-                      </div>
-                      <blockquote className="evidence-quote">
-                        “{ev.excerpt}”
-                      </blockquote>
+                    <blockquote className="evidence-quote-cosmic">
+                      “{ev.excerpt}”
+                    </blockquote>
+
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                      <div><strong style={{ color: '#ffffff' }}>Doc:</strong> {ev.document.title}</div>
+                      <div><strong style={{ color: '#ffffff' }}>Fonte:</strong> {ev.source.name}</div>
+                      <div className="cosmic-hash">SHA: {ev.artifact.sha256}</div>
                     </div>
 
-                    <div className="evidence-meta" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <div><strong>Documento:</strong> {ev.document.title}</div>
-                      <div><strong>Localizador:</strong> {ev.locator.section || 'Preâmbulo'}</div>
-                      <div><strong>Fonte Coleta:</strong> {ev.source.name}</div>
-                      <div>
-                        <strong>Oficialidade da Fonte:</strong>{' '}
-                        {ev.source.official ? (
-                          <span style={{ color: '#15803d' }}>Órgão Oficial</span>
-                        ) : (
-                          <span style={{ color: '#b45309' }}>Acervo / Divulgação Pública (Autenticidade pendente)</span>
-                        )}
-                      </div>
-                      <div className="evidence-hash">
-                        SHA-256: {ev.artifact.sha256}
-                      </div>
-
-                      {/* Botão de Abertura do PDF com hash e página */}
-                      <div style={{ marginTop: '10px' }}>
-                        <a
-                          href={`/api/artifacts/${ev.artifact.id}/raw#page=${ev.locator.page || 1}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="search-btn"
-                          id="btn-open-pdf"
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '6px',
-                            textDecoration: 'none',
-                            fontSize: '0.8rem',
-                            padding: '6px 12px',
-                            background: '#1e293b'
-                          }}
-                        >
-                          <ExternalLink size={14} />
-                          <span>Abrir PDF Original (Pág. {ev.locator.page || 1})</span>
-                        </a>
-                      </div>
-                    </div>
+                    <a
+                      href={`/api/artifacts/${ev.artifact.id}/raw#page=${ev.locator?.page || 1}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-open-pdf-cosmic"
+                    >
+                      <ExternalLink size={12} />
+                      <span>Ver PDF Original (Pág. {ev.locator?.page || 1})</span>
+                    </a>
                   </div>
                 ))}
 
-                {/* Seção Hermes Copilot */}
+                {/* Hermes Copilot */}
                 <div className="hermes-copilot-container">
                   <div className="hermes-copilot-header">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Bot size={18} color="#2563eb" />
-                      <strong style={{ fontSize: '0.88rem', color: '#1e3a8a' }}>Hermes Copilot (M2)</strong>
+                      <Bot size={16} color="var(--neon-cyan)" />
+                      <strong style={{ fontFamily: 'var(--font-orbitron)', fontSize: '0.78rem', color: '#ffffff' }}>
+                        Hermes Copilot
+                      </strong>
                     </div>
                     <button
                       className="hermes-btn-trigger"
@@ -489,53 +488,43 @@ export function App() {
                       onClick={handleRunHermes}
                       disabled={hermesLoading}
                     >
-                      <Sparkles size={14} />
-                      <span>{hermesLoading ? 'Analisando...' : 'Explicar com Hermes'}</span>
+                      <Sparkles size={12} />
+                      <span>{hermesLoading ? 'Raciocinando...' : 'Explicar com Hermes (120B)'}</span>
                     </button>
                   </div>
 
                   {hermesLoading && hermesStatus && (
-                    <div className="hermes-status-box" id="hermes-status-box">
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', fontWeight: 600 }}>
-                        <span>{hermesStatus.currentStepDescription || 'Processando...'}</span>
-                        <span>{hermesStatus.progressPercent || 20}%</span>
+                    <div className="hermes-status-box">
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.74rem' }}>
+                        <span style={{ color: '#ffffff' }}>{hermesStatus.currentStepDescription || 'Processando...'}</span>
+                        <span style={{ color: 'var(--neon-cyan)' }}>{hermesStatus.progressPercent || 20}%</span>
                       </div>
                       <div className="hermes-progress-bar">
-                        <div
-                          className="hermes-progress-fill"
-                          style={{ width: `${hermesStatus.progressPercent || 20}%` }}
-                        />
+                        <div className="hermes-progress-fill" style={{ width: `${hermesStatus.progressPercent || 20}%` }} />
                       </div>
                     </div>
                   )}
 
                   {hermesResult && (
-                    <div className="hermes-report" id="hermes-report">
-                      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-main)', background: '#f1f5f9', padding: '8px 10px', borderRadius: '4px' }}>
+                    <div style={{ marginTop: '10px' }}>
+                      <div style={{ fontSize: '0.8rem', color: '#e2e8f0', background: 'rgba(2, 6, 23, 0.9)', padding: '8px 10px', borderRadius: '6px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
                         {hermesResult.summary}
                       </div>
 
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '6px' }}>
-                        <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-subtle)', textTransform: 'uppercase' }}>
-                          Declarações Fatuais e Segregação Hermética:
-                        </div>
+                      <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                         {hermesResult.statements?.map((st: any, sIdx: number) => (
                           <div key={sIdx} className="hermes-statement-card">
-                            <div className="hermes-statement-header">
-                              <span className={`hermes-kind-badge kind-${st.kind}`}>
-                                {st.kind}
-                              </span>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <span className={`hermes-kind-badge kind-${st.kind}`}>{st.kind}</span>
                               {st.evidenceIds?.length > 0 && (
-                                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                                <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                                   {st.evidenceIds.length} citação(ões)
                                 </span>
                               )}
                             </div>
-                            <div className="hermes-statement-text">
-                              {st.text}
-                            </div>
+                            <div style={{ fontSize: '0.82rem', color: '#f1f5f9', lineHeight: 1.4 }}>{st.text}</div>
                             {st.limitations?.length > 0 && (
-                              <div style={{ fontSize: '0.74rem', color: '#b91c1c', fontStyle: 'italic', marginTop: '2px' }}>
+                              <div style={{ fontSize: '0.72rem', color: 'var(--neon-rose)', fontStyle: 'italic' }}>
                                 Ressalva: {st.limitations.join(' ')}
                               </div>
                             )}
@@ -544,8 +533,8 @@ export function App() {
                       </div>
 
                       {hermesResult.suggestedActions?.length > 0 && (
-                        <div style={{ marginTop: '8px', fontSize: '0.78rem' }}>
-                          <strong style={{ color: 'var(--text-subtle)' }}>Ações Investigativas Recomendadas:</strong>
+                        <div style={{ marginTop: '10px', fontSize: '0.75rem' }}>
+                          <strong style={{ color: 'var(--neon-cyan)' }}>Ações Investigativas Sugeridas:</strong>
                           <ul style={{ paddingLeft: '16px', marginTop: '4px', color: 'var(--text-muted)' }}>
                             {hermesResult.suggestedActions.map((act: string, aIdx: number) => (
                               <li key={aIdx}>{act}</li>
@@ -558,26 +547,11 @@ export function App() {
                 </div>
               </div>
             ) : (
-              <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                Selecione uma aresta no grafo ou uma relação na lista para inspecionar os trechos de evidência e abrir o documento original.
+              <div style={{ color: 'var(--text-muted)', fontSize: '0.82rem', textAlign: 'center', padding: '24px 0' }}>
+                Clique em qualquer nó ou conexão orbital para inspecionar os trechos e auditar os documentos.
               </div>
             )}
-
-            {/* Situação da Fonte Primária */}
-            <div style={{ marginTop: '24px', borderTop: '1px solid var(--border-color)', paddingTop: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-subtle)' }}>
-                <Database size={14} />
-                <span>SITUAÇÃO DO ACERVO</span>
-              </div>
-              <div style={{ marginTop: '8px', fontSize: '0.85rem' }}>
-                <div>Base Local: <strong style={{ color: 'var(--verified-badge)' }}>PostgreSQL 17 (pig_br)</strong></div>
-                <div>Extração OCR: <strong style={{ color: 'var(--accent)' }}>Tesseract 5.5.0 Integrado</strong></div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-subtle)', marginTop: '4px' }}>
-                  5 documentos indexados com hashes SHA-256 preservados e verificáveis.
-                </div>
-              </div>
-            </div>
-          </section>
+          </div>
         </aside>
       </main>
     </div>
