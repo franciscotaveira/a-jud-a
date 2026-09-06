@@ -449,3 +449,130 @@ header.app-header {
   font-size: 0.95rem;
   color: var(--text-main);
 }
+
+/* Hermes Copilot Section */
+.hermes-copilot-container {
+  margin-top: 20px;
+  border-top: 2px solid var(--border-color);
+  padding-top: 16px;
+}
+
+.hermes-copilot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.hermes-btn-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  transition: all 0.2s ease;
+}
+
+.hermes-btn-trigger:hover {
+  background: linear-gradient(135deg, #1e40af, #1d4ed8);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+.hermes-btn-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hermes-status-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.hermes-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.hermes-progress-fill {
+  height: 100%;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+.hermes-report {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hermes-statement-card {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hermes-statement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hermes-kind-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.kind-DOCUMENTED_RECORD {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.kind-INTERPRETATION {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.kind-LIMITATION {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.hermes-statement-text {
+  font-size: 0.86rem;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+.hermes-statement-cites {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+

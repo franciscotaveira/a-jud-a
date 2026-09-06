@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, ShieldAlert, FileText, Database, ExternalLink, RefreshCw, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Search, ShieldAlert, FileText, Database, ExternalLink, RefreshCw, CheckCircle2, AlertTriangle, Bot, Sparkles } from 'lucide-react';
 import { CytoscapeGraph } from './components/CytoscapeGraph.tsx';
 
 interface Identifier {
@@ -85,6 +85,57 @@ export function App() {
   const [graphData, setGraphData] = useState<GraphData | null>(null);
   const [selectedRelId, setSelectedRelId] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  // Estados do Hermes Copilot
+  const [hermesLoading, setHermesLoading] = useState(false);
+  const [hermesStatus, setHermesStatus] = useState<any | null>(null);
+  const [hermesResult, setHermesResult] = useState<any | null>(null);
+
+  const handleRunHermes = async () => {
+    if (!selectedRelId) return;
+    setHermesLoading(true);
+    setHermesStatus({ status: 'INICIANDO', progressPercent: 10, currentStepDescription: 'Enviando solicitação ao Hermes Copilot...' });
+    setHermesResult(null);
+
+    try {
+      const startRes = await fetch('/api/analysis/runs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ targetRelationshipId: selectedRelId })
+      });
+
+      if (!startRes.ok) throw new Error('Falha ao iniciar análise no Hermes');
+      const { runId } = await startRes.json();
+
+      // Polling de status
+      const interval = setInterval(async () => {
+        try {
+          const statusRes = await fetch(`/api/analysis/runs/${runId}`);
+          if (!statusRes.ok) return;
+          const statusData = await statusRes.json();
+          setHermesStatus(statusData);
+
+          if (statusData.status === 'SUCCEEDED') {
+            clearInterval(interval);
+            const resRes = await fetch(`/api/analysis/runs/${runId}/result`);
+            if (resRes.ok) {
+              const resData = await resRes.json();
+              setHermesResult(resData);
+            }
+            setHermesLoading(false);
+          } else if (statusData.status === 'FAILED' || statusData.status === 'CANCELLED') {
+            clearInterval(interval);
+            setHermesLoading(false);
+          }
+        } catch (pollErr) {
+          console.error('Erro no polling do Hermes:', pollErr);
+        }
+      }, 1000);
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Erro ao executar análise Hermes');
+      setHermesLoading(false);
+    }
+  };
 
   // Carregar entidade e grafo ao selecionar entidade
   useEffect(() => {
@@ -424,6 +475,87 @@ export function App() {
                     </div>
                   </div>
                 ))}
+
+                {/* Seção Hermes Copilot */}
+                <div className="hermes-copilot-container">
+                  <div className="hermes-copilot-header">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <Bot size={18} color="#2563eb" />
+                      <strong style={{ fontSize: '0.88rem', color: '#1e3a8a' }}>Hermes Copilot (M2)</strong>
+                    </div>
+                    <button
+                      className="hermes-btn-trigger"
+                      id="btn-run-hermes"
+                      onClick={handleRunHermes}
+                      disabled={hermesLoading}
+                    >
+                      <Sparkles size={14} />
+                      <span>{hermesLoading ? 'Analisando...' : 'Explicar com Hermes'}</span>
+                    </button>
+                  </div>
+
+                  {hermesLoading && hermesStatus && (
+                    <div className="hermes-status-box" id="hermes-status-box">
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', fontWeight: 600 }}>
+                        <span>{hermesStatus.currentStepDescription || 'Processando...'}</span>
+                        <span>{hermesStatus.progressPercent || 20}%</span>
+                      </div>
+                      <div className="hermes-progress-bar">
+                        <div
+                          className="hermes-progress-fill"
+                          style={{ width: `${hermesStatus.progressPercent || 20}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {hermesResult && (
+                    <div className="hermes-report" id="hermes-report">
+                      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-main)', background: '#f1f5f9', padding: '8px 10px', borderRadius: '4px' }}>
+                        {hermesResult.summary}
+                      </div>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '6px' }}>
+                        <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-subtle)', textTransform: 'uppercase' }}>
+                          Declarações Fatuais e Segregação Hermética:
+                        </div>
+                        {hermesResult.statements?.map((st: any, sIdx: number) => (
+                          <div key={sIdx} className="hermes-statement-card">
+                            <div className="hermes-statement-header">
+                              <span className={`hermes-kind-badge kind-${st.kind}`}>
+                                {st.kind}
+                              </span>
+                              {st.evidenceIds?.length > 0 && (
+                                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                                  {st.evidenceIds.length} citação(ões)
+                                </span>
+                              )}
+                            </div>
+                            <div className="hermes-statement-text">
+                              {st.text}
+                            </div>
+                            {st.limitations?.length > 0 && (
+                              <div style={{ fontSize: '0.74rem', color: '#b91c1c', fontStyle: 'italic', marginTop: '2px' }}>
+                                Ressalva: {st.limitations.join(' ')}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+
+                      {hermesResult.suggestedActions?.length > 0 && (
+                        <div style={{ marginTop: '8px', fontSize: '0.78rem' }}>
+                          <strong style={{ color: 'var(--text-subtle)' }}>Ações Investigativas Recomendadas:</strong>
+                          <ul style={{ paddingLeft: '16px', marginTop: '4px', color: 'var(--text-muted)' }}>
+                            {hermesResult.suggestedActions.map((act: string, aIdx: number) => (
+                              <li key={aIdx}>{act}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             ) : (
               <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>

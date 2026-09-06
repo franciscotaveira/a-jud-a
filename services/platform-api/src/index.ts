@@ -4,11 +4,19 @@ import { Pool } from 'pg';
 import { join, resolve } from 'node:path';
 import { existsSync, createReadStream } from 'node:fs';
 
+import { ProductionHermesAdapter } from '@pig-br/hermes-runtime';
+import { randomUUID } from 'node:crypto';
+
 const app = express();
 const port = process.env.PORT || 3001;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://postgres:pig_br_password_2026@127.0.0.1:54320/pig_br'
+});
+
+const hermesAdapter = new ProductionHermesAdapter({
+  pool,
+  nvidiaApiKey: process.env.NVIDIA_API_KEY
 });
 
 app.use(cors());
@@ -320,6 +328,76 @@ app.post('/api/entities', async (req, res) => {
   }
 });
 
+// ============================================================================
+// Endpoints do Hermes Copilot (Marco M2)
+// ============================================================================
+
+// Iniciar corrida de análise investigativa
+app.post('/api/analysis/runs', async (req, res) => {
+  const { targetRelationshipId, taskType = 'EXPLAIN_RELATIONSHIP' } = req.body;
+
+  if (!targetRelationshipId) {
+    return res.status(400).json({ error: 'targetRelationshipId é obrigatório' });
+  }
+
+  const runId = randomUUID();
+  try {
+    const started = await hermesAdapter.startAnalysis({
+      runId,
+      workspaceId: randomUUID(),
+      userId: randomUUID(),
+      taskType: taskType as any,
+      targetRelationshipId,
+      allowedToolNames: ['get_entity', 'get_relationship', 'get_document_excerpt'],
+      maxTokens: 4000,
+      timeoutSeconds: 120
+    });
+
+    res.status(202).json({
+      runId: started.runId,
+      status: 'QUEUED',
+      message: 'Análise Hermes iniciada com sucesso'
+    });
+  } catch (err: any) {
+    console.error('Erro ao iniciar análise Hermes:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Consultar status e progresso da corrida
+app.get('/api/analysis/runs/:runId', async (req, res) => {
+  const { runId } = req.params;
+  try {
+    const status = await hermesAdapter.getAnalysisStatus(runId);
+    res.json(status);
+  } catch (err: any) {
+    res.status(404).json({ error: err.message });
+  }
+});
+
+// Obter resultado final estruturado da análise
+app.get('/api/analysis/runs/:runId/result', async (req, res) => {
+  const { runId } = req.params;
+  try {
+    const result = await hermesAdapter.getAnalysisResult(runId);
+    res.json(result);
+  } catch (err: any) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Cancelar corrida em andamento
+app.post('/api/analysis/runs/:runId/cancel', async (req, res) => {
+  const { runId } = req.params;
+  try {
+    await hermesAdapter.cancelAnalysis(runId);
+    res.json({ message: 'Análise cancelada com sucesso' });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.listen(port, () => {
   console.log(`[PIG-BR API] Rodando na porta ${port}`);
 });
+

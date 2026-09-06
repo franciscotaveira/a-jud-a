@@ -20,7 +20,8 @@ Data da Validação: 06/09/2026
 | **Extração Documental e OCR (Pet 16.662)** | `TESTADO EM BANCO` | 5 documentos originais baixados, textos extraídos via parser nativo e Tesseract OCR. Hashes conferidos. |
 | **Ingestão Auditável com Status PENDING_REVIEW** | `TESTADO EM BANCO` | Relações inseridas em `PENDING_REVIEW` na `review_queue`. Nenhuma promoção automática sem conferência humana. |
 | **Interface Web e Fluxo E2E no Navegador** | `DEMONSTRADO NA INTERFACE` | Executado no Google Chrome real (porta 3000): Busca → Entidade → Grafo → Relação (PENDING_REVIEW) → Painel de Evidências (Trecho Literal + SHA-256) → Abertura de PDF. |
-| **Integração Real com Motor Hermes (M2)** | `PENDENTE` | Contratos `HermesAdapter` prontos e validados em mock; ativação com chaves de inferência (ex: NVIDIA NIM / OpenAI) programada para o Marco M2. |
+| **Integração Real com Motor Hermes (M2)** | `HOMOLOGADO NO RUNTIME E INTERFACE` | Runtime `services/hermes-runtime` integrado ao backend Docker com API `/api/analysis/runs`. Painel de análise no frontend com segregação estrita (`DOCUMENTED_RECORD`, `INTERPRETATION`, `LIMITATION`), citações auditadas de evidências e ressalvas legais. Validado em testes (`tests/hermes_adapter.test.ts`) e no navegador via Chrome (`/tmp/browser_m2_hermes_scrolled.png`). |
+
 
 ---
 
