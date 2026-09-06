@@ -330,6 +330,16 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
     if (cyRef.current) cyRef.current.reset();
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (cyRef.current) {
+        cyRef.current.resize();
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="graph-wrapper cosmic-graph">
       <div className="graph-controls">
@@ -369,7 +379,7 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
             <span className="ctrl-dot"></span> Re-centrar
           </button>
           <button className="graph-btn cosmic-btn" onClick={handleResetZoom}>
-            Resetar
+            Resetar Zoom
           </button>
         </div>
       </div>

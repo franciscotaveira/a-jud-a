@@ -211,32 +211,32 @@ body {
   box-shadow: 0 0 12px var(--neon-cyan);
 }
 
-/* Universal Canvas / Grid Workspace */
-.cosmos-workspace {
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 20px;
-  padding: 0 24px 24px 24px;
-  max-width: 1700px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.cosmos-main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Graph Wrapper */
-.graph-wrapper.cosmic-graph {
-  height: 640px;
-  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.9) 0%, rgba(3, 7, 18, 0.98) 100%);
-  border: 1px solid var(--border-glow);
-  border-radius: 12px;
+/* ========================================================
+   UNIVERSO TOTAL PIG-BR // COSMOS STATION (100VW / 100VH)
+   ======================================================== */
+.cosmos-station {
   position: relative;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.1);
+  background-color: var(--bg-space);
+}
+
+/* 1. UNIVERSO DE NAVEGAÇÃO 360° (CANVAS FULL VIEWPORT) */
+.universe-canvas-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.graph-wrapper.cosmic-graph {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.4) 0%, rgba(3, 7, 18, 0.95) 100%);
+  overflow: hidden;
 }
 
 .graph-wrapper.cosmic-graph::before {
@@ -244,9 +244,9 @@ body {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
   pointer-events: none;
 }
 
@@ -255,14 +255,14 @@ body {
   height: 100%;
 }
 
+/* Controles de Câmera e Layout da Navegação Espacial */
 .graph-controls {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  left: 14px;
+  top: 76px;
+  left: 24px;
   z-index: 10;
   display: flex;
-  justify-content: space-between;
+  gap: 12px;
   align-items: center;
 }
 
@@ -271,9 +271,10 @@ body {
   gap: 4px;
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid var(--border-glow);
-  padding: 3px;
-  border-radius: 6px;
-  backdrop-filter: blur(8px);
+  padding: 4px;
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .layout-chip {
@@ -281,13 +282,13 @@ body {
   border: none;
   color: var(--text-muted);
   font-family: var(--font-orbitron);
-  font-size: 0.65rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -298,179 +299,219 @@ body {
 .layout-chip.active {
   background: linear-gradient(135deg, #0284c7, #2563eb);
   color: #ffffff;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
 }
 
-/* Forensic Alerts HUD */
-.forensic-alerts-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.forensic-alert-banner {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  border: 1px solid;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.forensic-alert-banner:hover {
-  transform: translateY(-2px);
-}
-
-.forensic-alert-banner.level-HIGH {
-  background: rgba(244, 63, 94, 0.08);
-  border-color: rgba(244, 63, 94, 0.5);
-  box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
-}
-
-.forensic-alert-banner.level-MEDIUM {
-  background: rgba(245, 158, 11, 0.08);
-  border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
-}
-
-.forensic-alert-banner.level-INFO {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
-}
-
-.alert-badge {
-  font-family: var(--font-orbitron);
-  font-size: 0.62rem;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-}
-
-.badge-HIGH { background: #f43f5e; color: #ffffff; }
-.badge-MEDIUM { background: #f59e0b; color: #000000; }
-.badge-INFO { background: #0284c7; color: #ffffff; }
-
-.cosmic-btn {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid var(--border-glow);
-  color: var(--neon-cyan);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-family: var(--font-orbitron);
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.cosmic-btn:hover {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
-}
-
-.ctrl-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--neon-cyan);
-}
-
-/* Timeline Horizontal Espacial */
-.timeline-cosmos-card {
-  padding: 16px 20px;
-  background: var(--bg-card);
+/* 2. HUD SUPERIOR FLUTUANTE (TOPBAR) */
+.hud-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 30;
+  background: rgba(3, 7, 18, 0.8);
   backdrop-filter: blur(16px);
-  border: 1px solid var(--border-glow);
-  border-radius: 12px;
-}
-
-.timeline-cosmos-title {
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-glow);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-family: var(--font-orbitron);
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  color: var(--neon-cyan);
-  margin-bottom: 14px;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
-.timeline-rail {
+.hud-left {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 20px;
+}
+
+.hud-subtitle {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  margin-top: 1px;
+}
+
+.hud-center-search {
+  position: relative;
+  width: 480px;
+}
+
+.hud-candidates-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 6px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 8px 12px;
+  backdrop-filter: blur(16px);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  z-index: 40;
+}
+
+.hud-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 3. MODAL / OVERLAY DE ALERTAS FORENSES */
+.hud-alerts-overlay {
+  position: absolute;
+  top: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  max-width: 90vw;
+  max-height: 70vh;
+  overflow-y: auto;
+  z-index: 35;
+  padding: 20px;
+  border-color: rgba(244, 63, 94, 0.4);
+  box-shadow: 0 0 40px rgba(244, 63, 94, 0.25);
+  animation: slide-down 0.2s ease-out;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* 4. LINHA DO TEMPO HORIZONTAL FLUTUANTE (BOTTOM DOCK) */
+.hud-bottom-timeline {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  right: 480px;
+  z-index: 25;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+  transition: right 0.3s ease;
+}
+
+.timeline-rail-dock {
+  display: flex;
+  gap: 12px;
   overflow-x: auto;
-  padding: 8px 4px 14px 4px;
+  padding: 10px 14px;
 }
 
-.timeline-rail::-webkit-scrollbar {
-  height: 5px;
+.timeline-rail-dock::-webkit-scrollbar {
+  height: 4px;
 }
 
-.timeline-rail::-webkit-scrollbar-thumb {
+.timeline-rail-dock::-webkit-scrollbar-thumb {
   background: var(--border-strong);
   border-radius: 4px;
 }
 
-.timeline-node {
-  flex: 0 0 260px;
-  background: rgba(15, 23, 42, 0.8);
+.timeline-dock-node {
+  flex: 0 0 220px;
+  background: rgba(15, 23, 42, 0.75);
   border: 1px solid var(--border-glow);
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: 6px;
+  padding: 8px 10px;
   cursor: pointer;
-  transition: all 0.25s ease;
-  position: relative;
+  transition: all 0.2s ease;
 }
 
-.timeline-node:hover, .timeline-node.active {
-  border-color: var(--neon-rose);
-  box-shadow: 0 0 16px rgba(244, 63, 94, 0.35);
+.timeline-dock-node:hover, .timeline-dock-node.active {
+  border-color: var(--neon-cyan);
+  background: rgba(2, 132, 199, 0.15);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
   transform: translateY(-2px);
-  background: rgba(30, 41, 59, 0.9);
 }
 
-.timeline-node-date {
+.timeline-dock-date {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--neon-cyan);
-  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
+  gap: 5px;
+  margin-bottom: 3px;
 }
 
-.timeline-node-pred {
+.timeline-dock-pred {
   font-family: var(--font-orbitron);
-  font-size: 0.76rem;
-  color: #ffffff;
-  margin-bottom: 4px;
+  font-size: 0.72rem;
+  color: #f1f5f9;
+  font-weight: 700;
+  margin-bottom: 2px;
 }
 
-.timeline-node-actors {
-  font-size: 0.78rem;
+.timeline-dock-actors {
+  font-size: 0.72rem;
   color: var(--text-muted);
-  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Evidence and Hermes Sidebar */
-.cosmos-sidebar {
+/* 5. GAVETA LATERAL FLUTUANTE (EVIDÊNCIAS & HERMES COPILOT) */
+.hud-right-drawer {
+  position: absolute;
+  top: 76px;
+  right: 20px;
+  bottom: 20px;
+  width: 440px;
+  z-index: 30;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15);
+  animation: slide-left 0.25s ease-out;
+}
+
+@keyframes slide-left {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.drawer-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-glow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.drawer-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+  background: var(--border-glow);
+  border-radius: 4px;
+}
+
+.drawer-section {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
 }
 
 .evidence-card-cosmic {
