@@ -379,15 +379,39 @@ app.get('/api/graph/universal', async (_req, res) => {
       });
     }
 
-    // Alerta 3: Hub Central da Rede
+    // Alerta 3: Fluxo Financeiro Direto e Faturas Expressivas
+    const paidRel = relationships.find(r => r.predicate === 'PAID_TO');
+    if (paidRel) {
+      forensicAlerts.push({
+        id: 'ALT-03-FLUXO-FINANCEIRO-PAGAMENTOS',
+        level: 'HIGH',
+        title: 'FLUXO FINANCEIRO EXPRESSIVO DE HONORÁRIOS',
+        description: 'Identificados comprovantes periciais de transferências mensais de R$ 3,42 milhões e solicitações de pagamento de R$ 22,81 milhões direcionadas à banca Barci de Moraes.',
+        relatedEntityIds: [paidRel.subjectEntityId, paidRel.objectEntityId]
+      });
+    }
+
+    // Alerta 4: Estrutura de Ativos Aeronáuticos (Legacy 650 e Helicóptero)
+    const aircraftRels = relationships.filter(r => r.predicate === 'OWNS_AIRCRAFT' || r.predicate === 'OPERATES_AIRCRAFT');
+    if (aircraftRels.length > 0) {
+      forensicAlerts.push({
+        id: 'ALT-04-OPERACAO-AERONAVES',
+        level: 'HIGH',
+        title: 'CIRCUITO DE ATIVOS: AERONAVE LEGACY 650 & HELICÓPTERO',
+        description: 'Vínculo documental de titularidade fracionada (Fraction 024) e operação comercial (Prime You) com usufruto direto registrado em interceptações periciais.',
+        relatedEntityIds: aircraftRels.map(r => r.objectEntityId)
+      });
+    }
+
+    // Alerta 5: Hubs de Centralidade e Intermediação Institucional
     entRes.rows.forEach(e => {
       const deg = degreeMap.get(e.id);
-      if (deg && deg.totalDegree >= 3) {
+      if (deg && deg.totalDegree >= 4) {
         forensicAlerts.push({
           id: `ALT-HUB-${e.id.substring(0, 8)}`,
           level: 'INFO',
-          title: `HUB TOPOLÓGICO: ${e.canonical_name}`,
-          description: `Entidade atua como nó central convergindo ${deg.totalDegree} vetores relacionais (Grau de Saída: ${deg.outDegree}, Grau de Entrada: ${deg.inDegree}).`,
+          title: `HUB ESTRATÉGICO PRINCIPAL: ${e.canonical_name}`,
+          description: `Entidade atua como epicentro convergindo ${deg.totalDegree} vetores de controle, finanças e representação.`,
           relatedEntityIds: [e.id]
         });
       }

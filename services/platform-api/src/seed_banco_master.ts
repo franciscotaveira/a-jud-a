@@ -104,7 +104,7 @@ async function main() {
       `, [art.id, art.id, art.docTitle, art.docType, art.docDate, textContent]);
     }
 
-    // 2. Cadastrar as Entidades Centrais
+    // 2. Cadastrar as Entidades Centrais (Rede Estratégica Completa Documentada nos Autos da Petição 16.662)
     const entities = [
       {
         id: '50000000-0000-0000-0000-000000000001',
@@ -147,6 +147,62 @@ async function main() {
         name: 'FRACTION 024 ADMINISTRACAO DE BEM PROPRIO S.A.',
         jurisdiction: 'BR',
         cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000007',
+        type: 'PERSON',
+        name: 'VIVIANE BARCI DE MORAES',
+        jurisdiction: 'BR',
+        cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000008',
+        type: 'PERSON',
+        name: 'FABIO FARIA',
+        jurisdiction: 'BR',
+        cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000009',
+        type: 'PERSON',
+        name: 'LEONARDO PALHARES',
+        jurisdiction: 'BR',
+        cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000010',
+        type: 'PERSON',
+        name: 'ANGELO ANTONIO RIBEIRO DA SILVA',
+        jurisdiction: 'BR',
+        cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000011',
+        type: 'ORGANIZATION',
+        name: 'PRIME YOU COMPARTILHAMENTO S.A.',
+        jurisdiction: 'BR',
+        cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000012',
+        type: 'AIRCRAFT',
+        name: 'AERONAVE LEGACY 650 (PP-NLR / PR-NLR)',
+        jurisdiction: 'BR',
+        cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000013',
+        type: 'AIRCRAFT',
+        name: 'HELICOPTERO EUROCOPTER EC 155 B1',
+        jurisdiction: 'BR',
+        cnpj: null
+      },
+      {
+        id: '50000000-0000-0000-0000-000000000014',
+        type: 'PERSON',
+        name: 'ALEXANDRE DE MORAES',
+        jurisdiction: 'BR',
+        cnpj: null
       }
     ];
 
@@ -167,14 +223,11 @@ async function main() {
     }
 
     // 3. Cadastrar Evidências Textuais Locadas
-    // Distinção explícita entre trecho literal, resumo e método de extração.
-    // Todas as evidências iniciam em PENDING_REVIEW até auditoria humana individual.
     const evidences = [
       {
         id: '40000000-0000-0000-0000-000000000001',
         artifactId: '20000000-0000-0000-0000-000000000001',
         documentId: '20000000-0000-0000-0000-000000000001',
-        // Trecho literal exatamente como extraído do texto do PDF
         excerpt: 'CONTRATO DE PRESTAÇÃO DE SERVIÇOS E DE HONORÁRIOS ADVOCATÍCIOS BARCI DE MORAES SOCIEDADE DE ADVOGADOS, ... BANCO MASTER S.A. ... CONTRATANTE',
         locator: {
           page: 1,
@@ -240,6 +293,76 @@ async function main() {
         },
         method: 'MANUAL_EXTRACTION',
         status: 'PENDING_REVIEW'
+      },
+      {
+        id: '40000000-0000-0000-0000-000000000006',
+        artifactId: '20000000-0000-0000-0000-000000000004',
+        documentId: '20000000-0000-0000-0000-000000000004',
+        excerpt: 'O arquivo compartilhado MINUTA DE CONTRATO aponta em seus metadados como autor usuário denominado GUILHERME BENAZZI e a última modificação realizada por usuário denominado Ministro Alexandre de Moraes às 16:30 -03:00 do dia 11/01/2024.',
+        locator: {
+          page: 29,
+          section: 'Item 5.2 / Página 29 do Relatório Policial nº 3298613/2026',
+          literalSnippet: 'O arquivo compartilhado (“MINUTA DE CONTRATO”) aponta em seus metadados como autor usuário denominado GUILHERME BENAZZI e a última modificação realizada por usuário denominado “Ministro Alexandre de Moraes”',
+          summary: 'Metadados da minuta contratual indicando edição por Guilherme Benazzi e Ministro Alexandre de Moraes'
+        },
+        method: 'DETERMINISTIC_PARSER',
+        status: 'PENDING_REVIEW'
+      },
+      {
+        id: '40000000-0000-0000-0000-000000000007',
+        artifactId: '20000000-0000-0000-0000-000000000004',
+        documentId: '20000000-0000-0000-0000-000000000004',
+        excerpt: 'No dia 26/12/2023 ... contato Alexandre de Moraes BRASILIA foi compartilhado pelo interlocutor registrado no dispositivo como Fabio Faria ... por meio do aplicativo whatsapp.',
+        locator: {
+          page: 17,
+          section: 'Item 5.1 / Página 17 do Relatório Policial',
+          literalSnippet: 'contatos nominados como “Alexandre de Moraes BRASILIA” ... foram compartilhados pelo interlocutor registrado no dispositivo como "Fábio Faria"',
+          summary: 'Intermediação e repasse de contatos telefônicos por Fábio Faria para Daniel Vorcaro'
+        },
+        method: 'DETERMINISTIC_PARSER',
+        status: 'PENDING_REVIEW'
+      },
+      {
+        id: '40000000-0000-0000-0000-000000000008',
+        artifactId: '20000000-0000-0000-0000-000000000004',
+        documentId: '20000000-0000-0000-0000-000000000004',
+        excerpt: 'DANIEL BUENO VORCARO devolve a Vivi Moraes o contrato de prestação de serviços com seu escritório de advocacia, com marcas de revisão feitas pelo usuário LEONARDO PALHARES, advogado de VORCARO.',
+        locator: {
+          page: 31,
+          section: 'Item 5.2 / Página 31',
+          literalSnippet: 'DANIEL BUENO VORCARO devolve a “Vivi Moraes” o contrato ... com marcas de revisão feitas pelo usuário LEONARDO PALHARES',
+          summary: 'Revisão jurídica e formatação do contrato de honorários advocatícios por Leonardo Palhares'
+        },
+        method: 'DETERMINISTIC_PARSER',
+        status: 'PENDING_REVIEW'
+      },
+      {
+        id: '40000000-0000-0000-0000-000000000009',
+        artifactId: '20000000-0000-0000-0000-000000000004',
+        documentId: '20000000-0000-0000-0000-000000000004',
+        excerpt: 'ANGELO SILVA envia para DANIEL VORCARO comprovante de transferência do Banco Master para o Escritório BARCI DE MORAES SOCIEDADE DE ADVOCACIA, em sua conta no Banco Itaú, no valor de R$ 3.422.268,14.',
+        locator: {
+          page: 149,
+          section: 'Item 5.4 / Página 149',
+          literalSnippet: 'ANGELO SILVA envia para DANIEL VORCARO comprovante de transferência do Banco Master para o Escritório BARCI DE MORAES ... no valor de R$ 3.422.268,14',
+          summary: 'Execução e comprovação de transferências bancárias do Banco Master para a banca de advocacia'
+        },
+        method: 'DETERMINISTIC_PARSER',
+        status: 'PENDING_REVIEW'
+      },
+      {
+        id: '40000000-0000-0000-0000-000000000010',
+        artifactId: '20000000-0000-0000-0000-000000000004',
+        documentId: '20000000-0000-0000-0000-000000000004',
+        excerpt: 'A PRIME YOU é uma pessoa jurídica cujos proprietários são MARCUS VINICIUS DA MATA e DANIEL VORCARO ... com informações sobre duas aeronaves: um avião Legacy 650 e um helicóptero EC 155 B1.',
+        locator: {
+          page: 164,
+          section: 'Item 5.5 / Páginas 164-165',
+          literalSnippet: 'A PRIME YOU é uma pessoa jurídica cujos proprietários são MARCUS VINICIUS DA MATA ... e DANIEL VORCARO',
+          summary: 'Sociedade de compartilhamento de aeronaves operada por Daniel Vorcaro'
+        },
+        method: 'DETERMINISTIC_PARSER',
+        status: 'PENDING_REVIEW'
       }
     ];
 
@@ -256,9 +379,8 @@ async function main() {
     }
 
     // 4. Cadastrar Relações Documentadas como CANDIDATAS À REVISÃO (PENDING_REVIEW)
-    // Nenhuma relação é automaticamente promovida para VERIFIED sem validação humana
-    // das premissas: entidade, predicado, trecho, página e período.
     const relations = [
+      // 1. Banco Master contratou Barci de Moraes
       {
         id: '70000000-0000-0000-0000-000000000001',
         subject: '50000000-0000-0000-0000-000000000001', // Banco Master
@@ -268,6 +390,7 @@ async function main() {
         evidenceId: '40000000-0000-0000-0000-000000000001',
         role: 'SUPPORTS'
       },
+      // 2. Guilherme Benazzi administra Barci de Moraes
       {
         id: '70000000-0000-0000-0000-000000000002',
         subject: '50000000-0000-0000-0000-000000000005', // Guilherme Benazzi
@@ -277,6 +400,7 @@ async function main() {
         evidenceId: '40000000-0000-0000-0000-000000000002',
         role: 'SUPPORTS'
       },
+      // 3. Daniel Vorcaro representa Viking Participacoes
       {
         id: '70000000-0000-0000-0000-000000000003',
         subject: '50000000-0000-0000-0000-000000000004', // Daniel Vorcaro
@@ -286,6 +410,7 @@ async function main() {
         evidenceId: '40000000-0000-0000-0000-000000000003',
         role: 'SUPPORTS'
       },
+      // 4. Viking Participações contratou Barci de Moraes
       {
         id: '70000000-0000-0000-0000-000000000004',
         subject: '50000000-0000-0000-0000-000000000003', // Viking Participacoes
@@ -295,6 +420,7 @@ async function main() {
         evidenceId: '40000000-0000-0000-0000-000000000003',
         role: 'SUPPORTS'
       },
+      // 5. Viking Participações acionista de Fraction 024 (titular aeronave)
       {
         id: '70000000-0000-0000-0000-000000000005',
         subject: '50000000-0000-0000-0000-000000000003', // Viking Participacoes
@@ -303,6 +429,96 @@ async function main() {
         status: 'PENDING_REVIEW',
         evidenceId: '40000000-0000-0000-0000-000000000004',
         role: 'SUPPORTS'
+      },
+      // 6. Viviane Barci de Moraes sócia/titular de Barci de Moraes Sociedade de Advogados
+      {
+        id: '70000000-0000-0000-0000-000000000006',
+        subject: '50000000-0000-0000-0000-000000000007', // Viviane Barci de Moraes
+        predicate: 'DIRECTOR_OF',
+        object: '50000000-0000-0000-0000-000000000002', // Barci de Moraes
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000006',
+        role: 'SUPPORTS'
+      },
+      // 7. Fábio Faria representa/articula contatos institucionais para Daniel Vorcaro
+      {
+        id: '70000000-0000-0000-0000-000000000007',
+        subject: '50000000-0000-0000-0000-000000000008', // Fabio Faria
+        predicate: 'REPRESENTS',
+        object: '50000000-0000-0000-0000-000000000004', // Daniel Vorcaro
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000007',
+        role: 'SUPPORTS'
+      },
+      // 8. Leonardo Palhares representa/advoga para Daniel Vorcaro e estrutura contratos
+      {
+        id: '70000000-0000-0000-0000-000000000008',
+        subject: '50000000-0000-0000-0000-000000000009', // Leonardo Palhares
+        predicate: 'REPRESENTS',
+        object: '50000000-0000-0000-0000-000000000004', // Daniel Vorcaro
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000008',
+        role: 'SUPPORTS'
+      },
+      // 9. Ângelo Silva realiza pagamentos de honorários em favor de Barci de Moraes
+      {
+        id: '70000000-0000-0000-0000-000000000009',
+        subject: '50000000-0000-0000-0000-000000000010', // Angelo Silva
+        predicate: 'PAID_TO',
+        object: '50000000-0000-0000-0000-000000000002', // Barci de Moraes
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000009',
+        role: 'SUPPORTS'
+      },
+      // 10. Fraction 024 possui/titulariza a aeronave Legacy 650 (PP-NLR)
+      {
+        id: '70000000-0000-0000-0000-000000000010',
+        subject: '50000000-0000-0000-0000-000000000006', // Fraction 024
+        predicate: 'OWNS_AIRCRAFT',
+        object: '50000000-0000-0000-0000-000000000012', // Aeronave Legacy 650
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000004',
+        role: 'SUPPORTS'
+      },
+      // 11. Daniel Vorcaro é sócio/controlador de Prime You
+      {
+        id: '70000000-0000-0000-0000-000000000011',
+        subject: '50000000-0000-0000-0000-000000000004', // Daniel Vorcaro
+        predicate: 'SHAREHOLDER_OF',
+        object: '50000000-0000-0000-0000-000000000011', // Prime You
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000010',
+        role: 'SUPPORTS'
+      },
+      // 12. Prime You opera aeronave Legacy 650 e helicóptero
+      {
+        id: '70000000-0000-0000-0000-000000000012',
+        subject: '50000000-0000-0000-0000-000000000011', // Prime You
+        predicate: 'OPERATES_AIRCRAFT',
+        object: '50000000-0000-0000-0000-000000000012', // Aeronave Legacy 650
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000010',
+        role: 'SUPPORTS'
+      },
+      // 13. Prime You opera Helicóptero EC 155 B1
+      {
+        id: '70000000-0000-0000-0000-000000000013',
+        subject: '50000000-0000-0000-0000-000000000011', // Prime You
+        predicate: 'OPERATES_AIRCRAFT',
+        object: '50000000-0000-0000-0000-000000000013', // Helicóptero EC 155
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000010',
+        role: 'SUPPORTS'
+      },
+      // 14. Alexandre de Moraes vinculado documentalmente à edição da minuta de Barci de Moraes
+      {
+        id: '70000000-0000-0000-0000-000000000014',
+        subject: '50000000-0000-0000-0000-000000000014', // Alexandre de Moraes
+        predicate: 'REPRESENTS',
+        object: '50000000-0000-0000-0000-000000000002', // Barci de Moraes
+        status: 'PENDING_REVIEW',
+        evidenceId: '40000000-0000-0000-0000-000000000006',
+        role: 'CONTEXTUALIZES'
       }
     ];
 

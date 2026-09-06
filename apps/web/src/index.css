@@ -230,7 +230,7 @@ body {
 
 /* Graph Wrapper */
 .graph-wrapper.cosmic-graph {
-  height: 520px;
+  height: 640px;
   background: radial-gradient(circle at center, rgba(15, 23, 42, 0.9) 0%, rgba(3, 7, 18, 0.98) 100%);
   border: 1px solid var(--border-glow);
   border-radius: 12px;

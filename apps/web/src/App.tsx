@@ -255,6 +255,7 @@ export function App() {
     source: r.subjectEntityId,
     target: r.objectEntityId,
     label: r.predicate.replace(/_/g, ' '),
+    predicate: r.predicate,
     status: r.verificationStatus,
     date: r.timelineDate
   })) || [];

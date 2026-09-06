@@ -14,6 +14,7 @@ interface EdgeData {
   target: string;
   label: string;
   status: string;
+  predicate?: string;
   date?: string;
 }
 
@@ -64,6 +65,7 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
           target: e.target,
           label: e.label,
           status: e.status,
+          predicate: e.predicate || '',
           date: e.date || ''
         }
       }))
@@ -98,49 +100,97 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
           selector: 'node[type = "PERSON"]',
           style: {
             'shape': 'ellipse',
-            'background-color': '#1e1b4b',
-            'border-color': '#818cf8',
-            'width': 40,
-            'height': 40
+            'background-color': '#312e81',
+            'border-color': '#a5b4fc',
+            'border-width': 2.5,
+            'width': 42,
+            'height': 42
           } as any
         },
         {
           selector: 'node[type = "ORGANIZATION"]',
           style: {
             'shape': 'round-rectangle',
-            'background-color': '#0c192c',
-            'border-color': '#0284c7',
-            'corner-radius': '8px'
+            'background-color': '#082f49',
+            'border-color': '#38bdf8',
+            'border-width': 2.5,
+            'corner-radius': '8px',
+            'width': 48,
+            'height': 48
+          } as any
+        },
+        {
+          selector: 'node[type = "AIRCRAFT"]',
+          style: {
+            'shape': 'diamond',
+            'background-color': '#701a75',
+            'border-color': '#f472b6',
+            'border-width': 3,
+            'width': 46,
+            'height': 46
           } as any
         },
         {
           selector: 'node[isRoot = "true"], node:selected',
           style: {
-            'border-color': '#38bdf8',
+            'border-color': '#f43f5e',
             'border-width': 4,
-            'width': 54,
-            'height': 54,
-            'color': '#38bdf8'
+            'width': 56,
+            'height': 56,
+            'color': '#f43f5e'
           } as any
         },
         {
           selector: 'edge',
           style: {
-            'width': 2,
-            'line-color': 'rgba(56, 189, 248, 0.45)',
-            'target-arrow-color': '#38bdf8',
+            'width': 2.5,
+            'line-color': 'rgba(148, 163, 184, 0.5)',
+            'target-arrow-color': '#94a3b8',
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier',
             'label': 'data(label)',
             'font-family': 'Space Grotesk, sans-serif',
             'font-size': '10px',
-            'font-weight': 500,
+            'font-weight': 600,
             'text-rotation': 'autorotate',
             'text-margin-y': -8,
-            'color': '#94a3b8',
-            'text-outline-color': '#030712',
-            'text-outline-width': 2,
-            'arrow-scale': 1.2
+            'color': '#cbd5e1',
+            'text-outline-color': '#020617',
+            'text-outline-width': 3,
+            'arrow-scale': 1.3
+          } as any
+        },
+        {
+          selector: 'edge[predicate = "CONTRACTED_WITH"]',
+          style: {
+            'line-color': '#38bdf8',
+            'target-arrow-color': '#38bdf8',
+            'width': 3
+          } as any
+        },
+        {
+          selector: 'edge[predicate = "PAID_TO"]',
+          style: {
+            'line-color': '#22c55e',
+            'target-arrow-color': '#22c55e',
+            'width': 3.5,
+            'line-style': 'dashed'
+          } as any
+        },
+        {
+          selector: 'edge[predicate = "OWNS_AIRCRAFT"], edge[predicate = "OPERATES_AIRCRAFT"]',
+          style: {
+            'line-color': '#d946ef',
+            'target-arrow-color': '#d946ef',
+            'width': 3
+          } as any
+        },
+        {
+          selector: 'edge[predicate = "DIRECTOR_OF"], edge[predicate = "ADMINISTRATOR_OF"]',
+          style: {
+            'line-color': '#eab308',
+            'target-arrow-color': '#eab308',
+            'width': 3
           } as any
         },
         {
@@ -148,11 +198,11 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
           style: {
             'line-color': '#f43f5e',
             'target-arrow-color': '#f43f5e',
-            'width': 3.5,
+            'width': 4.5,
             'color': '#fb7185',
             'font-weight': 'bold',
-            'font-size': '11px',
-            'arrow-scale': 1.4
+            'font-size': '12px',
+            'arrow-scale': 1.6
           } as any
         }
       ] as any,
@@ -213,8 +263,9 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
         return {
           name: 'breadthfirst',
           directed: true,
-          padding: 40,
-          spacingFactor: 1.4,
+          padding: 60,
+          spacingFactor: 1.8,
+          avoidOverlap: true,
           animate: true,
           animationDuration: 600
         };
@@ -222,16 +273,25 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
         return {
           name: 'cose',
           animate: true,
-          animationDuration: 700,
-          nodeRepulsion: () => 450000,
-          idealEdgeLength: () => 140,
-          gravity: 0.25,
-          padding: 40
+          animationDuration: 800,
+          refresh: 20,
+          fit: true,
+          padding: 60,
+          randomize: false,
+          nodeRepulsion: () => 1200000,
+          idealEdgeLength: () => 180,
+          edgeElasticity: () => 100,
+          nestingFactor: 5,
+          gravity: 0.15,
+          numIter: 1000,
+          initialTemp: 200,
+          coolingFactor: 0.95
         };
       case 'circle':
         return {
           name: 'circle',
-          padding: 40,
+          padding: 60,
+          avoidOverlap: true,
           animate: true,
           animationDuration: 600
         };
@@ -239,10 +299,17 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
       default:
         return {
           name: 'concentric',
-          concentric: (node: any) => (node.data('isRoot') === 'true' ? 10 : 2),
-          levelWidth: () => 1,
-          padding: 50,
-          spacingFactor: 1.6,
+          concentric: (node: any) => {
+            if (node.data('isRoot') === 'true') return 12;
+            const type = node.data('type');
+            if (type === 'ORGANIZATION') return 8;
+            if (type === 'PERSON') return 5;
+            return 2;
+          },
+          levelWidth: () => 3,
+          padding: 60,
+          spacingFactor: 2.2,
+          avoidOverlap: true,
           animate: true,
           animationDuration: 800
         };
