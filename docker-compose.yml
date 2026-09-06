@@ -1,0 +1,9 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pig_br_web
+    ports:
+      - "3000:80"
+    restart: unless-stopped
