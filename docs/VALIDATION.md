@@ -1,25 +1,18 @@
-# Guia de Validação e Critérios de Aceite — Master Spec MVP
+# Matriz de Validação e Critérios de Aceite — Master Spec M0
 
 ## 1. Classificação Obrigatória do Estado dos Recursos
 
-Todo componente e recurso da plataforma deve ser categorizado de forma inequívoca em um dos seguintes estados:
-
-* `IMPLEMENTADO`: Código escrito, tipado e com build aprovado.
-* `TESTADO`: Verificado por suíte de testes automatizados com assertions executadas.
-* `DEMONSTRADO COM FIXTURES`: Validado de ponta a ponta na interface com dados fictícios identificados.
-* `VERIFICADO COM FONTE REAL`: Ingestão executada contra fonte oficial, com artefato preservado e hash calculado.
-* `PENDENTE DE DEPENDÊNCIA EXTERNA`: Requer configuração de infraestrutura, credencial ou banco remoto ainda não conectado.
-
-## 2. Matriz de Verificação do Marco M0
-
-| Requisito | Status | Evidência de Validação |
+| Componente / Regra | Estado | Evidência de Validação |
 |---|---|---|
-| Contratos Zod do Domínio | `TESTADO` | `packages/contracts/src/index.ts` compilado |
-| Normalização e Validação de CNPJ | `TESTADO` | 3 testes em `tests/m0_verification.test.ts` |
-| Resolução Conservadora de Identidade | `TESTADO` | 3 testes em `tests/m0_verification.test.ts` (bloqueio de fusão de pessoas) |
-| Integridade Criptográfica SHA-256 e Trecho | `TESTADO` | 2 testes em `tests/m0_verification.test.ts` |
-| Múltiplas Evidências com Papéis | `TESTADO` | Schema `RelationshipEvidence` com `role` testado |
-| Contrato de Conector `PublicDataConnector` | `IMPLEMENTADO` | `packages/connectors/src/index.ts` compilado |
-| Migration SQL Núcleo com RLS | `IMPLEMENTADO` | `supabase/migrations/00001_initial_schema.sql` criada |
-| Aplicação da Migration em Banco Remoto | `PENDENTE DE DEPENDÊNCIA EXTERNA` | Requer conexão ativa com instância Supabase |
-| Isolamento e Aviso Legal de Fixture | `TESTADO` | Teste de verificação de disclaimer legal na fixture |
+| **Resolução Conservadora de Identidades** | `TESTADO EM UNIDADE` | Regressão comprovada: CNPJ `00000000000000` bloqueado para `AUTO_MATCH`. Pessoas físicas nunca se fundem por nome (`tests/m0_verification.test.ts`). |
+| **Contrato Mínimo do HermesAdapter** | `TESTADO EM UNIDADE` | Validação de schema estruturado, cancelamento e ciclo de vida mock (`tests/m0_verification.test.ts`). |
+| **Integridade Criptográfica SHA-256 e Locators** | `TESTADO EM UNIDADE` | Hash do artefato e offset de caracteres conferidos rigorosamente (`tests/m0_verification.test.ts`). |
+| **Integridade Documental: Exigência de Evidência SUPPORTS** | `TESTADO EM BANCO` | Constraint Trigger no PostgreSQL rejeitou relação `VERIFIED` sem evidência (`tests/m0_verification.test.ts`). |
+| **Integridade Documental: Exclusão do Último Suporte** | `TESTADO EM BANCO` | Exclusão de evidência `SUPPORTS` foi bloqueada no PostgreSQL por trigger transacional (`tests/m0_verification.test.ts`). |
+| **Integridade Documental: Alteração de Papel para CONTRADICTS** | `TESTADO EM BANCO` | Alteração de role para `CONTRADICTS` sem suporte sobressalente bloqueada no PostgreSQL (`tests/m0_verification.test.ts`). |
+| **Persistência da Cadeia Sintética Completa** | `TESTADO EM BANCO` | Fonte → Artefato → Documento → Evidência → Entidades → Relação persistidos no PostgreSQL local (`tests/m0_verification.test.ts`). |
+| **Políticas de Acesso (RLS)** | `TESTADO EM BANCO` | SELECT liberado publicamente; INSERT/UPDATE bloqueado no PostgreSQL para usuário anônimo sem privilégios (`tests/m0_verification.test.ts`). |
+| **Isolamento de Fixture Sintética** | `TESTADO EM UNIDADE` | Fixture 100% sintética em `fixtures/demo/synthetic_fixture.json` validada contra schemas Zod. Banco Master e CNPJ real completamente desvinculados da demonstração. |
+| **Interface Web Demonstrável** | `DEMONSTRADO NA INTERFACE` | Servida via Docker na porta 3000 com aviso de dados sintéticos. |
+| **Integração com Hermes Real (Python/Gateway)** | `PENDENTE` | Especificada contratualmente no M0; execução real programada para o Marco M2. |
+| **Conector de Fonte Primária Oficial** | `PENDENTE` | Ingestão de API governamental programada para o Marco M2. |
