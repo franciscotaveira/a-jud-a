@@ -1,0 +1,4107 @@
+Ministério da Justiça e Segurança Pública
+Polícia Federal
+
+SIGILOSO
+
+INFORMAÇÃO DE POLÍCIA JUDICIÁRIA DE ANÁLISE (IPJ-A)
+
+Número da IPJ-A
+
+3298613/2026
+
+Unidade Policial
+
+NADIP/DFIN/CGRC/DICOR/PF
+
+1. DADOS DO PROCEDIMENTO
+Nº Procedimento (IPL/RE/NCV)
+
+2026.0098110–CGRC/DICOR/PF
+
+Tipo de Procedimento
+
+Registro Especial
+
+Tipo de Análise
+
+Material Apreendido
+
+Referências
+
+Tarefa no ePol número 3259365/2026
+Laudo nº 4281/2025- SETEC/SR/PF/SP
+
+Destinatário
+
+Exmo. Ministro André Mendonça
+
+Data
+
+27/08/2026
+
+2. OBJETO
+Identificação do Objeto
+
+01 (um) aparelho celular da marca APPLE, modelo
+IPHONE 17 PRO, número de séri
+IMEI
+
+Origem do Objeto
+
+Termo de Apreensão nº 4473731/2025
+
+Coleta do Objeto
+Tratamento do Objeto
+
+Obtido em decorrência de cumprimento de mandado
+de prisão e busca pessoal.
+Indexador e Processador de Evidências Digitais 4.2.2.
+e Cellebrite Reader 10.7.1.5013
+
+Página 1 de 218
+IPJ-A nº 3298613/2026
+
+SUMÁRIO
+1. DADOS DO PROCEDIMENTO .................................................................................................................... 1
+2. OBJETO ....................................................................................................................................................... 1
+3. CONTEXTUALIZAÇÃO ............................................................................................................................... 3
+4. DA METODOLOGIA .................................................................................................................................... 6
+5. DA ANÁLISE DO DESTINATÁRIO DAS NOTAS ....................................................................................... 9
+5.1 Dos primeiros contatos registrados entre DANIEL VORCARO e o Ministro ALEXANDRE DE MORAES .... 17
+5.2 Da assinatura do primeiro contrato com o Escritório de VIVIANE DE MORAES com DANIEL VORCARO . 28
+5.3 Comunicação de DANIEL BUENO VORCARO por meio do Aplicativo “Notas” ............................................. 36
+5.4 Cobranças de pagamento referente ao primeiro contrato do Banco Master com o Escritório de VIVIANE DE
+MORAES ............................................................................................................................................................. 149
+5.5 Do segundo contrato com o Escritório de VIVIANE DE MORAES ................................................................. 157
+5.6 Outros encontros entre DANIEL VORCARO e ALEXANDRE DE MORAES ................................................... 172
+5.7 Do evento de Londres ....................................................................................................................................... 182
+5.8 De mensagens relacionadas com ALEXANDRE DE MORAES ....................................................................... 196
+
+6. DA ANÁLISE DOS CITADOS NAS NOTAS ........................................................................................... 198
+6.1.
+
+Das Pesquisas Por Termos Relacionados Com “Paulo Gonet” .............................................................. 201
+
+6.2.
+
+Das Pesquisas Por Termos Relacionados Com “Andrei Passos” .......................................................... 211
+
+7. CONSIDERAÇÕES FINAIS ..................................................................................................................... 216
+ANEXOS ........................................................................................................................................................ 218
+
+Página 2 de 218
+IPJ-A nº 3298613/2026
+
+3. CONTEXTUALIZAÇÃO
+No dia 18/11/2025 foi deflagrada a Operação Compliance Zero. A
+investigação apura fraudes na cessão de carteiras de crédito, no montante aproximado de
+R$ 12 bilhões, realizadas pelo Banco Master em favor do BRB. Tais fraudes teriam sido
+lideradas pelo proprietário do Banco Master, DANIEL BUENO VORCARO, cuja prisão foi
+decretada pela 10ª Vara Federal Criminal da SJDF. Na mesma ocasião, foi autorizada a
+realização de busca pessoal, ocasião em que a Polícia Federal apreendeu o aparelho
+celular que é objeto do presente exame.
+A extração foi realizada com o emprego de ferramentas forenses apropriadas
+e está materializada no Laudo nº 4281/2025- SETEC/SR/PF/SP, no qual consta o valor de
+resumo (hash) dos dados obtidos, calculado por função unidirecional, o que permite verificar
+sua integridade.
+Em cumprimento à requisição de informações exarada pelo Exmo. Sr. Ministro
+Relator nos autos da PET nº 15.556, apresentam-se informações acerca do atual estágio
+das investigações relacionadas à denominada Operação Compliance Zero, especialmente
+no que se refere à identificação dos integrantes da suposta rede de influência e
+monitoramento gerenciada por DANIEL BUENO VORCARO.
+Visando estabelecer as balizas quanto ao objeto desta Informação de Polícia
+Judiciária, reproduz-se os seguintes trechos da ordem exarada pelo Ministro-Relator
+ANDRÉ MENDONÇA:
+"14. Diante dessa conjuntura, considerando o cenário fático atual,
+de manutenção de medidas de constrição pessoal em desfavor de diversos
+investigados, o volume do material apreendido e o tempo transcorrido desde o
+início da análise dos elementos de prova que embasaram a referida hipótese
+criminal; e, por outro lado, o prognóstico apontado pela autoridade policial,
+segundo o qual ainda haveriam pessoas integrantes da organização criminosa
+cuja identidade não foi revelada, determino ao Coordenador de Inquéritos nos
+Tribunais Superiores – CINQ/DICOR/PF que demande aos delegados
+subscritores da representação inicial veiculada na Pet nº 15.556, diretamente
+responsáveis pela condução das investigações da denominada “Operação
+Compliance Zero”, que apresentem, no prazo de 72 horas, informações
+
+Página 3 de 218
+IPJ-A nº 3298613/2026
+
+atualizadas sobre o atual estágio das investigações, notadamente no que
+concerne à identificação dos integrantes da suposta rede de influência e
+monitoramento gerenciada por DANIEL BUENO VORCARO.
+15. Esclareço que as informações ora requisitadas devem
+contemplar a identificação das pessoas que participaram e foram
+mencionadas nas mensagens reproduzidas nas fls. 3-5 da IPJ-M nº
+, aí incluídas eventuais detentoras de foro por prerrogativa
+de função, inclusive aquelas eventualmente sujeitas à incidência do art. 5º,
+I, do Regimento Interno do Supremo Tribunal Federal. Uma vez
+identificados os destinatários e demais mencionados nas referidas
+mensagens, devem ser igualmente fornecidas a íntegra de todas as
+mensagens e interações existentes que envolvam as mesmas pessoas.
+16. Reitero as balizas fixadas desde o início da supervisão judicial
+sob minha relatoria, frisando a necessidade de as autoridades policiais zelarem
+para que, na condução dos trabalhos, haja irrestrita observância (i) à
+compartimentação própria às atividades de inteligência e de polícia judiciária; (ii)
+ao princípio da preservação do sigilo; e (iii) ao princípio da funcionalidade.”
+
+Considerando as determinações acima transcritas, reproduz-se o inteiro teor do art.
+5º, I, do Regimento Interno do Supremo Tribunal Federal:
+
+Art. 5º Compete ao Plenário processar e julgar originariamente:
+I – nos crimes comuns, o Presidente da República, o VicePresidente da República, o Presidente do Senado Federal, o Presidente da
+Câmara dos Deputados, os Ministros do Supremo Tribunal Federal e o
+Procurador Geral da República, bem como apreciar pedidos de arquivamento
+por atipicidade de conduta (redação dada pela Emenda Regimental n. 59, de 18
+de dezembro de 2023).
+
+Página 4 de 218
+IPJ-A nº 3298613/2026
+
+Desta forma, nos termos consignados na requisição judicial, as informações
+apresentadas contemplam a identificação das pessoas que participaram e foram
+mencionadas nas mensagens reproduzidas nas fls. 3-5 da IPJ-M nº 144738439.2026,
+inclusive eventuais detentoras de foro por prerrogativa de função, bem como a identificação
+de pessoas eventualmente sujeitas à incidência do art. 5º, I, do Regimento Interno do
+Supremo Tribunal Federal.
+Observada a determinação judicial, buscou-se individualizar os destinatários,
+interlocutores e demais pessoas mencionadas nas comunicações analisadas, reunindo-se
+os elementos disponíveis acerca das respectivas interações, contextos, e vínculos
+identificados no curso das investigações.
+Registra-se ainda, que, em observância às disposições da Lei Orgânica da
+Magistratura Nacional (LOMAN) e da Lei Orgânica do Ministério Público, diplomas que
+estabelecem regime jurídico próprio e regramento específico para a apuração de fatos
+envolvendo membros dessas instituições, as análises e evidências ora apresentadas
+restringem-se aos dados brutos e elementos informacionais localizados no acervo
+probatório da Operação Compliance Zero. Assim, não foram realizados quaisquer atos de
+aprofundamento investigativo direcionados a magistrados ou membros do Ministério
+Público, tampouco diligências tipicamente policiais destinadas à apuração de condutas que,
+em tese, possam configurar ilícitos penais, limitando-se o presente trabalho à identificação
+e exposição objetiva dos elementos já existentes no material regularmente arrecadado e
+submetido à supervisão judicial.
+Insta destacar que a elaboração da presente informação observou
+estritamente as balizas reiteradas pelo Relator, notadamente quanto à necessária
+compartimentação entre as atividades de polícia judiciária, à preservação do sigilo das
+diligências e informações produzidas, bem como ao princípio da funcionalidade, de modo
+a assegurar a adequada condução dos trabalhos investigativos e a integridade da
+supervisão judicial.
+Por fim, cabe registrar que a presente análise não pode ser considerada
+exaustiva, podendo sofrer alterações de acordo com o aprofundamento das investigações.
+Além do mais, outros relatórios poderão, a critério das autoridades, ser elaborados a partir
+
+Página 5 de 218
+IPJ-A nº 3298613/2026
+
+dos dados que porventura tenham sido inicialmente considerados não relevantes, mas que
+no decorrer das investigações adquiram significância.
+
+4. DA METODOLOGIA
+Quanto
+
+aos
+
+arquivos
+
+citados
+
+na
+
+IPJ
+
+144738439.2026-
+
+NADIP/DFIN/CGRC/DICOR/PF, de 18/02/2026, foi possível identificar que eles se referem
+a registros feitos por DANIEL BUENO VORCARO no aplicativo “Notas” em seu aparelho
+telefônico.
+Para esclarecer como e com quem DANIEL BUENO VORCARO se
+comunicou a partir do registro dessas notas, esta equipe de policiais federais procedeu,
+com o emprego do software forense Indexador e Processador de Evidências Digitais
+(IPED), versão 4.2.2, à análise dos vestígios digitais extraídos do aparelho celular objeto
+do presente exame. A partir da estrutura de dados previamente processada pela ferramenta
+– em especial da categorização e da indexação dos arquivos –, foi possível realizar a
+filtragem do material por categoria de arquivo, bem como a pesquisa por palavras-chave na
+modalidade busca indexada, que, por consultar o índice gerado na etapa de
+processamento, dispensa a varredura exaustiva do conteúdo e assegura a celeridade
+exigida pela requisição.
+No decorrer das análises realizadas por meio do referido software, verificouse um padrão de comunicação consistente no compartilhamento de mensagens no
+aplicativo WhatsApp, mediante capturas de tela de textos redigidos no aplicativo de
+notas do celular do remetente.
+Para elucidar essa dinâmica, a captura de tela (screenshot) de textos no
+aplicativo Bloco de Notas e seu posterior envio pelo WhatsApp, aplicou-se metodologia
+centrada em duas categorias de dados da extração. A primeira, denominada "Logs",
+registra eventos do sistema operacional, como o momento em que uma mensagem é
+enviada pelo WhatsApp. A segunda, denominada "Uso de Aplicativos", registra os instantes
+de abertura e fechamento dos aplicativos (como o Bloco de Notas e o WhatsApp), além de
+documentar o momento exato em que cada captura de tela é realizada.
+
+Página 6 de 218
+IPJ-A nº 3298613/2026
+
+Figura 1 – Categorias dos dados extraídos do aparelho celular de DANIEL VORCARO
+
+Como elemento de corroboração da dinâmica, constatou-se a existência de
+arquivos em formato PDF contendo exatamente os mesmos textos dos blocos de
+notas capturados. Esses arquivos residuais foram localizados em pasta temporária do
+dispositivo com a nomenclatura "tmp". Segue o caminho da pasta apenas a título
+exemplificativo com destaque para o “tmp”:
+files_partialafu.zip/private/var/mobile/Containers/Data/Application/0
+tmp/com.apple.coherence/ [...]
+
+Entende-se que tais arquivos não são criados deliberadamente pelo usuário.
+No sistema operacional do iPhone (iOS), determinadas ações rotineiras podem fazer com
+que o próprio aparelho converta, de forma automática, o conteúdo exibido na tela em um
+documento no formato PDF, armazenado provisoriamente em área interna do sistema,
+inacessível ao usuário comum. Encerrada a ação, o arquivo permanece por algum tempo
+no dispositivo como vestígio residual daquela operação.
+Dessa forma, a presença de arquivos PDF com conteúdo idêntico ao dos
+blocos de notas capturados demonstra que tais textos foram efetivamente exibidos e
+manipulados no aparelho examinado, funcionando como registro involuntário deixado pelo
+próprio sistema e corroborando a dinâmica descrita.
+
+Página 7 de 218
+IPJ-A nº 3298613/2026
+
+A aplicação conjunta dessa metodologia permitiu identificar um padrão de
+comportamento com uma sequência temporal muito bem definida. A análise cronológica
+demonstra que o usuário do aparelho celular apreendido adotou, em diversas ocasiões, os
+seguintes passos em rápida sucessão: a abertura do aplicativo Bloco de Notas, modificação
+do arquivo de Notas, realização da captura de tela e concomitante (mesmo segundo ou um
+segundo depois) geração do arquivo PDF de idêntico teor na pasta temporária, fechamento
+do Bloco de Notas, abertura do aplicativo WhatsApp, envio de mensagem e, por fim,
+fechamento do WhatsApp. Essa sequência ininterrupta de ações estabelece correlação
+entre a geração da imagem e o seu posterior envio a interlocutor específico.
+Para melhor ilustrar a dinâmica descrita, apresentar-se-á na análise a
+composição dos registros extraídos do aparelho se utilizando da seguinte estrutura:
+À esquerda, constam as notas e seus respectivos metadados, com destaque em
+vermelho para o momento de criação do PDF temporário – coincidente com o horário
+da captura de tela.
+À direita, na parte superior, constam os registros de “uso de aplicativos”: em azul, a
+abertura e o fechamento do aplicativo Notas; em vermelho, a captura de tela –
+coincidente, repita-se, com o horário de criação do PDF temporário (no mesmo
+segundo ou no segundo seguinte ao screenshot, o PDF é criado); e, em verde, a
+sequencial abertura e o encerramento do aplicativo WhatsApp.
+À direita, na parte inferior, constam os “logs” que registram o envio de mensagem
+pelo WhatsApp, destacado em amarelo – envio esse ocorrido exatamente dentro
+do intervalo em que o aplicativo esteve aberto.
+Por fim, é importante ressaltar que essa listagem de “logs” e “uso de
+aplicativos” abrange propositalmente uma janela temporal estendida, exibindo os registros
+ocorridos alguns minutos antes e alguns minutos depois da realização da captura de tela.
+A exposição desse intervalo de tempo tem o objetivo de evidenciar que o número
+, nos casos analisados, é o imediato destinatário a receber uma
+mensagem de VORCARO pouco tempo após momento da captura de tela.
+
+Página 8 de 218
+IPJ-A nº 3298613/2026
+
+5. DA ANÁLISE DO DESTINATÁRIO DAS NOTAS
+Visando identificar o destinatário das comunicações questionadas na
+requisição, aplicou-se a metodologia supracitada nas notas apresentadas na IPJ
+NADIP/DFIN/CGRC/DICOR/PF e delimitadas na decisão judicial que
+requisitou a elaboração deste documento de polícia judiciária. Para manter a cronologia dos
+eventos, visto que as 3 figuras questionadas possuem relação, iniciou-se pela Figura 2 da
+referida IPJ, cujo teor pode ser visto abaixo1.
+
+Figura 2 – Nota referente à Figura 2 da IPJ
+
+Para a nota apresentada acima, elaborou-se um quadro no qual consta a
+tabela resumo com as ações empreendidas por DANIEL BUENO VORCARO.
+
+1 A Figura 2 da IPJ 144738439.2026 pode ser encontrada na página 5 do mencionado documento.
+
+Página 9 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot (UTC)
+
+Criação do Arquivo PDF (UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+30/10/2025 16:28:00
+
+30/10/2025 16:32:31
+
+30/10/2025 16:32:31
+
+30/10/2025 16:32:36
+
+30/10/2025 16:32:36
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+30/10/2025 16:33:03 (UTC)
+30/10/2025 13:33:03 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+30/10/2025 16:33:06
+
+Figura 3 – Resumo das ações empreendidas por DANIEL VORCARO relacionadas com a Nota referente à Figura 2 da IPJ 144738439.2026
+
+Página 10 de 218
+IPJ-A nº 3298613/2026
+
+Figura 4 – Sequência dos eventos relacionados com a Nota referente à Figura 2 da IPJ 144738439.2026
+
+Veja que na nota consta “É importante reforçar com Andrei e Paulo pra nao
+deixar ninguem de baixo fazer uma sacanagem que ai vai tudo pro saco. Estou disponivel
+pra tratar e explicar qq coisa, so nao pode ter sacanagem. Vou te mandar os nomes que
+tem ido ao Bacen alegando que farao algo em breve”.
+Em seguida, analisou-se a Figura 1 da IPJ
+
+que traz os
+
+“nomes que tem ido ao Bacen alegando que farão algo em breve”. Seu conteúdo está
+apresentado na imagem seguinte:
+
+Figura 5 – Nota referente à Figura 1 da IPJ 144738439.2026
+2 A Figura 1 da IPJ
+
+pode ser encontrada na página 4 do mencionado documento.
+
+Página 11 de 218
+IPJ-A nº 3298613/2026
+
+Apresenta-se, no quadro seguinte, a aplicação da metodologia a nota
+referente à Figura 1 da IPJ 1
+
+apresentada acima.
+
+Página 12 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+30/10/2025 16:38:04
+
+30/10/2025 16:38:17
+
+30/10/2025 16:38:17
+
+30/10/2025 16:38:28
+
+30/10/2025 16:38:28
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3))
+30/10/2025 16:38:40 (UTC)
+30/10/2025 13:38:40 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+30/10/2025 16:38:43
+
+Figura 6 – Resumo das ações empreendidas por DANIEL VORCARO relacionadas com a Nota referente à Figura 1 da IPJ
+
+Página 13 de 218
+IPJ-A nº 3298613/2026
+
+Figura 7 – Sequência dos eventos relacionados com a Nota referente à Figura 1 da IPJ 144738439.2026
+
+Na sequência, realizou-se análise da nota constante na Figura 3 da IPJ
+6, cujo teor pode ser visto abaixo.
+
+Figura 8 – Nota referente à Figura 3 da IPJ 144738439.2026
+
+Como resultado da análise do destinatário desta nota, elaborou-se quadro a
+seguir, no qual constam novamente uma tabela com o resumo das atividades realizadas
+por DANIEL BUENO VORCARO.
+
+Página 14 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas (UTC)
+
+30/10/2025 16:43:16
+
+30/10/2025 16:44:43
+
+30/10/2025 16:44:43
+
+30/10/2025 16:44:48
+
+Início do
+WhatsApp (UTC)
+30/10/2025
+16:44:48
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3))
+30/10/2025 16:44:56 (UTC)
+30/10/2025 13:44:56 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+30/10/2025 16:45:26
+
+Figura 9 – Resumo das ações empreendidas por DANIEL VORCARO relacionadas com a Nota referente à Figura 3 da IPJ 144738439.2026
+
+Página 15 de 218
+IPJ-A nº 3298613/2026
+
+Figura 10 – Sequência dos eventos relacionados com a Nota referente à Figura 3 da IPJ 144738439.2026
+
+Em suma, pode-se afirmar que, após elaborar o texto das notas ora
+tratadas e realizar um Screenshot do conteúdo, DANIEL VORCARO efetua, poucos
+segundos depois e como primeira interação no Whatsapp após Screenshot (em
+regra), a remessa de mensagem ao terminal
+O próximo passo foi identificar os usuários atribuídos aos respectivos
+terminais telefônicos citados. Em pesquisa nos dados extraídos do aparelho celular de
+DANIEL BUENO VORCARO, foi possível esclarecer que o terminal
+
+está
+
+atribuído ao contato salvo como “Alexandre de Moraes BRASILIA”.
+
+Figura 11 – Terminal
+
+atribuído ao contato salvo como “Alexandre de Moraes BRASILIA”
+
+Ou seja, os dados do sistema apontam que, segundos após dar um
+screenshot das notas trazidas na IPJ 1
+
+, DANIEL VORCARO envia uma
+
+mensagem de Whatsapp a “Alexandre de Moraes BRASILIA”.
+Página 16 de 218
+IPJ-A nº 3298613/2026
+
+Face ao apresentado neste tópico, iniciou-se análise de possíveis interações
+entre DANIEL BUENO VORCARO e contato salvo em seu aparelho celular como
+“Alexandre de Moraes BRASILIA”. Para tanto, foram realizadas pesquisas no material por
+termos associados ao interlocutor.
+No estrito cumprimento da decisão exarada pelo Exmo. Min. André
+Mendonça3, foram trazidas também interações entre DANIEL VORCARO e outros
+interlocutores, mas que faziam referência a episódios “envolvendo” a figura de “Alexandre
+de Moraes BRASILIA”.
+Os resultados obtidos serão objeto de análise dos tópicos seguintes,
+expostos, em regra, em ordem cronológica.
+5.1 Dos primeiros contatos registrados entre DANIEL VORCARO e o Ministro
+ALEXANDRE DE MORAES
+Conforme verificado nos dados extraídos do aparelho de DANIEL BUENO
+VORCARO e apresentados abaixo, os contatos nominados como “Alexandre de Moraes
+BRASILIA”, “Novo”, “STF TSE NOVO” e “Eu STF”, todos com o mesmo número de telefone
+(terminal
+
+foram compartilhados pelo interlocutor registrado no dispositivo
+
+como "Fábio Faria", doravante denominado FÁBIO FARIA, em 26/12/2023, às 11:43:45 03:00, por meio do aplicativo whatsapp.
+
+3 “devem ser igualmente fornecidas a íntegra de todas as mensagens e interações existentes que envolvam
+as mesmas pessoas”.
+
+Página 17 de 218
+IPJ-A nº 3298613/2026
+
+Figura 12 – Interlocutor registrado no dispositivo de DANIEL BUENO VORCARO como "Fábio Faria"
+compartilhando contatos de indivíduo salvo em sua agenda como “Alexandre de Moraes BRASILIA”, “Novo”, “STF
+TSE NOVO” e “Eu STF”, todos com o mesmo número de telefone (+
+
+Ato contínuo ao compartilhamento, o contato “Alexandre de Moraes
+BRASILIA” foi salvo na agenda telefônica de DANIEL BUENO VORCARO, em 26/12/2023
+às 14:43:58 Z, que corresponde a 11:43:58 -03:00.
+
+Página 18 de 218
+IPJ-A nº 3298613/2026
+
+Figura 13 – Contato “Alexandre de Moraes BRASILIA” salvo na agenda de DANIEL VORCARO
+
+Antes, no dia 21/12/2023, às 09:55:27 -03:00, FÁBIO FARIA encaminha a
+DANIEL BUENO VORCARO mensagem na qual são solicitadas informações sobre placa e
+carro de ambos para “autorizar a segurança a acompanhar na garagem”. Às 10:42:02 03:00, DANIEL BUENO VORCARO pergunta "Chego 11 cravado?" e informa que enviará
+em seguida os dados de seu veículo. Aproximadamente três minutos depois, às 10:44:52 03:00, VORCARO encaminha mensagem com as informações solicitadas: “Range Rover
+Vogue” e “
+
+.
+
+Figura 14 – FABIO FARIA encaminha pedido de informações sobre o veículo de DANIEL VORCARO para que o
+interlocutor desconhecido autorize a segurança
+
+Página 19 de 218
+IPJ-A nº 3298613/2026
+
+DANIEL BUENO VORCARO conversa simultaneamente com "Gustavo
+Motorista" (terminal
+
+, a quem solicita, às 10:42:16 -03:00, "Modelo e placa
+
+nosso carro". Às 10:42:52 -03:00, "Gustavo Motorista" responde com o modelo e a placa
+que, em seguida, DANIEL BUENO VORCARO repassa a FÁBIO FARIA às 10:44:52 -03:00.
+
+Figura 15 – GUSTAVO MOTORISTA envia a DANIEL VORCARO modelo e placa do carro do banqueiro
+
+Na sequência, às 10:46:44 -03:00, DANIEL BUENO VORCARO encaminha a
+mensagem "Tucumã 99" e informa que está "descendo" e que "Vamos nesse endereço
+agora".
+
+Figura 16 – DANIEL VORCARO encaminha endereço “Tucumã 99” para GUSTAVO MOTORISTA e informa que
+eles irão nesse local
+
+Ainda em 21/12/2023, FÁBIO FARIA envia arquivo de áudio a DANIEL
+BUENO VORCARO, abaixo transcrito:
+Página 20 de 218
+IPJ-A nº 3298613/2026
+
+Fala, irmão, tudo bem? Quando saímos de lá, ele
+perguntou se eu tava sozinho, ele me ligou. Aí
+perguntou, mais ou menos, o que eu achava. Eu
+falei: “Cara, fica livre aí, dentro do que ele falou”,
+e tal. Ele falou: “Pô, gostei da conversa. Vou
+montar um negócio bacana demais e, já logo na
+terça-feira, eu quero marcar.” Então, eu te ligo aí
+pra ver o horário, pra vocês voltarem aqui na
+terça, tá bom? Então, tudo certo. Foi bom demais.
+E vamos ver se amanhã a gente encontra algum
+horário. Eu queria ver se conseguia ir lá no prédio,
+lá, naquele que você falou. Tô livre geral. Só tenho
+um almoço com o Alexandre no CADE, meio-dia. Tô
+livre antes e depois. De repente, se você não
+conseguir, não. É só liberar lá para eu ir. Não tenho
+nada para fazer, tá? Estou mais tranquilo. Me avisa
+aí. Um abraço. Valeu.
+
+Figura 17 – FABIO FARIA envia áudio a DANIEL VORCARO relatando como foi o encontro que acabara de
+acontecer
+
+No dia 26/12/2023, pela manhã, FABIO FARIA e DANIEL BUENO VORCARO
+trocam mensagens informando que estão chegando à reunião, e VORCARO questiona
+“Mesmo esquema entrar na garagem correto”. A ocasião anterior em que VORCARO teria
+entrado na garagem para encontro com terceiro foi no dia 21/12/2023, quando se dirigiu ao
+endereço “Tucumã 99” (vide diálogo Figura 14: “autorizar a segurança a acompanhar na
+garagem”).
+
+Página 21 de 218
+IPJ-A nº 3298613/2026
+
+Figura 18 – DANIEL VORCARO questiona FABIO FARIA sobre a entrada no local da reunião
+
+Uma hora após chegar ao local do segundo encontro, FABIO FARIA
+compartilha o contato denominado “Alexandre de Moraes BRASILIA” para DANIEL BUENO
+VORCARO.
+
+Página 22 de 218
+IPJ-A nº 3298613/2026
+
+Figura 19 – FABIO FARIA compartilha contato de ALEXANDRE DE MORAES com DANIEL VORCARO
+
+No dia seguinte, 27/12/2023, FABIO FARIA encaminha mensagem a DANIEL
+BUENO VORCARO mencionando “Alex” e almoço “no dia 30”. O banqueiro envia a
+localização do Hotel Six Senses Botanique, em Campos do Jordão/SP e o contato de sua
+funcionária, salvo em seu telefone como “Thatiane Prime” (terminal
+
+.
+
+Página 23 de 218
+IPJ-A nº 3298613/2026
+
+Figura 20 – Conversa entre FABIO FARIA e DANIEL BUENO VORCARO sobre almoço de “Alex” no Six Senses
+Botanique
+
+No mesmo dia 27/12/2023, DANIEL BUENO VORCARO orienta sua
+funcionária THATIANE a respeito do almoço em Campos do Jordão:
+
+Página 24 de 218
+IPJ-A nº 3298613/2026
+
+Figura 21 – Conversa entre DANIEL VORCARO e THATIANE PRIME sobre almoço no dia 30/12/2023 em Campo
+do Jordão
+
+Página 25 de 218
+IPJ-A nº 3298613/2026
+
+DANIEL BUENO VORCARO acompanha como ocorre a visita da comitiva do
+interlocutor “Alex” junto com seu funcionário MICHAEL (terminal 5
+
+Figura 22 – DANIEL VORCARO pede a MICHAEL que dê notícias sobre o evento no Hotel em Campos do Jordão
+
+Durante a experiência, MICHAEL diz a DANIEL BUENO VORCARO que o
+Desembargador Airton está presente.
+
+Página 26 de 218
+IPJ-A nº 3298613/2026
+
+Figura 23 – MICHAEL informa DANIEL VORCARO que o Desembargador Airton está presente
+
+Mais adiante na conversa, MICHAEL diz a DANIEL BUENO VORCARO que
+“Zé Maria4 tirou foto com o ministro”:
+
+4 Chef de cozinha de DANIEL BUENO VORCARO.
+
+Página 27 de 218
+IPJ-A nº 3298613/2026
+
+Figura 24 – MICHAEL informa DANIEL VORCARO que o Ministro pediu para tirar foto com todos os funcionários
+do Hotel
+
+5.2 Da assinatura do primeiro contrato com o Escritório de VIVIANE DE MORAES
+com DANIEL VORCARO
+Como consignado, a decisão exarada pelo Exmo. Min. André Mendonça
+determina que “devem ser igualmente fornecidas a íntegra de todas as mensagens e
+interações existentes que envolvam as mesmas pessoas” (grifo nosso).
+A análise aqui trazida se enquadra no cumprimento desta determinação.
+Conforme se verá, foi possível constatar que o usuário intitulado “Ministro Alexandre de
+Moraes” aparece como responsável pela “Última Modificação” de arquivo de “MINUTA DE
+CONTRATO”, explorado no presente tópico.
+Em
+
+11/01/2024,
+
+o
+
+contato
+
+denominado
+
+“Vivi
+
+Moraes”
+
+(terminal
+
+), envia mensagem para DANIEL BUENO VORCARO às 16:48:59 -03:00,
+informando que, “Conforme conversamos, estou enviando minuta de contrato de prestação
+de serviços para sua análise”.
+
+Página 28 de 218
+IPJ-A nº 3298613/2026
+
+Figura 25 – Conversa entre DANIEL VORCARO e VIVIANE DE MORAES sobre minuta do contrato.
+
+Como visto na imagem acima, o contato de “Vivi Moraes” foi salvo na agenda
+telefônica de DANIEL BUENO VORCARO em 11/01/2024, às 16:53:53 -03:00. Oportuno
+acrescentar, que não foi encontrado registro de chamadas entre DANIEL BUENO
+VORCARO e contato de “Vivi Moraes” antes de 11/01/2024.
+O arquivo compartilhado (“MINUTA DE CONTRATO”) aponta em seus
+metadados como autor usuário denominado GUILHERME BENAZZI e a última modificação
+realizada por usuário denominado “Ministro Alexandre de Moraes” às 16:30 -03:00 do dia
+11/01/2024.
+
+Página 29 de 218
+IPJ-A nº 3298613/2026
+
+Figura 26 – Pessoas relacionadas com a criação e alteração do contrato do escritório de VIVIANE DE MORAES
+com o Banco Master
+
+A íntegra dessa primeira minuta do contrato segue anexa.
+
+Figura 27 – Recorte do contrato firmado entre o Escritório de VIVIANE DE MORAES e o Banco Master
+
+Em 12/01/2024, FÁBIO FARIA pergunta se DANIEL BUENO pode falar, pois
+iria conversar com interlocutor não nominado no diálogo, ao qual se refere por meio do
+emoji de "homem careca".
+
+Página 30 de 218
+IPJ-A nº 3298613/2026
+
+Figura 28 – FABIO FARIA diz a DANIEL VORCARO que irá se encontrar com interlocutor não nominado, ao qual
+se refere por meio do emoji “homem careca”
+
+Em 15/01/2024, DANIEL BUENO VORCARO devolve a “Vivi Moraes” o
+contrato de prestação de serviços com seu escritório de advocacia, com marcas de revisão
+feitas pelo usuário LEONARDO PALHARES, advogado de VORCARO.
+
+Figura 29 – DANIEL VORCARO envia a VIVIANE DE MORAES contrato com marcas de revisão
+
+No mesmo dia 15/01/2024, no fim da tarde, FÁBIO FARIA questiona DANIEL
+BUENO VORCARO se ele “Respondeu a Vivi”. VORCARO pergunta se FABIO “fechou 3
+anos”. Este responde que foram 4 anos, mas “pode fazer 3”:
+
+Página 31 de 218
+IPJ-A nº 3298613/2026
+
+Figura 30 – DANIEL VORCARO questiona FABIO FARIA sobre o prazo do contrato entre o Escritório BARCI DE
+MORAES e o Banco Master
+
+Dois dias depois, em 17/01/2024, o contato “Vivi Moraes” retorna a versão
+final do contrato:
+
+Figura 31 – VIVIANE DE MORAES envia a DANIEL VORCARO a versão final do contrato de R$ 3 milhões
+mensais
+
+Página 32 de 218
+IPJ-A nº 3298613/2026
+
+A versão final da minuta do contrato teve sua última modificação pelo usuário
+“Ministro Alexandre de Moraes” no dia 15/01/2024 às 23:04, conforme metadados do
+documento:
+
+Figura 32 – Última modificação do contrato entre o Escritório BARCI DE MORAES e o Banco Master
+
+Ainda no dia 17/01/2024, FABIO FARIA envia mensagens a DANIEL BUENO
+VORCARO informando que confirmou jantar com “o Careca” para o dia 02/02/2024.
+
+Figura 33 – Conversa entre FABIO FARIA e DANIEL VORCARO sobre jantar com ALEXANDRE DE MORAES
+
+Página 33 de 218
+IPJ-A nº 3298613/2026
+
+O contrato é assinado por DANIEL BUENO VORCARO em 23/01/2024, às
+15:15:11 -03:00 e por ANGELO ANTONIO RIBEIRO DA SILVA no mesmo dia às 15:35:38
+-03:00.
+
+Figura 34 – Contrato entre BANCO MASTER e o Escritório de VIVIANE DE MORAES assinado em 23/01/2024
+
+Ainda no dia 23/01/2024, FABIO FARIA informa DANIEL BUENO VORCARO
+que eles têm jantar agendado “com o Alex” no dia 02, sexta-feira:
+
+Página 34 de 218
+IPJ-A nº 3298613/2026
+
+Figura 35 – Conversa entre FABIO FARIA e DANIEL VORCARO sobre jantar no dia 02/02/2024
+
+Em 30/01/2024, FABIO FARIA cita “Alex”:
+
+Figura 36 – Conversa entre FABIO FARIA e DANIEL VORCARO sobre alteração do local do jantar
+
+Página 35 de 218
+IPJ-A nº 3298613/2026
+
+No dia do encontro, FABIO FARIA envia a DANIEL BUENO VORCARO
+endereço, no “
+
+”, em Brasília:
+
+Figura 37 – FABIO FARIA envia a DANIEL VORCARO endereço em Brasília/DF
+
+5.3 Comunicação de DANIEL BUENO VORCARO por meio do Aplicativo “Notas”
+Verifica-se que há no celular de DANIEL BUENO VORCARO registro de
+diálogo, no aplicativo “Whatsapp”, diretamente com o contato denominado “Alexandre de
+Moraes BRASILIA”.
+Em 17/09/2025, há o registro de que o contato “Alexandre de Moraes
+BRASILIA” passa a adotar, no chat com DANIEL VORCARO, uma configuração padrão
+Página 36 de 218
+IPJ-A nº 3298613/2026
+
+para mensagens temporárias em novas conversas, estabelecendo o prazo de 24 horas
+para a exclusão automática das comunicações.
+As mensagens existentes, trocadas no dia 17/11/2025, estão reproduzidas
+abaixo:
+
+Figura 38 – Troca de mensagens entre DANIEL VORCARO e o contato
+“Alexandre de Moraes BRASILIA”, no dia 17/11/2025
+
+Página 37 de 218
+IPJ-A nº 3298613/2026
+
+Figura 39 – Troca de mensagens entre DANIEL VORCARO e o contato
+“Alexandre de Moraes BRASILIA”, no dia 17/11/2025
+
+Página 38 de 218
+IPJ-A nº 3298613/2026
+
+Figura 40 – Troca de mensagens entre DANIEL VORCARO e o
+contato “Alexandre de Moraes BRASILIA”, no dia 17/11/2025
+
+Página 39 de 218
+IPJ-A nº 3298613/2026
+
+Além das notas registradas na conversa entre DANIEL BUENO VORCARO e
+“Alexandre de Moraes BRASILIA”, foram encontradas outras notas (ou arquivos vinculados
+a elas) na extração de dados do celular de VORCARO, que possuem relação com o mesmo
+contato. Essas notas serão analisadas em seguida.
+Antes de apresentar essas comunicações, contudo, faz-se necessário validar
+a precisão da metodologia descrita na subseção 4, mediante o confronto dos dados
+contidos nas categorias de interesse na data de 17/11/2025.
+Como já exposto, nessa oportunidade DANIEL BUENO VORCARO enviou 5
+mensagens em modo de visualização única 5. A análise da categoria "Logs" do software
+forense revelou exatamente 5 registros correspondentes a esses envios – correspondência
+que demonstra que, mesmo em se tratando de mensagens de visualização única, os
+registros gerados pelo sistema refletem com exatidão as comunicações efetivamente
+realizadas no WhatsApp. O mesmo padrão de correspondência exata foi constatado nas
+demais conversas analisadas no dispositivo. Registre-se, por fim, que os horários das
+mensagens do WhatsApp são exibidos em UTC-3, ao passo que os horários dos logs são
+registrados em UTC, diferença que deve ser considerada no cotejo entre as fontes.
+
+5 Essas 5 mensagens enviadas por DANIEL VORCARO a “Alexandre Moraes BRASILIA” foram recuperadas
+no próprio processo de extração dos dados, e as imagens associadas ao diálogo entre os interlocutores.
+
+Página 40 de 218
+IPJ-A nº 3298613/2026
+
+Figura 41 – Aplicação da metodologia de análise das ações empreendidas por DANIEL VORCARO nas cinco
+mensagens de visualização única enviadas ao contato “Alexandre de Moraes BRASILIA”. Cada arquivo de
+visualização única enviado gerou um “Log” correspondente
+
+Página 41 de 218
+IPJ-A nº 3298613/2026
+
+Conforme se observa nas imagens a seguir – que confrontam a captura de
+tela do Bloco de Notas com o respectivo arquivo PDF temporário –, a data e hora de criação
+do arquivo temporário coincidem exatamente com o momento da captura. Confirma-se,
+assim, no caso concreto, o mecanismo descrito na seção de metodologia: ao ser capturada
+a tela do Bloco de Notas, o próprio sistema gera, de forma automática e simultânea, um
+arquivo PDF de conteúdo idêntico ao exibido.
+
+Figura 42 – Cotejo entre a captura de tela do arquivo de Notas com o registro do PDF criado
+
+Página 42 de 218
+IPJ-A nº 3298613/2026
+
+Figura 43 – Cotejo entre a captura de tela do arquivo de Notas com o registro do PDF criado. Cada screenshot
+de uma nota, realizados por DANIEL VORCARO para posteriormente envio da imagem ao contato
+“Alexandre de Moraes BRASÍLIA”, gerou um correspondente arquivo em formato PDF.
+
+Além dessas 5 notas localizadas no chat mantido entre DANIEL BUENO
+VORCARO e o contato “Alexandre de Moraes BRASILIA”, foram identificadas no dispositivo
+outros 47 arquivos que seguiram o mesmo padrão identificado na metodologia citada neste
+relatório. Dessas, 3 correspondem justamente às notas questionadas na requisição que
+
+Página 43 de 218
+IPJ-A nº 3298613/2026
+
+esta IPJ visa esclarecer (Subseção 4); todas as 52 notas serão apresentadas a seguir,
+respeitando a cronologia, mediante aplicação da metodologia descrita na Subseção 4.
+
+Página 44 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas (UTC)
+
+Momento do Screenshot (UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de
+Notas (UTC)
+
+Início do WhatsApp
+(UTC)
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+
+28/10/2025 14:03:20
+
+28/10/2025 14:04:14
+
+28/10/2025 14:04:14
+
+28/10/2025 14:04:19
+
+28/10/2025
+14:04:21
+
+28/10/2025 14:04:26 (UTC)
+28/10/2025 11:04:26 (UTC-3)
+
+28/10/2025 14:05:06
+
+Figura 44 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 28/10/2025 às 14:04:14 UTC
+
+Página 45 de 218
+IPJ-A nº 3298613/2026
+
+Figura 45 – Sequência dos eventos relacionadas com a Nota criada em 28/10/2025 às 14:04:14 UTC
+
+Página 46 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de
+Notas (UTC)
+
+Início do
+WhatsApp (UTC)
+
+30/10/2025 16:25:33
+
+30/10/2025 16:26:00
+
+30/10/2025 16:26:01
+
+30/10/2025 16:26:03
+
+30/10/2025
+16:26:03
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC3))
+30/10/2025 16:26:14 (UTC)
+30/10/2025 13:26:14 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+30/10/2025 16:28:00
+
+Figura 46 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 30/10/2025 às 16:26:00 UTC
+
+Página 47 de 218
+IPJ-A nº 3298613/2026
+
+Figura 47 – Sequência dos eventos relacionadas com a Nota criada em 30/10/2025 às 16:26:00 UTC
+
+Página 48 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+30/10/2025 16:28:00
+
+30/10/2025 16:32:31
+
+30/10/2025 16:32:31
+
+30/10/2025 16:32:36
+
+30/10/2025 16:32:36
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+30/10/2025 16:33:03 (UTC)
+30/10/2025 13:33:03 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+30/10/2025 16:33:06
+
+Figura 48 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 30/10/2025 às 16:32:31 UTC
+
+Página 49 de 218
+IPJ-A nº 3298613/2026
+
+Figura 49 – Sequência dos eventos relacionadas com a Nota criada em 30/10/2025 às 16:32:31 UTC
+
+Página 50 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+30/10/2025 16:38:04
+
+30/10/2025 16:38:17
+
+30/10/2025 16:38:17
+
+30/10/2025 16:38:28
+
+30/10/2025 16:38:28
+
+Figura 50 – Ações empreendidas por DANIEL VORCARO relacionadas com a No a cr a a em
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3))
+30/10/2025 16:38:40 (UTC)
+30/10/2025 13:38:40 (UTC-3)
+
+s
+
+:
+
+Fechamento do
+WhatsApp (UTC)
+30/10/2025 16:38:43
+
+:
+
+Página 51 de 218
+IPJ-A nº 3298613/2026
+
+Figura 51 – Sequência dos eventos relacionadas com a Nota criada em 30/10/2025 às 16:38:17 UTC
+
+Página 52 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+30/10/2025 16:38:43
+
+30/10/2025 16:40:53
+
+30/10/2025 16:40:53
+
+30/10/2025 16:40:58
+
+30/10/2025 16:40:58
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+30/10/2025 16:41:05 (UTC)
+30/10/2025 13:41:05 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+30/10/2025 16:43:16
+
+Figura 52 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 30/10/2025 às 16:40:53 UTC
+
+Página 53 de 218
+IPJ-A nº 3298613/2026
+
+Figura 53 – Sequência dos eventos relacionadas com a Nota criada em 30/10/2025 às 16:40:53 UTC
+
+Página 54 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas (UTC)
+
+30/10/2025 16:43:16
+
+30/10/2025 16:44:43
+
+30/10/2025 16:44:43
+
+30/10/2025 16:44:48
+
+Início do
+WhatsApp (UTC)
+30/10/2025
+16:44:48
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3))
+30/10/2025 16:44:56 (UTC)
+30/10/2025 13:44:56 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+30/10/2025 16:45:26
+
+Figura 54 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 30/10/2025 às 16:44:43 UTC
+
+Página 55 de 218
+IPJ-A nº 3298613/2026
+
+Figura 55 – Sequência dos eventos relacionadas com a Nota criada em 30/10/2025 às 16:44:43 UTC
+
+Página 56 de 218
+IPJ-A nº 3298613/2026
+
+Figura 56 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 30/10/2025 às 16:51:38 UTC
+
+Página 57 de 218
+IPJ-A nº 3298613/2026
+
+Figura 57 – Sequência dos eventos relacionadas com a Nota criada em 30/10/2025 às 16:51:38 UTC
+
+Página 58 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+30/10/2025 16:54:43
+
+30/10/2025 16:55:29
+
+30/10/2025 16:55:29
+
+30/10/2025 16:55:34
+
+30/10/2025 16:55:34
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+30/10/2025 16:55:50 (UTC)
+30/10/2025 13:55:50 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+30/10/2025 17:00:16
+
+Figura 58 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 30/10/2025 às 16:55:29 UTC
+
+Página 59 de 218
+IPJ-A nº 3298613/2026
+
+Figura 59 – Sequência dos eventos relacionadas com a Nota criada em 30/10/2025 às 16:55:29 UTC
+
+Página 60 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+04/11/2025 20:40:57
+
+04/11/2025 20:41:42
+
+04/11/2025 20:41:42
+
+04/11/2025 20:41:47
+
+04/11/2025 20:41:47
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+04/11/2025 20:41:55 (UTC)
+04/11/2025 17:41:55 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+04/11/2025 20:43:05
+
+Figura 60 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota
+
+Página 61 de 218
+IPJ-A nº 3298613/2026
+
+Figura 61 – Sequência dos eventos relacionadas com a Nota criada em 04/11/2025 às 20:41:42 UTC
+
+Página 62 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+04/11/2025 20:43:05
+
+04/11/2025 20:43:30
+
+04/11/2025 20:43:30
+
+04/11/2025 20:43:34
+
+04/11/2025 20:43:34
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+04/11/2025 20:43:44 (UTC)
+04/11/2025 17:43:44 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+04/11/2025 20:43:59
+
+Figura 62 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 04/11/2025 às 20:43:30 UTC
+
+Página 63 de 218
+IPJ-A nº 3298613/2026
+
+Figura 63 – Sequência dos eventos relacionadas com a Nota criada em 04/11/2025 às 20:43:30 UTC
+
+Página 64 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+04/11/2025 20:49:31
+
+04/11/2025 20:51:18
+
+04/11/2025 20:51:19
+
+04/11/2025 20:51:22
+
+04/11/2025 20:51:22
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC3)
+04/11/2025 20:51:29 (UTC)
+04/11/2025 17:51:29 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+04/11/2025 20:51:45
+
+Figura 64 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 04/11/2025 às 20:51:18 UTC
+
+Página 65 de 218
+IPJ-A nº 3298613/2026
+
+Figura 65 – Sequência dos eventos relacionadas com a Nota criada em 04/11/2025 às 20:51:19 UTC
+
+Página 66 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+04/11/2025 20:52:15
+
+04/11/2025 20:52:44
+
+04/11/2025 20:52:44
+
+04/11/2025 20:52:48
+
+04/11/2025 20:52:48
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3))
+04/11/2025 20:52:56 (UTC)
+04/11/2025 17:52:56 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+04/11/2025 20:53:19
+
+Figura 66 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 04/11/2025 às 20:52:44 UTC
+
+Página 67 de 218
+IPJ-A nº 3298613/2026
+
+Figura 67 – Sequência dos eventos relacionadas com a Nota criada em 04/11/2025 às 20:52:44 UTC
+
+Página 68 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+04/11/2025 21:14:25
+
+04/11/2025 21:15:06
+
+04/11/2025 21:15:06
+
+04/11/2025 21:15:12
+
+04/11/2025 21:15:12
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+04/11/2025 21:15:24 (UTC)
+04/11/2025 18:15:24 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+04/11/2025 21:15:27
+
+Figura 68 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 04/11/2025 às 21:15:06 UTC
+
+Página 69 de 218
+IPJ-A nº 3298613/2026
+
+Figura 69 – Sequência dos eventos relacionadas com a Nota criada em 04/11/2025 às 21:15:06 UTC
+
+Página 70 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+04/11/2025 22:09:02
+
+04/11/2025 22:09:18
+
+04/11/2025 22:09:18
+
+04/11/2025 22:09:23
+
+04/11/2025 22:09:33
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+04/11/2025 22:09:50 (UTC)
+04/11/2025 19:09:50 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+04/11/2025 22:09:51
+
+Figura 70 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 04/11/2025 às 22:09:18 UTC
+
+Página 71 de 218
+IPJ-A nº 3298613/2026
+
+Figura 71 – Sequência dos eventos relacionadas com a Nota criada em 04/11/2025 às 22:09:18 UTC
+
+Página 72 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+04/11/2025 23:42:12
+
+04/11/2025 23:44:51
+
+04/11/2025 23:44:51
+
+04/11/2025 23:45:14
+
+04/11/2025 23:45:33
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+04/11/2025 23:45:57 (UTC)
+04/11/2025 20:45:57 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+04/11/2025 23:46:10
+
+Figura 72 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 04/11/2025 às 23:44:51 UTC
+
+Página 73 de 218
+IPJ-A nº 3298613/2026
+
+Figura 73 – Sequência dos eventos relacionadas com a Nota criada em 04/11/2025 às 23:44:51 UTC
+
+Página 74 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+05/11/2025 11:13:39
+
+05/11/2025 11:16:15
+
+05/11/2025 11:16:15
+
+05/11/2025 11:16:20
+
+05/11/2025 11:16:20
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC3)
+05/11/2025 11:16:46 (UTC)
+05/11/2025 08:16:46 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+05/11/2025 11:16:49
+
+Figura 74 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 05/11/2025 às 11:16:15 UTC
+
+Página 75 de 218
+IPJ-A nº 3298613/2026
+
+Figura 75 – Sequência dos eventos relacionadas com a Nota criada em 05/11/2025 às 11:16:15 UTC
+
+Página 76 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+05/11/2025 11:16:49
+
+05/11/2025 11:17:06
+
+05/11/2025 11:17:06
+
+05/11/2025 11:17:11
+
+05/11/2025 11:17:11
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+05/11/2025 11:17:19 (UTC)
+05/11/2025 08:17:19 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+05/11/2025 11:17:25
+
+Figura 76 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 05/11/2025 às 11:17:06 UTC
+
+Página 77 de 218
+IPJ-A nº 3298613/2026
+
+Figura 77 – Sequência dos eventos relacionadas com a Nota criada em 05/11/2025 às 11:17:06 UTC
+
+Página 78 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+05/11/2025 17:10:41
+
+05/11/2025 17:10:51
+
+05/11/2025 17:10:51
+
+05/11/2025 17:10:56
+
+05/11/2025 17:10:57
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+05/11/2025 17:11:07 (UTC)
+05/11/2025 14:11:07 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+05/11/2025 17:11:39
+
+Figura 78 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 05/11/2025 às 17:10:51 UTC
+
+Página 79 de 218
+IPJ-A nº 3298613/2026
+
+Figura 79 – Sequência dos eventos relacionadas com a Nota criada em 05/11/2025 às 17:10:51 UTC
+
+Página 80 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+05/11/2025 22:05:13
+
+05/11/2025 22:05:41
+
+05/11/2025 22:05:41
+
+05/11/2025 22:05:46
+
+05/11/2025 22:05:46
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+05/11/2025 22:05:56 (UTC)
+05/11/2025 19:05:56 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+05/11/2025 22:07:06
+
+Figura 80 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 05/11/2025 às 22:05:41 UTC
+
+Página 81 de 218
+IPJ-A nº 3298613/2026
+
+Figura 81 – Sequência dos eventos relacionadas com a Nota criada em 05/11/2025 às 22:05:41 UTC
+
+Página 82 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+06/11/2025 19:25:40
+
+06/11/2025 19:26:00
+
+06/11/2025 19:26:00
+
+06/11/2025 19:26:04
+
+06/11/2025 19:26:04
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+06/11/2025 19:26:16 (UTC)
+06/11/2025 16:26:16 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+06/11/2025 19:26:29
+
+Figura 82 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 06/11/2025 às 19:26:00 UTC
+
+Página 83 de 218
+IPJ-A nº 3298613/2026
+
+Figura 83 – Sequência dos eventos relacionadas com a Nota criada em 06/11/2025 às 19:26:00 UTC
+
+Página 84 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+06/11/2025 23:56:07
+
+06/11/2025 23:56:59
+
+06/11/2025 23:56:59
+
+06/11/2025 23:57:03
+
+06/11/2025 23:57:03
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC3)
+06/11/2025 23:57:12 (UTC)
+06/11/2025 20:57:12 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+06/11/2025 23:57:35
+
+Figura 84 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 06/11/2025 às 23:56:59 UTC
+
+Página 85 de 218
+IPJ-A nº 3298613/2026
+
+Figura 85 – Sequência dos eventos relacionadas com a Nota criada em 06/11/2025 às 23:56:59 UTC
+
+Página 86 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+07/11/2025 01:17:27
+
+07/11/2025 01:18:10
+
+07/11/2025 01:18:10
+
+07/11/2025 01:18:14
+
+07/11/2025 01:18:14
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+07/11/2025 01:18:29 (UTC)
+06/11/2025 22:18:29 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+07/11/2025 01:19:39
+
+Figura 86 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 07/11/2025 às 01:18:10 UTC
+
+Página 87 de 218
+IPJ-A nº 3298613/2026
+
+Figura 87 – Sequência dos eventos relacionadas com a Nota criada em 07/11/2025 às 01:18:10 UTC
+
+Página 88 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+07/11/2025 01:33:07
+
+07/11/2025 01:33:18
+
+07/11/2025 01:33:18
+
+07/11/2025 01:33:23
+
+07/11/2025 01:33:24
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+07/11/2025 01:33:41 (UTC)
+06/11/2025 22:33:41 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+07/11/2025 01:33:44
+
+Figura 88 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 07/11/2025 às 01:33:18 UTC
+
+Página 89 de 218
+IPJ-A nº 3298613/2026
+
+Figura 89 – Sequência dos eventos relacionadas com a Nota criada em 07/11/2025 às 01:33:18 UTC
+
+Página 90 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+10/11/2025 20:50:07
+
+10/11/2025 20:50:41
+
+10/11/2025 20:50:41
+
+10/11/2025 20:50:46
+
+10/11/2025 20:50:46
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+10/11/2025 20:50:57 (UTC)
+10/11/2025 17:50:57 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+10/11/2025 20:51:21
+
+Figura 90 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 10/11/2025 às 20:50:41 UTC
+
+Página 91 de 218
+IPJ-A nº 3298613/2026
+
+Figura 91 – Sequência dos eventos relacionadas com a Nota criada em 10/11/2025 às 20:50:41 UTC
+
+Página 92 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+11/11/2025 23:44:19
+
+11/11/2025 23:44:30
+
+11/11/2025 23:44:30
+
+11/11/2025 23:44:35
+
+11/11/2025 23:44:36
+
+Figura 92 – Ações empreendidas por DANIEL VORCARO relacionadas com a
+
+o a cr a a em
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+11/11/2025 23:44:45 (UTC)
+11/11/2025 20:44:45 (UTC-3)
+
+s
+
+:
+
+Fechamento do WhatsApp
+(UTC)
+11/11/2025 23:47:45
+
+:
+
+Página 93 de 218
+IPJ-A nº 3298613/2026
+
+Figura 93 – Sequência dos eventos relacionadas com a Nota criada em 11/11/2025 às 23:44:30 UTC
+
+Página 94 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+12/11/2025 11:55:13
+
+12/11/2025 11:55:16
+
+12/11/2025 11:55:16
+
+12/11/2025 11:55:20
+
+12/11/2025 11:55:20
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+12/11/2025 11:55:40 (UTC)
+12/11/2025 08:55:40 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+12/11/2025 11:55:39
+
+Figura 94 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 12/11/2025 às 11:55:16 UTC
+
+Página 95 de 218
+IPJ-A nº 3298613/2026
+
+Figura 95 – Sequência dos eventos relacionadas com a Nota criada em 12/11/2025 às 11:55:16 UTC
+
+Página 96 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+12/11/2025 12:20:08
+
+12/11/2025 12:20:33
+
+12/11/2025 12:20:33
+
+12/11/2025 12:20:38
+
+12/11/2025 12:20:38
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+12/11/2025 12:20:46 (UTC)
+12/11/2025 09:20:46 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+12/11/2025 12:20:57
+
+Figura 96 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 12/11/2025 às 12:20:33 UTC
+
+Página 97 de 218
+IPJ-A nº 3298613/2026
+
+Figura 97 – Sequência dos eventos relacionadas com a Nota criada em 12/11/2025 às 12:20:33 UTC
+
+Página 98 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+12/11/2025 12:20:57
+
+12/11/2025 12:21:07
+
+12/11/2025 12:21:07
+
+12/11/2025 12:21:11
+
+12/11/2025 12:21:12
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+12/11/2025 12:21:18 (UTC)
+12/11/2025 09:21:18 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+12/11/2025 12:21:20
+
+Figura 98 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 12/11/2025 às 12:21:07 UTC
+
+Página 99 de 218
+IPJ-A nº 3298613/2026
+
+Figura 99 – Sequência dos eventos relacionadas com a Nota criada em 12/11/2025 às 12:21:07 UTC
+
+Página 100 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+12/11/2025 12:36:56
+
+12/11/2025 12:37:25
+
+12/11/2025 12:37:25
+
+12/11/2025 12:37:30
+
+12/11/2025 12:37:30
+
+Figura 100 – Ações empreendidas por DANIEL VORCARO relacionadas com a No a cr a a em
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+12/11/2025 12:37:42 (UTC)
+12/11/2025 09:37:42 (UTC-3)
+
+s
+
+:
+
+Fechamento do WhatsApp
+(UTC)
+12/11/2025 12:38:11
+
+:
+
+Página 101 de 218
+IPJ-A nº 3298613/2026
+
+Figura 101 – Sequência dos eventos relacionadas com a Nota criada em 12/11/2025 às 12:37:25 UTC
+
+Página 102 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+14/11/2025 01:39:47
+
+14/11/2025 01:40:17
+
+14/11/2025 01:40:17
+
+14/11/2025 01:40:22
+
+14/11/2025 01:40:22
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+14/11/2025 01:40:33 (UTC)
+13/11/2025 22:40:33 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+14/11/2025 01:42:06
+
+Figura 102 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 14/11/2025 às 01:40:17 UTC
+
+Página 103 de 218
+IPJ-A nº 3298613/2026
+
+Figura 103 – Sequência dos eventos relacionadas com a Nota criada em 14/11/2025 às 01:40:17 UTC
+
+Página 104 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+14/11/2025 13:03:31
+
+14/11/2025 13:03:36
+
+14/11/2025 13:03:36
+
+14/11/2025 13:03:40
+
+14/11/2025 13:03:40
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+14/11/2025 13:03:49 (UTC)
+14/11/2025 10:03:49 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+14/11/2025 13:03:50
+
+Figura 104 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 14/11/2025 às 13:03:36 UTC
+
+Página 105 de 218
+IPJ-A nº 3298613/2026
+
+Figura 105 – Sequência dos eventos relacionadas com a Nota criada em 14/11/2025 às 13:03:36 UTC
+
+Página 106 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento doScreenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+14/11/2025 21:17:47
+
+14/11/2025 21:19:42
+
+14/11/2025 21:19:42
+
+14/11/2025 21:19:47
+
+14/11/2025 21:19:47
+
+Mensagem Enviada para
+556192664093 (UTC) e
+(UTC-3)
+14/11/2025 21:19:53 (UTC)
+14/11/2025 18:19:53 (UTC3)
+
+Fechamento do WhatsApp
+(UTC)
+14/11/2025 21:29:27
+
+Figura 106 – Ações empreendidas por DANIEL VORCARO relacionadas com a
+
+Página 107 de 218
+IPJ-A nº 3298613/2026
+
+Figura 107 – Sequência dos eventos relacionadas com a Nota criada em 14/11/2025 às 21:19:42 UTC
+
+Página 108 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+15/11/2025 21:21:17
+
+15/11/2025 21:22:07
+
+15/11/2025 21:22:07
+
+15/11/2025 21:22:11
+
+15/11/2025 21:22:11
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+15/11/2025 21:22:18 (UTC)
+15/11/2025 18:22:18 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+15/11/2025 21:22:19
+
+Figura 108 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 15/11/2025 às 21:22:07 UTC
+
+Página 109 de 218
+IPJ-A nº 3298613/2026
+
+Figura 109 – Sequência dos eventos relacionadas com a Nota criada em 15/11/2025 às 21:22:07 UTC
+
+Página 110 de 218
+IPJ-A nº 3298613/2026
+
+Figura 110 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 15/11/2025 às 21:23:12 UTC
+
+Página 111 de 218
+IPJ-A nº 3298613/2026
+
+Figura 111 – Sequência dos eventos relacionadas com a Nota criada em 15/11/2025 às 21:23:12 UTC
+
+Página 112 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF (UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+15/11/2025 22:43:13
+
+15/11/2025 22:43:40
+
+15/11/2025 22:43:40
+
+15/11/2025 22:43:44
+
+15/11/2025 22:43:44
+
+Figura 112 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota cr a a em
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+15/11/2025 22:43:51 (UTC)
+15/11/2025 19:43:51 (UTC-3)
+
+s
+
+:
+
+Fechamento do
+WhatsApp (UTC)
+15/11/2025 22:43:53
+
+:
+
+Página 113 de 218
+IPJ-A nº 3298613/2026
+
+Figura 113 – Sequência dos eventos relacionadas com a Nota criada em 15/11/2025 às 22:43:40 UTC
+
+Página 114 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 00:23:14
+
+16/11/2025 00:23:27
+
+16/11/2025 00:23:27
+
+16/11/2025 00:23:31
+
+16/11/2025 00:23:31
+
+Figura 114 – Ações empreendidas por DANIEL VORCARO relacionadas com a N
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 00:23:37 (UTC)
+15/11/2025 21:23:37 (UTC-3)
+
+:
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 00:25:26
+
+:
+
+Página 115 de 218
+IPJ-A nº 3298613/2026
+
+Figura 115 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 00:23:27 UTC
+
+Página 116 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 00:31:37
+
+16/11/2025 00:33:44
+
+16/11/2025 00:33:44
+
+16/11/2025 00:33:49
+
+16/11/2025 00:33:49
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 00:33:59 (UTC)
+15/11/2025 21:33:59 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 00:37:35
+
+Figura 116 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 16/11/2025 às 00:33:44 UTC
+
+Página 117 de 218
+IPJ-A nº 3298613/2026
+
+Figura 117 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 00:33:44 UTC
+
+Página 118 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 00:41:04
+
+16/11/2025 00:41:23
+
+16/11/2025 00:41:23
+
+16/11/2025 00:41:27
+
+16/11/2025 00:41:27
+
+Figura 118 – Ações empreendidas por DANIEL VORCARO relacionadas com a
+
+o a cr a a em
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 00:41:33 (UTC)
+15/11/2025 21:41:33 (UTC-3)
+
+s
+
+:
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 00:42:20
+
+:
+
+Página 119 de 218
+IPJ-A nº 3298613/2026
+
+Figura 119 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 00:41:23 UTC
+
+Página 120 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento doScreenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+16/11/2025 00:48:19
+
+16/11/2025 00:49:24
+
+16/11/2025 00:49:24
+
+16/11/2025 00:49:28
+
+16/11/2025 00:49:28
+
+Figura 120 – Ações empreendidas por DANIEL VORCARO relacionadas com a No a cr a a em
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 00:49:45 (UTC)
+15/11/2025 21:49:45 (UTC-3)
+
+s
+
+:
+
+Fechamento do
+WhatsApp (UTC)
+16/11/2025 00:50:35
+
+:
+
+Página 121 de 218
+IPJ-A nº 3298613/2026
+
+Figura 121 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 00:49:24 UTC
+
+Página 122 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+16/11/2025 01:02:15
+
+16/11/2025 01:03:07
+
+16/11/2025 01:03:07
+
+16/11/2025 01:03:10
+
+16/11/2025 01:03:10
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC3)
+16/11/2025 01:03:16 (UTC)
+15/11/2025 22:03:16 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+16/11/2025 01:03:17
+
+Figura 122 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 16/11/2025 às 01:03:07 UTC
+
+Página 123 de 218
+IPJ-A nº 3298613/2026
+
+Figura 123 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 01:03:07 UTC
+
+Página 124 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 01:04:37
+
+16/11/2025 01:05:55
+
+16/11/2025 01:05:55
+
+16/11/2025 01:05:59
+
+16/11/2025 01:05:59
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 01:06:07 (UTC)
+15/11/2025 22:06:07 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 01:06:12
+
+Figura 124 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 16/11/2025 às 01:05:55 UTC
+
+Página 125 de 218
+IPJ-A nº 3298613/2026
+
+Figura 125 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 01:05:55 UTC
+
+Página 126 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 01:11:33
+
+16/11/2025 01:12:15
+
+16/11/2025 01:12:15
+
+16/11/2025 01:12:19
+
+16/11/2025 01:12:19
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 01:12:27 (UTC)
+15/11/2025 22:12:27 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 01:12:34
+
+Figura 126 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 16/11/2025 às 01:12:15 UTC
+
+Página 127 de 218
+IPJ-A nº 3298613/2026
+
+Figura 127 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 01:12:15 UTC
+
+Página 128 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+16/11/2025 01:27:55
+
+16/11/2025 01:28:17
+
+16/11/2025 01:28:17
+
+16/11/2025 01:28:20
+
+16/11/2025 01:28:20
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 01:28:29 (UTC)
+15/11/2025 22:28:29 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+16/11/2025 01:28:30
+
+Figura 128 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 16/11/2025 às 01:28:17 UTC
+
+Página 129 de 218
+IPJ-A nº 3298613/2026
+
+Figura 129 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 01:28:17 UTC
+
+5.4 Cobranças de pagamento referente ao primeiro contrato do Banco Master
+com o Escritório de VIVIANE DE MORAES
+Em outros trechos de diálogos, DANIEL VORCARO trata da
+relação contratual. No dia 08/02/2024, VORCARO pede a seu cunhado FABIANO
+ZETTEL que envie o “contrato barci moraes assinado”, e depois questiona “Quando
+IPJ-A nº 3298613/2026
+
+era o primeiro pgto?”.
+
+Página 130 de 218
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento doScreenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 01:40:14
+
+16/11/2025 01:43:41
+
+16/11/2025 01:43:41
+
+16/11/2025 01:43:45
+
+16/11/2025 01:43:45
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 01:43:52 (UTC)
+15/11/2025 22:43:52 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 01:43:54
+
+Figura 130 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 16/11/2025 às 01:43:41 UTC
+
+Página 131 de 218
+IPJ-A nº 3298613/2026
+
+Figura 131 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 01:43:41 UTC
+
+Página 132 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas (UTC)
+
+Momento do Screenshot (UTC)
+
+Criação do Arquivo PDF (UTC)
+
+Fim do Aplicativo de
+Notas (UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 16:39:09
+
+16/11/2025 16:39:51
+
+16/11/2025 16:39:51
+
+16/11/2025 16:39:55
+
+16/11/2025 16:39:55
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 16:40:19 (UTC)6
+16/11/2025 13:40:19 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+16/11/2025 16:41:12
+
+/11/2025 às 16:39:51 UTC
+
+6 Neste caso, após a captura da tela, o primeiro contato ocorreu com o contato "PAULO HENRIQUE PH BRB" através de uma mensagem exclusivamente de texto
+
+("tudo bem?"). Ressalta-se que não houve envio do print para PAULO HENRIQUE. A interação com o contato "Alexandre de Moraes BRASILIA" ocorreu na sequência.
+
+Página 133 de 218
+IPJ-A nº 3298613/2026
+
+Figura 133 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 16:39:51 UTC
+
+Página 134 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+16/11/2025 19:56:40
+
+16/11/2025 19:57:22
+
+16/11/2025 19:57:22
+
+16/11/2025 19:57:26
+
+16/11/2025 19:57:26
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 19:57:47 (UTC)
+16/11/2025 16:57:47 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 19:57:50
+
+Página 135 de 218
+IPJ-A nº 3298613/2026
+
+Figura 135 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 19:57:22 UTC
+
+Página 136 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+16/11/2025 21:19:17
+
+16/11/2025 21:19:59
+
+16/11/2025 21:20:00
+
+16/11/2025 21:20:04
+
+16/11/2025 21:20:04
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+16/11/2025 21:20:18 (UTC)
+16/11/2025 18:20:18 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+16/11/2025 21:20:22
+
+Figura 136 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 16/11/2025 às 21:19:59 UTC
+
+Página 137 de 218
+IPJ-A nº 3298613/2026
+
+Figura 137 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 21:20:00 UTC
+
+Página 138 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+17/11/2025 10:13:13
+
+17/11/2025 10:18:39
+
+17/11/2025 10:18:39
+
+17/11/2025 10:18:43
+
+17/11/2025 10:18:43
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+17/11/2025 10:19:01 (UTC)
+17/11/2025 07:19:01 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+17/11/2025 10:19:04
+
+Figura 138 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 17/11/2025 às 10:18:39 UTC
+
+Página 139 de 218
+IPJ-A nº 3298613/2026
+
+Figura 139 – Sequência dos eventos relacionadas com a Nota criada em 17/11/2025 às 10:18:39 UTC
+
+Página 140 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+17/11/2025 20:20:19
+
+17/11/2025 20:22:22
+
+17/11/2025 20:22:22
+
+17/11/2025 20:22:26
+
+17/11/2025 20:22:26
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+17/11/2025 20:22:40 (UTC)
+17/11/2025 17:22:40 (UTC-3)
+
+Fechamento do WhatsApp
+(UTC)
+17/11/2025 20:22:47
+
+Figura 140 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 17/11/2025 às 20:22:22 UTC
+
+Página 141 de 218
+IPJ-A nº 3298613/2026
+
+Figura 141 – Sequência dos eventos relacionadas com a Nota criada em 17/11/2025 às 20:22:22 UTC
+
+Página 142 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas
+(UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+17/11/2025 20:25:07
+
+17/11/2025 20:26:02
+
+17/11/2025 20:26:02
+
+17/11/2025 20:26:05
+
+17/11/2025 20:26:05
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3))
+17/11/2025 20:26:12 (UTC)
+17/11/2025 17:26:12 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+17/11/2025 20:26:37
+
+Figura 142 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 17/11/2025 às 20:26:02 UTC
+
+Página 143 de 218
+IPJ-A nº 3298613/2026
+
+Figura 143 – Sequência dos eventos relacionadas com a Nota criada em 17/11/2025 às 20:26:02 UTC
+
+Página 144 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de
+Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp (UTC)
+
+17/11/2025 22:58:19
+
+17/11/2025 22:58:38
+
+17/11/2025 22:58:38
+
+17/11/2025 22:58:48
+
+17/11/2025 23:02:59
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+17/11/2025 23:04:55 (UTC)
+17/11/2025 20:04:55 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+17/11/2025 23:06:04
+
+Figura 144 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 17/11/2025 às 22:58:38 UTC
+
+Página 145 de 218
+IPJ-A nº 3298613/2026
+
+Figura 145 – Sequência dos eventos relacionadas com a Nota criada em 17/11/2025 às 22:58:38 UTC
+
+Página 146 de 218
+IPJ-A nº 3298613/2026
+
+Início do Aplicativo de Notas (UTC)
+
+Momento do Screenshot
+(UTC)
+
+Criação do Arquivo PDF
+(UTC)
+
+Fim do Aplicativo de Notas
+(UTC)
+
+Início do WhatsApp
+(UTC)
+
+17/11/2025 23:47:12
+
+17/11/2025 23:48:12
+
+17/11/2025 23:48:12
+
+17/11/2025 23:48:16
+
+17/11/2025 23:48:16
+
+Mensagem Enviada para
+556192664093 (UTC) e (UTC-3)
+17/11/2025 23:48:31 (UTC)
+17/11/2025 20:48:31 (UTC-3)
+
+Fechamento do
+WhatsApp (UTC)
+17/11/2025 23:48:38
+
+Figura 146 – Ações empreendidas por DANIEL VORCARO relacionadas com a Nota criada em 17/11/2025 às 23:48:12 UTC
+
+Página 147 de 218
+IPJ-A nº 3298613/2026
+
+Figura 147 – Sequência dos eventos relacionadas com a Nota criada em 17/11/2025 às 23:48:12 UTC
+
+Importa ressaltar que as últimas 5 (cinco) notas foram efetivamente localizadas nas conversas do aplicativo WhatsApp, o
+que confirma a consistência da metodologia empregada – a análise dos metadados em cotejo com os arquivos temporários originados
+das capturas de tela.
+
+Página 148 de 218
+IPJ-A nº 3298613/2026
+
+Figura 129 – Sequência dos eventos relacionadas com a Nota criada em 16/11/2025 às 01:2
+
+5.4 Cobranças de pagamento referente ao primeiro contrato do Banco Master
+com o Escritório de VIVIANE DE MORAES
+Em outros trechos de diálogos, DANIEL VORCARO trata da
+relação contratual. No dia 08/02/2024, VORCARO pede a seu cunhado FABIANO
+ZETTEL que envie o “contrato barci moraes assinado”, e depois questiona “Quando
+IPJ-A nº 3298613/2026
+
+era o primeiro pgto?”.
+
+Figura 148 – DANIEL VORCARO questiona FABIANO ZETTEL a respeito do contrato e do primeiro
+pagamento para o Escritório de VIVIANE DE MORAES
+
+No mesmo dia, 08/02/2024, ANGELO SILVA envia para DANIEL
+VORCARO comprovante de transferência do Banco Master para o Escritório BARCI
+Página 149 de 218
+IPJ-A nº 3298613/2026
+
+DE MORAES SOCIEDADE DE ADVOCACIA, em sua conta no Banco Itaú, no valor
+de R$ 3.422.268,14.
+
+Figura 149 – ANGELO SILVA envia o comprovante de transferência do primeiro pagamento para o
+Escritório de Advocacia de VIVIANE DE MORAES
+
+Em 15/03/2024, às 15:07:11 -03:00, FABIO FARIA diz a DANIEL
+VORCARO que “O careca não pode atrasar”:
+
+Página 150 de 218
+IPJ-A nº 3298613/2026
+
+Figura 150 – FABIO FARIA diz a DANIEL VORCARO que “O careca não pode atrasar”
+
+Imediatamente após a cobrança de FABIO FARIA, DANIEL
+VORCARO envia mensagem para ANGELO SILVA:
+
+Página 151 de 218
+IPJ-A nº 3298613/2026
+
+Figura 151 – DANIEL VORCARO diz a ANGELO SILVA que o contrato BARCI DE MORAES é o
+mais importante e manda pagar imediatamente
+
+Na sequência dos fatos, alguns minutos depois, DANIEL BUENO
+VORCARO diz a sua funcionária, em contato salvo como “Romy Banco Master”
+(terminal
+
+) que o pagamento para o Escritório BARCI DE MORAES
+
+não pode “atrasar um dia”, pois “É op pgto mais importante que temos”. Na sequência,
+VORCARO complementa que “Pode pagar sempre, sem nota”, depois finaliza “Do
+jeito que for”.
+ROMY envia documento do registro de uma transferência do Banco
+Master para o Escritório de VIVIANE DE MORAES no valor de R$ 3.422.268,14.
+
+Página 152 de 218
+IPJ-A nº 3298613/2026
+
+Figura 152 – DANIEL VORCARO orienta ROMY BANCO MASTER
+
+DANIEL VORCARO retoma a conversa com ANGELO SILVA, que
+afirma que irá “pagar antecipado e depois pegamos a NF”:
+
+Página 153 de 218
+IPJ-A nº 3298613/2026
+
+Figura 153 – ANGELO SILVA diz a DANIEL VORCARO que o pagamento para o escritório BARCI
+DE MORAES será feito antecipado, antes do envio da nota fiscal
+
+Em 01/04/2025, DANIEL VORCARO volta a tratar do contrato:
+
+Página 154 de 218
+IPJ-A nº 3298613/2026
+
+Figura 154 – DANIEL VORCARO orienta ANGELO SILVA que ninguém deve ter acesso ao contrato
+com o Escritório de VIVIANE DE MORAES
+
+Diálogo de 14/07/2025 registra pagamento para o Escritório de
+VIVIANE DE MORAES, no valor de R$ 3.422.268,14:
+
+Página 155 de 218
+IPJ-A nº 3298613/2026
+
+Figura 155 – DANIEL VORCARO orienta ALBERTO FELIX sobre pagamento para o Escritório
+BARCI DE MORAES
+
+Em 01/10/2025 ALBERTO FELIX informa DANIEL VORCARO que
+foi pago BARCI DE MORAES. Em seguida, VORCARO orienta que os valores para o
+Escritório não devem ser pagos por meio do instrumento de pagamento PIX.
+
+Página 156 de 218
+IPJ-A nº 3298613/2026
+
+Figura 156 – DANIEL VORCARO orienta ALBERTO FELIX que os pagamentos para o Escritório
+BARCI DE MORAES não devem ser por PIX
+
+5.5 Do segundo contrato com o Escritório de VIVIANE DE MORAES
+O segundo contrato localizado na mídia encontra-se datado de
+12/05/2025 e foi firmado entre o escritório BARCI DE MORAES e a empresa VIKINGS
+PARTICIPAÇÕES LTDA (CNPJ
+
+. Segue reprodução de trechos
+
+(íntegra segue em anexo):
+
+Página 157 de 218
+IPJ-A nº 3298613/2026
+
+Figura 157 – Contrato firmado entre VIKINGS PARTICIPAÇÕES LTDA e o Escritório BARCI DE
+MORAES
+
+No dia 13/05/2025, DANIEL VORCARO envia o contrato entre a
+VIKING PARTICIPACOES e o Escritório BARCI DE MORAES para ele mesmo, no
+aplicativo de mensagens Whatsapp.
+
+Página 158 de 218
+IPJ-A nº 3298613/2026
+
+Figura 158 – DANIEL VORCARO envia o contrato da VIKING com o Escritório de VIVIANE DE
+MORAES para ele mesmo no Whatsapp
+
+Na sequência, ainda em 13/05/2025, DANIEL VORCARO envia o
+contrato da VIKING com o Escritório BARCI DE MORAES para seu advogado
+LEONARDO PALHARES.
+
+Figura 159 – DANIEL VORCARO envia o contrato da VIKING com o Escritório de VIVIANE DE
+MORAES para LEONARDO PALHARES
+
+Três dias depois, em 16/05/2025, LEONARDO PALHARES explica
+a DANIEL VORCARO detalhes sobre o instrumento. O advogado informa que fez
+“duas minutas para vc escolher o deal”.
+
+Página 159 de 218
+IPJ-A nº 3298613/2026
+
+Na sequência, coloca as duas opções. A primeira com entrega dos
+ativos e transferência de todas as quotas, ficando VORCARO com opção de recompra
+por R$ 1,00 caso o contrato de honorários não seja cumprido. A segunda, entrega dos
+ativos, no entanto a transferência seria concretizada apenas após cumprimento do
+contrato.
+VORCARO responde que “Opcao 1 não é o negocio”, depois
+acrescenta “Os ativos sao deles...ja”.
+
+Página 160 de 218
+IPJ-A nº 3298613/2026
+
+Figura 160 – DANIEL VORCARO e LEONARDO PALHARES alinham sobre detalhes do segundo
+contrato com o Escritório BARCI DE MORAES
+
+Os ativos mencionados seriam dois bens vinculados às empresas
+F24 (FRACTION 024 ADMINISTRACAO DE BEM PROPRIO S.A. (
+)) e F53 (PT-PCT ADMINISTRACAO DE BEM PROPRIO S.A.
+).
+
+Página 161 de 218
+IPJ-A nº 3298613/2026
+
+A F24 é possuidora da aeronave modelo Legacy 650, prefixo PPNLR, enquanto a F53 estava em fase de aquisição do Helicóptero EC 155 B1,
+fabricado pela Airbus Helicopters.
+No dia 19/05/2025, LEONARDO PALHARES envia a DANIEL
+VORCARO um Termo de Acordo e Dação em Pagamento do contrato da VIKING com
+o Escritório de VIVIANE DE MORAES. PALHARES explica que, segundo “Guilherme”,
+o “escritório deles não pode ser parte do contrato, não pode ter participação em
+empresas”. Depois complementa, “Ele queria que escritório fosse dono direto da cota,
+sem ser sócio das SPEs”.
+
+Figura 161 – LEONARDO PALHARES envia a DANIEL VORCARO Termo de Acordo e Dação em
+Pagamento
+
+O mencionado documento foi elaborado por LEONARDO
+PALHARES.
+
+Página 162 de 218
+IPJ-A nº 3298613/2026
+
+Figura 162 – Registro do autor do Termo de Acordo e Dação em Pagamento, feito por LEONARDO
+PALHARES
+
+No dia seguinte, em 20/05/2025, LEONARDO PALHARES sugere
+alternativas para a transação referente à compra dos ativos, mas VORCARO recusa
+e pede que ele vá ao banco.
+
+Página 163 de 218
+IPJ-A nº 3298613/2026
+
+Figura 163 – LEONARDO PALHARES sugere a DANIEL VORCARO alternativa para transferência
+dos ativos
+
+Alguns dias antes da elaboração do contrato, em 09/05/2025,
+DANIEL VORCARO conversa por chamada de voz com contato salvo em seu telefone
+como MARCOS PRIME (terminal
+
+), em seguida pede que ele envie
+
+para VIVIANE DE MORAES brochura da PRIME YOU com informações sobre duas
+aeronaves: um avião Legacy 650 e um helicóptero EC 155 B1, os mesmos que
+constam na minuta do Termo de Acordo e Dação em Pagamento enviado por
+PALHARES.
+A PRIME YOU é uma pessoa jurídica cujos proprietários são
+MARCUS VINICIUS DA MATA (CPF
+
+) e DANIEL VORCARO.
+
+Página 164 de 218
+IPJ-A nº 3298613/2026
+
+Figura 164 – DANIEL VORCARO pede a MARCOS PRIME que envie a VIVIANE DE MORAES
+brochura do avião Legacy e do helicóptero EC 155
+
+Conforme consta na brochura, a cota do avião Legacy 650 custaria
+US$ 5.512.951,89, enquanto a cota do helicóptero EC 155 B1 custaria US$
+1.335.014,01.
+
+Página 165 de 218
+IPJ-A nº 3298613/2026
+
+Figura 165 – Custo das cotas do avião Legacy 650 e do helicóptero EC 155 B1 possivelmente
+enviados por MARCOS DA MATA para VIVIANE DE MORAES
+
+Em 16/07/2025, LEONARDO PALHARES escreve para DANIEL
+VORCARO que “A gente precisa iniciar o fluxo de pagamentos do escritório Biaci”, no
+que parece ser um erro de digitação.
+VORCARO responde que o fluxo de pagamentos será feito “num
+volume maior”, depois complementa “Faz urgente”. PALHARES sugere formas de
+pagamento:
+
+Página 166 de 218
+IPJ-A nº 3298613/2026
+
+Figura 166 – Conversa entre DANIEL VORCARO e PALHARES sobre fluxo de pagamento para o
+Escritório BARCI DE MOAES
+
+Ainda em 16/07/2025, DANIEL VORCARO diz para MARCOS DA
+MATA que “ja era pra ter resolvido”, em menção a pendência nas cotas dos ativos
+incluídos no contrato entre a VIKING e o Escritório BARCI DE MORAES.
+Em seguida, VORCARO questiona se “Eles nao estao usando”,
+também referindo-se aos ativos do contrato. MARCOS esclarece que “terá mudança
+de empresa”, pois “não será mais a Barci” e complementa que os ativos estão
+liberados “desde quando me pediu”, e já estariam disponíveis para uso. Adiante,
+MARCOS escreve que eles “Já usaram aviões e helicópteros”.
+MARCOS explica que não cobrou o valor variável do contrato
+ainda, “devido mudança de contrato de Barci para a outra empresa deles Lux”:
+Página 167 de 218
+IPJ-A nº 3298613/2026
+
+Figura 167 – MARCOS DA MATA explica sobre mudança de empresa no contrato da VIKING com a
+BARCI DE MORAES para LUX
+
+Logo em seguida, MARCOS envia a DANIEL VORCARO recorte
+de conversa que ele teve com VIVIANE MORAES por meio da qual ele questiona se
+“estão gostando da utilização das cotas de vcs”. VIVIANE responde que “Sim,
+estamos gostando muito”. Consta na legenda da mensagem enviada por MARCOS
+com o recorte da conversa com VIVIANE a sigla “PSC”, indicando provavelmente o
+termo “para seu conhecimento”.
+
+Página 168 de 218
+IPJ-A nº 3298613/2026
+
+Figura 168 – MARCOS encaminha a DANIEL VORCARO recorte
+de sua conversa com VIVIANE DE MORAES sobre utilização
+de aeronaves
+
+No dia 24/07/2025, contato salvo como “Ana Claudia Financeiro1”
+(terminal
+
+) diz a DANIEL VORCARO que LEONARDO PALHARES
+
+“está pedindo para pagar” a fatura emitida pelo Escritório de VIVIANE DE MORAES
+em nome da VIKING no montante de R$ 22.815.120,95.
+
+Página 169 de 218
+IPJ-A nº 3298613/2026
+
+Figura 169 – ANA CLAUDIA informa DANIEL VORCARO
+que PALHARES pediu para pagar fatura do Escritório
+BARCI DE MORAES no valor de R$ 22.815.120,95
+
+No mesmo dia, DANIEL VORCARO questiona LEONARDO
+PALHARES se ele “ta trocando contrato barco?”, e depois explica “Barci”. PALHARES
+responde que esteve com “Guilherme na semana passada”, e falou com “MArcos".
+Segundo o advogado de VORCARO, “Eles queriam que a empresa
+que fosse dona do ativo fosse uma que os sócios estão muito visíveis e haveria risco
+reputacional grande”. Depois complementa que “O Guilherme está conferindo com a
+chefe dele se vão adotar uma estrutura diferente para a propriedade dos ativos ou
+não”.
+
+Página 170 de 218
+IPJ-A nº 3298613/2026
+
+Figura 170 – PALHARES explica a DANIEL VORCARO sobre o andamento do contrato com o
+Escritório BARCI DE MORAES
+
+Por fim, em 21/08/2025, em conversa entre DANIEL VORCARO e
+THATIANE PRIME, esta informa VORCARO que o avião de prefixo PP-NLR está
+agendado para voar para “Barci” no dia 22/08. O banqueiro responde “Nao deixe de
+atender barci”.
+
+Página 171 de 218
+IPJ-A nº 3298613/2026
+
+Figura 171 – DANIEL VORCARO diz a THATIANE que não deixe de atender “barci”
+
+5.6 Outros encontros entre DANIEL VORCARO e ALEXANDRE DE MORAES
+Em pesquisa por termos relacionados ao mesmo interlocutor, foram
+identificados trechos de diálogos travados por DANIEL VORCARO:
+
+Página 172 de 218
+IPJ-A nº 3298613/2026
+
+Figura 172 – FABIO FARIA envia recorte da conversa dele com ALEXANDRE DE MORAES
+
+Página 173 de 218
+IPJ-A nº 3298613/2026
+
+Figura 173 – FABIO FARIA informa DANIEL VORCARO que irá “remarcar com Alex”
+
+Figura 174 – FABIO FARIA pede a DANIEL VORCARO endereço de sua residência para
+encaminhar a ALEX, e depois apagará tudo
+
+Página 174 de 218
+IPJ-A nº 3298613/2026
+
+Figura 175 – FABIO FARIA encaminha mensagem de interlocutor “Alexandre” propondo encontro no
+dia seguinte, às 19h30
+
+Figura 176 – FABIO FARIA confirma horário do encontro com “Careca”
+
+No dia 15/11/2024, durante troca de mensagens com sua filha, STELLA,
+DANIEL VORCARO diz que está “com alexandre moraes”.
+
+Figura 177 – DANIEL VORCARO diz a sua filha STELLA que está com “alexandre moraes”
+
+Página 175 de 218
+IPJ-A nº 3298613/2026
+
+Em conversa com contato salvo como “Motorista Brasilia Sidney”
+(terminal
+
+6), funcionário de DANIEL VORCARO em Brasília, ele escreve
+
+para VORCARO que o “Min Alexandre chegou”:
+
+Figura 178 – SIDNEY informa DANIEL VORCARO que o “Min Alexandre chegou”
+
+Em 19/03/2025, DANIEL VORCARO escreve para MARTHA
+GRAEFF que está com o Ministro, às 20:23:54 -03:00.
+
+Página 176 de 218
+IPJ-A nº 3298613/2026
+
+Figura 179 – DANIEL VORCARO diz a MARTHA GRAEFF que está com o ministro
+
+Alguns minutos depois, VORCARO diz ao Diretor do Banco
+Central, PAULO SERGIO, que está “com Moraes aqui”.
+
+Figura 180 – DANIEL VORCARO diz a PAULO SERGIO que está com “Moraes”
+
+Na madrugada do dia 20/03/2025, MARTHA GRAEFF questiona
+DANIEL VORCARO se “está com gente aí?”. O banqueiro responde às 00:32:20 03:00 que está sim, “acabou chegando hugo e ciro aqui pra falarem com Alexandre”:
+
+Página 177 de 218
+IPJ-A nº 3298613/2026
+
+Figura 181 – DANIEL VORCARO escreve para MARTHA que está com HUGO, CIRO e
+ALEXANDRE
+
+Contexto indica que o encontro pode ter durado de 20:23:54 -03:00
+do dia 19/03/2025 até pelo menos 00:32:20 -03:00 do dia 20/03/2025.
+Em 19/04/2025, DANIEL VORCARO diz a sua namorada MARTHA
+GRAEFF que está “indo encontrar alexandre moraes aqui perto de casa”. Ela
+questiona se o Ministro do STF “está em Campos”, provavelmente se referindo a
+Campos do Jordão, ou se foi para ver o banqueiro. VORCARO responde que “Ele ta
+passando feriado”.
+
+Página 178 de 218
+IPJ-A nº 3298613/2026
+
+Figura 182 – DANIEL VORCARO diz a MARTHA que está indo encontrar “alexandre moraes”
+
+Dez dias depois, em 29/04/2025, MARTHA GRAEFF questiona
+sobre o dia de DANIEL VORCARO, e ele responde que está com “Alexandre” naquele
+momento.
+
+Figura 183 – DANIEL VORCARO diz a MARTHA que está com “alexandre”
+
+No mesmo dia, MARTHA pergunta a seu marido o que ele está
+fazendo, DANIEL VORCARO responde que está em sua casa. Alguns minutos depois,
+os dois fazem chamada de voz às 22:44:09 -03:00 que durou 1 minuto e 47 segundos.
+Logo em seguida, MARTHA questiona o banqueiro “Quem era o primeiro cara?”.
+VORCARO responde que era “alexandre moraes”.
+
+Página 179 de 218
+IPJ-A nº 3298613/2026
+
+Figura 184 – DANIEL VORCARO responde a MARTHA que pessoa com quem estava era
+“Alexandre Moraes”
+
+Em 21/05/2025, MARTHA questiona se seu companheiro está com
+muitas reuniões e ele responde que está em casa, depois acrescenta que está com
+“Ciro e alexandre”.
+
+Figura 185 – DANIEL VORCARO diz a MARTHA que está com “Ciro e alexandre”
+
+Página 180 de 218
+IPJ-A nº 3298613/2026
+
+No dia 26/05/2025, DANIEL VORCARO escreve para sua
+namorada MARTHA que teria encontro com “alexandre”, e que estaria “marcando
+jantar com as mulheres fabio e dele”.
+
+Figura 186 – DANIEL VORCARO diz a MARTHA que teria encontro com “alexandre” e que está
+marcando jantar com as mulheres dele e de FABIO
+
+Em 08/08/2025, MARTHA questiona se DANIEL VORCARO
+conseguirá viajar nessa data, e o banqueiro dia que não deve ir pois está com
+“alexandre” e depois terá reunião “Com ciro”.
+
+Figura 187 – DANIEL VORCARO escreve a MARTHA que está com “alexandre” e depois terá
+reunião com “ciro”
+
+Página 181 de 218
+IPJ-A nº 3298613/2026
+
+5.7 Do evento de Londres
+No dia 28/03/2024, DANIEL VORCARO conversa com contato
+salvo como “Marcio Conjur” (terminal 55
+
+) sobre convite do Ministro
+
+ALEXANDRE DE MORAES para o evento a ser realizado em Londres, em abril.
+
+Figura 188 – MARCIO CONJUR informa DANIEL VORCARO que Ministro Alexandre enviou convite
+para o evento em que será realizado Londres, entre 24 e 27 de abril de 2024
+
+No contexto da organização do evento de Londres, em 06/04/2024,
+FABIO FARIA envia para DANIEL VORCARO mensagem encaminhada por terceiro
+Página 182 de 218
+IPJ-A nº 3298613/2026
+
+agendando reunião às “18h na casa do Alexandre”, na segunda. A próxima segundafeira depois do dia 06/04/2024 é o dia 10/04/2024.
+
+Figura 189 – FABIO FARIA encaminha mensagem de “Alexandre” agendando reunião na segunda,
+18h
+
+Em 10/04/2024, DANIEL VORCARO conversa com contato salvo
+como “Leo Serrano Giunchetti” (terminal
+
+), este trata com o banqueiro
+
+sobre veículos que estarão à disposição dos Ministros “mais sensiveis" do STF, depois
+relaciona os Ministros “Alexandre, Toffoli, etc”. LEO SERRANO é funcionário de
+VORCARO que organizou o evento em Londres.
+
+Página 183 de 218
+IPJ-A nº 3298613/2026
+
+Figura 190 – LEO SERRANO explica a DANIEL VORCARO como será a disposição dos ministros
+nos veículos
+
+Em conversa com contato salvo como “Luiz Rennó” (terminal
+9), em 19/04/2024, DANIEL VORCARO escreve que está organizando
+um “evento super exclusivo com alexandre de moraes em londres”:
+
+Página 184 de 218
+IPJ-A nº 3298613/2026
+
+Figura 191 – DANIEL VORCARO diz a LUIZ RENNO que está organizando evento com ALEXANDRE
+DE MORAES em Londres
+
+Ainda neste contexto, há outras menções a “Min Alexandre”, ou
+“Moraes”:
+
+Página 185 de 218
+IPJ-A nº 3298613/2026
+
+Figura 192 – ANA MATOS questiona DANIEL VORCARO se ele entregará o troféu do “Min
+Alexandre”
+
+Figura 193 – DANIEL VORCARO diz a ANA MATOS que “alexandre sugeriu participacao do temer”
+
+Em 26/04/2024, DANIEL VORCARO escreve a contato salvo como
+GERALDO BRAZIL JOURNAL (terminal 5
+
+com pedido do Ministro
+
+ALEXANDRE DE MORAES para incluir informação em matéria jornalística de que “os
+3 ministros do STF se reuniram privativamente com o ex primeiro ministro” Tony Blair.
+
+Página 186 de 218
+IPJ-A nº 3298613/2026
+
+Figura 194 – DANIEL VORCARO repassa a GERALDO BRAZIL JOURNAL pedido de “Alexandre”
+sobre matéria jornalística
+
+Em 18/04/2024, FABIO FARIA conversa com DANIEL VORCARO
+sobre o evento, em especial sobre o veto de ALEXANDRE DE MORAES em relação
+a participantes do evento.
+
+Página 187 de 218
+IPJ-A nº 3298613/2026
+
+Figura 195 – FABIO FARIA e DANIEL VORCARO conversam sobre veto de “Alexandre” a
+participante do evento
+
+Em seguida, serão apresentadas tratativas a respeito do II Fórum
+Jurídico Londres Brasil de Ideias, que seria realizado em 2025, no entanto foi
+cancelado.
+Também foram identificadas mensagens relacionando “Alexandre”,
+ou “Min Alexandre”, à gestão do evento, conforme segue:
+
+Página 188 de 218
+IPJ-A nº 3298613/2026
+
+Figura 196 – DANIEL VORCARO diz a ANA MATOS que precisa aprovar lista com “alexandre”
+
+Figura 197 – ANA MATOS diz a DANIEL VORCARO que o Ministro Alexandre já está enviando uma
+confirmação de data do evento
+
+Página 189 de 218
+IPJ-A nº 3298613/2026
+
+Figura 198 – DANIEL VORCARO diz a ANA MATOS que “Alexandre” reclamou sobre envio dos
+convites para o evento
+
+Página 190 de 218
+IPJ-A nº 3298613/2026
+
+Figura 199 – ANA MATOS diz a DANIEL VORCARO que seguiu as recomendações “que vieram do
+Ministro”
+
+Figura 200 – ANA MATOS trata com DANIEL VORCARO sobre emissão de passagem aérea para o
+“min Alexandre”
+
+Página 191 de 218
+IPJ-A nº 3298613/2026
+
+Figura 201 – DANIEL VORCARO compartilha contato de VIVIANE DE MORAES com ANA MATOS
+
+Ainda sobre o evento, em 18/07/2025, ANA envia uma lista de
+painelistas e depois comenta sobre “Rueda”, em menção a ANTONIO RUEDA,
+indicando que não deve colocá-lo como moderador no painel. DANIEL VORCARO
+responde com ênfase “De jeito nenhum”, depois complementa “Alexandre morre se vc
+fizer isso”:
+
+Página 192 de 218
+IPJ-A nº 3298613/2026
+
+Figura 202 – DANIEL VORCARO alinha com ANA MATOS sobre participação de “Rueda” de acordo
+com interesses de “Alexandre”
+
+No dia 21/07/2025, DANIEL VORCARO envia mensagem a ANA
+ainda tratando do evento de Londres e diz que o Ministro ALEXANDRE DE MORAES
+“reclamou MUITO do evento”.
+
+Página 193 de 218
+IPJ-A nº 3298613/2026
+
+Figura 203 – DANIEL VORCARO diz a ANA MATOS que “Alexandre” reclamou muito do evento
+
+Em 22/07/2025, ANA diz a DANIEL VORCARO que passou “o dia
+aqui com Vivi Moraes e o ministro fechando o programa do evento”.
+
+Página 194 de 218
+IPJ-A nº 3298613/2026
+
+Figura 204 – ANA MATOS diz a DANIEL VORCARO que passou o dia com “Vivi Moraes e o
+ministro” fechando programa do evento
+
+O evento em Londres de 2025 acaba sendo cancelado:
+
+Página 195 de 218
+IPJ-A nº 3298613/2026
+
+Figura 205 – DANIEL VORCARO escreve para ANA MATOS que o evento foi cancelado
+
+5.8 De mensagens relacionadas com ALEXANDRE DE MORAES
+Foram
+
+identificadas
+
+outras
+
+mensagens
+
+com
+
+o
+
+termo
+
+“ALEXANDRE”, em contextos aparentemente alheios aos já tratados:
+
+Página 196 de 218
+IPJ-A nº 3298613/2026
+
+Figura 206 – DANIEL VORCARO pede a ANA MATOS que convites para filha de ALEXANDRE DE
+MORAES
+
+Página 197 de 218
+IPJ-A nº 3298613/2026
+
+Figura 207 – DANIEL VORCARO pede a FABIO FARIA que verifica com “alexandre” a respeito de
+notícia no Brazil Journal
+
+6. DA ANÁLISE DOS CITADOS NAS NOTAS
+Conforme descrito na IPJ
+
+6, DANIEL BUENO
+
+VORCARO registrou notas em seu aparelho celular e as enviou por meio do
+aplicativo WhatsApp para destinatário vinculado ao terminal
+
+cujo
+
+contato está atribuído a “Alexandre de Moraes BRASILIA”. No intuito de
+identificar pessoas mencionadas nas três notas mencionadas nas folhas 3-5 da
+mencionada IPJ, estudou-se o conteúdo de cada uma delas.
+
+Página 198 de 218
+IPJ-A nº 3298613/2026
+
+Analisou-se o conteúdo das três notas, em ordem cronológica das
+datas e horários de suas últimas modificações. A primeira das três foi a nota
+referente à Figura 2 da IPJ
+
+6, modificada em 30/10/2025, às
+
+16:32:25 UTC. Nela, DANIEL VORCARO escreve que teve “informações
+informais e em confidencia de turma do banco central, que G e os diretores estao
+na pressao máxima de novo pra uma medida, pois o bacen esta sendo muito
+pressionado pela PF e MP, alegando que farao algo contra mim”. Em seguida,
+VORCARO diz que é “importante reforçar com Andrei e Paulo pra nao deixar
+ninguem de baixo fazer uma sacanagem”.
+O teor da nota pode ser visto abaixo.
+
+Figura 208 – Nota referente à Figura 2 da IPJ 144738439/2026
+
+Nesse contexto, os termos “Andrei” e “Paulo” escritos por DANIEL
+VORCARO em sua nota podem indicar que “Andrei” se refere a ANDREI
+PASSOS, Diretor Geral da Polícia Federal, e “Paulo” a PAULO GONET,
+Procurador-Geral da República, respectivamente.
+Na sequência, a nota referente à Figura 1 da IPJ 144738439.2026
+foi modificada pela última vez por DANIEL VORCARO em 30/10/2025, às
+
+Página 199 de 218
+IPJ-A nº 3298613/2026
+
+16:38:12 UTC. Seu conteúdo traz nomes de autoridades presentes em reunião
+com o Banco Central do Brasil, como pode ser visto em seguida.
+
+Figura 209 – Nota referente à Figura 1 da IPJ 144738439/2026
+
+A última nota na ordem cronológica de sua alteração é a que se
+refere à Figura 3 da IPJ 144738439.2026, modificada em 30/10/2025, às
+16:44:40 UTC.
+O teor da nota pode ser visto em seguida.
+
+Figura 210 – Nota referente à Figura 3 da IPJ 144738439/2026
+
+Página 200 de 218
+IPJ-A nº 3298613/2026
+
+Face ao exposto, esta equipe de policiais federais realizou
+pesquisa nos dados extraídos do celular de DANIEL BUENO VORCARO no
+intuito de verificar sobre possíveis interações que envolvam os nomes citados
+nas mensagens acima descritas com DANIEL VORCARO, conforme solicitado
+na decisão judicial proferida pelo Ministro André Mendonça (folha 7).
+Pesquisou-se, inicialmente, por palavras-chave relacionadas com
+o nome PAULO GONET.
+
+6.1.
+
+Das Pesquisas Por Termos Relacionados Com “Paulo Gonet”
+Em pesquisa na pasta Contatos, não foi encontrado contato salvo
+
+no celular de DANIEL VORCARO com o nome de “Paulo Gonet” ou “Gonet”.
+Já em análise nos demais chats de conversas no aplicativo de
+mensagens WhatsApp, utilizando pesquisas por palavras-chave relacionadas
+com o nome “Paulo Gonet”, foi possível identificar menções a pessoa que pode
+se tratar de PAULO GONET, em especial em conversa de DANIEL BUENO
+VORCARO com o terminal
+
+identificado na lista de contatos de
+
+VORCARO como “Ciro Soares”.
+Em 14/04/2024, CIRO SOARES escreve a DANIEL VORCARO a
+mensagem “Amizade é tudo viu irmão”, em seguida complementa “Gonet é
+firme”, depois pede a VORCARO que leia a mensagem que será encaminhada
+na sequência e reforça “Fique só com vc”.
+
+Página 201 de 218
+IPJ-A nº 3298613/2026
+
+Figura 211 - Mensagem enviada por CIRO SOARES a DANIEL VORCARO acerca de sua aparente
+proximidade com GONET
+
+CIRO SOARES encaminha mensagem de outro interlocutor que
+será identificado como “Jarbas”, na qual consta agradecimento deste a PAULO
+GONET.
+
+Página 202 de 218
+IPJ-A nº 3298613/2026
+
+Figura 212 - Mensagem enviada por JARBAS e encaminhada a DANIEL VORCARO por CIRO
+SOARES
+
+Em seguida, CIRO SOARES confirma a autoria da mensagem:
+“Jarbas escreveu”.
+
+Figura 213 - Confirmação da autoria da mensagem encaminhada por CIRO SOARES a DANIEL
+VORCARO
+
+Página 203 de 218
+IPJ-A nº 3298613/2026
+
+Imediatamente depois, DANIEL VORCARO indaga CIRO SOARES
+se “O cara largou?”, ao passo que o advogado responde positivamente.
+
+Figura 214 – CIRO SOARES informa sobre desistência de Jarbas
+
+Na sequência, CIRO SOARES encaminha um áudio explicando a
+DANIEL VORCARO sobre a possível desistência de candidatura em favor de
+“Jarbas”.
+
+“Cara, eu pedi o Gonet ontem, ele me ligou falar
+um assunto, aí eu falei, Gonet, pede o cara para
+tirar a candidatura, pede o cara que o cara vai
+tomar uma porrada arretada. Aí o Gonet me ligou
+ontem à noite e falou: Ciro, acabei de ligar para
+ele, ele vai desistir.”
+Figura 215 – CIRO SOARES explica a VORCARO sobre pedido para retirar a candidatura de “Jarbas”
+
+Página 204 de 218
+IPJ-A nº 3298613/2026
+
+Em 15/03/2025, CIRO SOARES envia a DANIEL VORCARO foto
+acompanhado de PAULO GONET, às 14:13:37 -03:00. Na sequência, o
+advogado envia mensagem a VORCARO “Liga aqui”, em seguida complementa,
+“Ele quer falar com você”. A partir das 14:23:10 -03:00, são completadas quatro
+chamadas de voz entre DANIEL VORCARO e CIRO SOARES, de duração de
+57 segundos, 27 segundos, 17 segundos e 3 minutos e 49 segundos, nessa
+sequência.
+
+Figura 216 – CIRO SOARES envia a DANIEL VORCARO foto com PAULO GONET em 15/03/2025,
+seguido de quatro chamadas de voz completadas
+
+Algumas semanas depois, em 28/03/2025, CIRO SOARES
+encaminha a DANIEL VORCARO três mensagens com o seguinte conteúdo:
+“Que bom! Estou na torcida por vocês!”, “Já estou com saudades de você! Estou
+
+Página 205 de 218
+IPJ-A nº 3298613/2026
+
+embarcando para Roma.”, “Manda essa mensagem para ele”. Em seguida, CIRO
+escreve que as mensagens foram enviadas por “Gonet”.
+
+Figura 217 – CIRO SOARES encaminha mensagens de “Gonet” para DANIEL VORCARO
+
+Ato contínuo, DANIEL VORCARO agradece as mensagens
+encaminhas por CIRO SOARES. O advogado responde que “Lhe adora”, depois
+acrescenta “Ele vai para Londres com a gente”. Por fim envia mensagem
+encaminhada “Oba!!! Tomara que tenha charuto e macalan!”
+
+Página 206 de 218
+IPJ-A nº 3298613/2026
+
+Figura 218 – CIRO SOARES encaminha mensagem de interlocutor que diz “Tomara que tenha
+charuto e macalan”
+
+No dia seguinte, em 29/03/2025, CIRO SOARES diz a DANIEL
+VORCARO que “Gonet perguntou se o filho dele pode ir com a gente para
+Londres”. VORCARO responde positivamente “Obvio ne”.
+
+Figura 219 – CIRO SOARES escreve a DANIEL VORCARO que “Gonet perguntou se o filho dele
+pode ir com a gente para Londres”
+
+Página 207 de 218
+IPJ-A nº 3298613/2026
+
+Ainda em 29/03/2025, CIRO SOARES encaminha mensagem a
+DANIEL VORCARO cujo teor é “Você é uma máquina”, na sequência o
+advogado escreve “Gonet mandou”.
+
+Figura 220 – CIRO SOARES encaminha mensagem de “Gonet”
+
+No dia 11/04/2025, a funcionária de DANIEL VORCARO cujo
+contato está salvo em seu aparelho celular como “Ana Matos Mkt” (terminal
+9), questiona o banqueiro se os nomes “estão aprovados por vc
+para irem pra Londres com despesas pagas por nós”. VORCARO não concorda
+com a lista de nomes, mas faz a ressalva que “Pedro e ciro ok” teriam as
+despesas pagas para ida a Londres, em menção a PEDRO GONET e CIRO
+SOARES.
+
+Página 208 de 218
+IPJ-A nº 3298613/2026
+
+Figura 221 – DANIEL VORCARO diz a “Ana Matos Mkt” que PEDRO GONET e CIRO SOARES
+teriam as despesas a Londres pagas
+
+Em 07/04/2025, DANIEL VORCARO conversa sobre algo que
+aparentemente não lhe agrada a respeito de uma matéria veiculada acerca da
+tentativa da operação do BRB junto ao Banco Master. Em meio as discussões
+acerca da fonte da matéria e origem das mensagens, CIRO SOARES solicita
+uma conversa com DANIEL VORCARO: “Preciso falar com vc”, depois
+acrescenta “Estou indo no PG agora”.
+
+Página 209 de 218
+IPJ-A nº 3298613/2026
+
+Figura 222 – CIRO SOARES diz a DANIEL VORCARO que está “indo no PG”
+
+Em 19/06/2025, CIRO SOARES diz a DANIEL VORCARO que o
+“PG confirmou a ida pra Londres”. Em seguida, CIRO questiona se o “Pedrinho
+filho do PG pode ir com a gente”. VORCARO responde afirmativamente “Obvio”.
+
+Página 210 de 218
+IPJ-A nº 3298613/2026
+
+Figura 223 – CIRO SOARES informa DANIEL VORCARO que “PG confirmou ida a Londres”, depois
+questiona se o “Pedrinho filho do PG pode ir com a gente”
+
+6.2.
+
+Das Pesquisas Por Termos Relacionados Com “Andrei Passos”
+Em pesquisa na pasta Contatos, não foi encontrado contato salvo
+
+no celular de DANIEL VORCARO com o nome de “Andrei Passos” ou “Andrei”.
+Em análise nos demais chats de conversas no aplicativo de
+mensagens WhatsApp, utilizando pesquisas por palavras-chave relacionadas
+com o nome “Andrei Passos”, foi possível identificar menções a pessoa que pode
+se tratar de ANDREI PASSOS, como será visto em seguida.
+Em 03/04/2024, contato salvo no celular de DANIEL VORCARO
+como “Fabio Faria” (terminal
+
+encaminha uma mensagem a
+Página 211 de 218
+
+IPJ-A nº 3298613/2026
+
+VORCARO de interlocutor não identificado, com o questionamento “O que acha
+de eu convidar o DPF Andrei”, em seguida outra mensagem encaminhada “Aí
+fechamos o PGR e o DPF”. FABIO FARIA responde “Acho ótimo” e complementa
+“Pode convidar”. Cinco minutos depois dessa interação, FABIO FARIA
+encaminha outra mensagem de interlocutor não identificado a DANIEL
+VORCARO confirmando “Podem entrar em contato lá na PF. Ele aceitou”. Nesse
+contexto, respondendo a mensagem, FABIO FARIA escreve “Vc avisa pro
+Marcio entrar em contato com o Andrei?”, por fim ele encaminha outra
+mensagem de interlocutor não identificado com o conteúdo “Seu amigo Esteves
+vai dar pulos de raiva”.
+
+Figura 224 - Conversa entre FABIO FARIA e DANIEL VORCARO com o encaminhamento de uma
+mensagens de um terceiro não identificado falando sobre convidar o DPF Andrei
+
+Página 212 de 218
+IPJ-A nº 3298613/2026
+
+Por fim, ainda em 03/04/2024, FABIO FARIA reforça com DANIEL
+VORCARO sobre lembrar o “Marcio fazer o convite formal ao delegado geral”.
+VORCARO responde “Vai fazer agora”:
+
+Figura 225 – FABIO FARIA reforça com DANIEL VORCARO sobre o convite formal ao delegado geral
+
+Paralelamente à conversa com FABIO FARIA, DANIEL VORCARO
+entra em contato com contato salvo como “Marcio Conjur” (terminal
+). No trecho da conversa, VORCARO diz a “Marcio Conjur” que
+o “Ministro fez convite ao andrei PF”. “Marcio Conjur” responde “ótimo”.
+
+Página 213 de 218
+IPJ-A nº 3298613/2026
+
+Figura 226 – DANIEL VORCARO informa “Marcio Conjur” que o “Ministro fez convite ao andrei PF”
+
+Alguns minutos depois, “Marcio Conjur” encaminha a DANIEL
+VORCARO mensagem de pessoa que se apresenta como “EPF Ana Beatriz,
+assistente do Diretor-Geral da Polícia Federal”. Em seguida, “Marcio Conjur”
+encaminha nova mensagem confirmando o “interesse em participar do evento
+em Londres”, no entanto a interlocutora pediu para que fosse averiguado “sobre
+questões logísticas”, depois complementa “algum custo (hospedagem,
+passagem) é coberto pelos organizadores?”. “Marcio Conjur” responde “Todas
+as despesas bancadas por nós”.
+
+Página 214 de 218
+IPJ-A nº 3298613/2026
+
+Figura 227 – “Marcio Conjur” informa DANIEL VORCARO sobre interesse no convite por parte do
+Diretor Geral da Polícia Federal para o evento de Londres
+
+Já no ano de 2025, em 10/07/2025, no contexto do segundo evento
+de Londres, o contato salvo no celular de DANIEL VORCARO como “Ana Matos
+Mkt” (terminal 5
+
+informa o banqueiro que “O Andrei PF precisa
+
+de um Convite formal para aceitar Londres”. A funcionária de VORCARO
+questiona se o “Grupo Voto pode mandar dele e demais?”, e DANIEL VORCARO
+responde afirmativamente “Pode”.
+
+Página 215 de 218
+IPJ-A nº 3298613/2026
+
+Figura 228 – “Ana Matos Mkt” questiona sobre envio de convite a “Andrei PF” para o evento de
+Londres em 2025
+
+7. CONSIDERAÇÕES FINAIS
+No que se refere ao estágio atual das investigações decorrentes das
+medidas cautelares deferidas no âmbito da Petição nº 15.556, cumpre registrar
+que os fatos que fundamentaram as ordens judiciais estão relacionados a duas
+hipóteses criminosas conexas, porém distintas.
+A primeira refere-se ao suposto pagamento de vantagens indevidas a
+servidores do Banco Central, objeto de apuração específica no IPL nº
+2026.0053200 (Petição nº 15.504). A segunda, por sua vez, diz respeito à
+atuação do grupo denominado “Turma”, investigada no âmbito do IPL nº
+2026.0029775 (Petição nº 15.499).
+Ambas as investigações se encontram em estágio avançado, pendentes
+apenas a conclusão das análises bancárias e o exame do material apreendido.
+As oitivas relacionadas aos fatos já foram iniciadas, com previsão de conclusão
+nos próximos 60 dias.
+
+Página 216 de 218
+IPJ-A nº 3298613/2026
+
+Por derradeiro, ressalva-se que, em razão do reduzido lapso temporal de
+72 horas estabelecido para o atendimento da requisição judicial, a análise
+realizada não possui caráter exaustivo, tendo sido transcritas apenas as
+menções nominais diretamente identificadas aos envolvidos, sem prejuízo da
+existência de outras citações ou referências indiretas ainda não detectadas por
+esta equipe policial.
+É a informação.
+
+Brasília, 27 de agosto de 2026
+
+Bruno Cavalcanti Teixeira
+AGENTE DE POLÍCIA FEDERAL
+
+Lucas Daniel de Sá Soares de Matos
+AGENTE DE POLÍCIA FEDERAL
+
+Paulo Danilo Batista Diniz Leite
+AGENTE DE POLÍCIA FEDERAL
+
+Guilherme Alves de Siqueira
+DELEGADO DE POLÍCIA FEDERAL
+
+Wedson Cajé Lopes
+Victor Arruda de Oliveira
+DELEGADO DE POLÍCIA FEDERAL DELEGADO DE POLÍCIA FEDERAL
+
+Daniel Mostardeiro Cola
+DELEGADO DE POLÍCIA FEDERAL
+
+Página 217 de 218
+IPJ-A nº 3298613/2026
+
+ANEXOS
+1. Íntegra da minuta final do Contrato firmado entre o Escritório BARCI DE MORAES e o
+BANCO MASTER, assinado por DANIEL BUENO VORCARO em 23/01/2024
+2. Íntegra do contrato firmado entre o Escritório BARCI DE MORAES e a VIKING
+PARTICIPACOES
+3. Íntegra do Termo de Acordo e Dação em Pagamento firmado entre a VIKING
+PARTICIPACOES e o Escritório BARCI DE MORAES
+4. Íntegra das conversas entre DANIEL BUENO VORCARO e contato salvo como
+“Alexandre de Moraes BRASILIA”
+
+Página 218 de 218
+IPJ-A nº 3298613/2026
+
+
