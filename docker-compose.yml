@@ -1,4 +1,40 @@
 services:
+  db:
+    image: postgres:17-alpine
+    container_name: pig_br_db
+    environment:
+      POSTGRES_DB: pig_br
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pig_br_password_2026
+    ports:
+      - "54320:5432"
+    volumes:
+      - pig_br_pgdata:/var/lib/postgresql/data
+      - ./supabase/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d pig_br"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: services/platform-api/Dockerfile
+    container_name: pig_br_api
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgresql://postgres:pig_br_password_2026@db:5432/pig_br
+    ports:
+      - "3001:3001"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data/raw_artifacts:/app/data/raw_artifacts:ro
+    restart: unless-stopped
+
   web:
     build:
       context: .
@@ -6,4 +42,9 @@ services:
     container_name: pig_br_web
     ports:
       - "3000:80"
+    depends_on:
+      - api
     restart: unless-stopped
+
+volumes:
+  pig_br_pgdata:

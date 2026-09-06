@@ -150,7 +150,7 @@ describe('Master Spec M0 — Homologação Rigorosa e Verificação de Integrida
       writeFileSync(tmpFile, sqlContent);
       try {
         const stdout = execSync(
-          `docker exec -i supabase_db_sos-sales psql -U postgres -d pig_br_test -v ON_ERROR_STOP=1 < "${tmpFile}"`,
+          `docker exec -i pig_br_db psql -U postgres -d pig_br -v ON_ERROR_STOP=1 < "${tmpFile}"`,
           { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
         );
         return { stdout, stderr: '' };
