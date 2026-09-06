@@ -335,6 +335,12 @@ header.app-header {
   border: 1px solid #b7dfc7;
 }
 
+.badge-pending-review {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
 /* Evidence Sidebar */
 .evidence-panel {
   display: flex;

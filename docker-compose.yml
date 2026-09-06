@@ -3,9 +3,9 @@ services:
     image: postgres:17-alpine
     container_name: pig_br_db
     environment:
-      POSTGRES_DB: pig_br
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: pig_br_password_2026
+      POSTGRES_DB: ${POSTGRES_DB:-pig_br}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pig_br_password_2026}
     ports:
       - "54320:5432"
     volumes:
@@ -24,8 +24,8 @@ services:
       dockerfile: services/platform-api/Dockerfile
     container_name: pig_br_api
     environment:
-      PORT: 3001
-      DATABASE_URL: postgresql://postgres:pig_br_password_2026@db:5432/pig_br
+      PORT: ${API_PORT:-3001}
+      DATABASE_URL: ${API_DATABASE_URL:-postgresql://pig_br_api_user:pig_api_app_restricted_pass_2026@db:5432/pig_br}
     ports:
       - "3001:3001"
     depends_on:

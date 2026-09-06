@@ -324,8 +324,12 @@ export function App() {
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="rel-badge badge-verified">
-                      <CheckCircle2 size={12} style={{ display: 'inline', marginRight: '4px' }} />
+                    <span className={`rel-badge ${rel.verificationStatus === 'VERIFIED' ? 'badge-verified' : 'badge-pending-review'}`}>
+                      {rel.verificationStatus === 'VERIFIED' ? (
+                        <CheckCircle2 size={12} style={{ display: 'inline', marginRight: '4px' }} />
+                      ) : (
+                        <AlertTriangle size={12} style={{ display: 'inline', marginRight: '4px' }} />
+                      )}
                       {rel.verificationStatus}
                     </span>
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
@@ -357,28 +361,38 @@ export function App() {
                 {activeRelation.evidences.map((ev: EvidenceItem, idx: number) => (
                   <div key={idx} className="evidence-card">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span className={`evidence-role-tag role-${ev.role}`}>
-                        PAPEL: {ev.role}
-                      </span>
+                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                        <span className={`evidence-role-tag role-${ev.role}`}>
+                          PAPEL: {ev.role}
+                        </span>
+                        <span style={{ fontSize: '0.68rem', padding: '2px 5px', borderRadius: '3px', background: '#f1f5f9', color: '#475569', fontWeight: 600 }}>
+                          {ev.extractionMethod}
+                        </span>
+                      </div>
                       <span style={{ fontSize: '0.78rem', color: 'var(--text-subtle)', fontWeight: 600 }}>
                         {ev.locator.page ? `Página ${ev.locator.page}` : 'Página N/D'}
                       </span>
                     </div>
 
-                    <blockquote className="evidence-quote">
-                      “{ev.excerpt}”
-                    </blockquote>
+                    <div>
+                      <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-subtle)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                        Trecho Literal Extraído:
+                      </div>
+                      <blockquote className="evidence-quote">
+                        “{ev.excerpt}”
+                      </blockquote>
+                    </div>
 
                     <div className="evidence-meta" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                       <div><strong>Documento:</strong> {ev.document.title}</div>
-                      <div><strong>Seção / Localizador:</strong> {ev.locator.section || 'Preâmbulo'}</div>
+                      <div><strong>Localizador:</strong> {ev.locator.section || 'Preâmbulo'}</div>
                       <div><strong>Fonte Coleta:</strong> {ev.source.name}</div>
                       <div>
                         <strong>Oficialidade da Fonte:</strong>{' '}
                         {ev.source.official ? (
                           <span style={{ color: '#15803d' }}>Órgão Oficial</span>
                         ) : (
-                          <span style={{ color: '#b45309' }}>Acervo / Divulgação Pública (Validação pendente)</span>
+                          <span style={{ color: '#b45309' }}>Acervo / Divulgação Pública (Autenticidade pendente)</span>
                         )}
                       </div>
                       <div className="evidence-hash">
@@ -392,6 +406,7 @@ export function App() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="search-btn"
+                          id="btn-open-pdf"
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',

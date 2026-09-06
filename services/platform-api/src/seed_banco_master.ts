@@ -7,13 +7,15 @@ const pool = new Pool({
 });
 
 async function main() {
-  console.log('Iniciando importação documental idempotente do Banco Master (Pet 16.662)...');
+  console.log('Iniciando importação documental auditável do Banco Master (Pet 16.662)...');
   const client = await pool.connect();
 
   try {
     await client.query('BEGIN');
 
     // 1. Cadastrar a Fonte Primária da Coleta
+    // Conforme diretriz de Truth in Data: coleta via divulgação pública (Poder360).
+    // Autenticidade oficial primária permanece PENDENTE enquanto não houver checagem direta no STF.
     const sourceRes = await client.query(`
       INSERT INTO sources (id, name, organization, source_type, official, access_method, documentation_url, capabilities)
       VALUES (
@@ -21,7 +23,7 @@ async function main() {
         'Acervo Documental STF Petição 16.662 (Divulgação Poder360)',
         'Poder360 / Autos Públicos STF',
         'JUDICIAL_SYSTEM',
-        false, -- Autenticidade oficial primária permanece pendente
+        false, -- Autenticidade oficial perante autos primários permanece pendente
         'PUBLIC_MEDIA_ARCHIVE',
         'https://static.poder360.com.br/uploads/2026/09/',
         '{"returnsDocuments": true, "returnsRelationships": true, "authenticityVerified": false}'::jsonb
@@ -31,7 +33,7 @@ async function main() {
     `);
     const sourceId = sourceRes.rows[0].id;
 
-    // Definição dos 5 artefatos oficiais
+    // 5 Artefatos físicos preservados com seus respectivos hashes SHA-256 e arquivos de texto
     const artifacts = [
       {
         id: '20000000-0000-0000-0000-000000000001',
@@ -39,7 +41,6 @@ async function main() {
         textfile: 'pet16662-contrato-barci-moraes-banco-master-108milhoes-sigiloderrubado-1set2026.txt',
         sha256: 'a8ad2a2a45900da587a7b79f6afac020bb837caa284c592515aada58b0c518c8',
         mediaType: 'application/pdf',
-        byteSize: 11534336,
         docTitle: 'Contrato de Prestação de Serviços - Banco Master e Barci de Moraes',
         docType: 'CONTRATO_HONORARIOS',
         docDate: '2024-01-15'
@@ -50,7 +51,6 @@ async function main() {
         textfile: 'pet16662-contrato-viking-barci-moraes-50milhoes-sigiloderrubado-1set2026.txt',
         sha256: '6ab6936b0316d3ab075dc115156e0c7f2ca656377650d9df3b87e246e732d58c',
         mediaType: 'application/pdf',
-        byteSize: 192512,
         docTitle: 'Contrato de Prestação de Serviços - Viking Participações e Barci de Moraes',
         docType: 'CONTRATO_HONORARIOS',
         docDate: '2024-01-15'
@@ -61,7 +61,6 @@ async function main() {
         textfile: 'pet16662-acordo-dacao-viking-barci-aviao-helicoptero-50milhoes-sigiloderrubado.txt',
         sha256: 'ea78d5008a53f59f2f606a4c509094a992fab5662a7b52f9905f4816accc63fd',
         mediaType: 'application/pdf',
-        byteSize: 8074035,
         docTitle: 'Termo de Acordo e Dação em Pagamento (Aeronave PR-NLR e Helicóptero)',
         docType: 'TERMO_DACAO',
         docDate: '2024-06-01'
@@ -72,7 +71,6 @@ async function main() {
         textfile: 'pet16662_relatorio_pf_celular_vorcaro_moraes_gonet_andrei_barci.txt',
         sha256: '30e24f6d8abd6c033c50594ff2658a4ad72b2ac818f312ea3fe54e80a5d052d7',
         mediaType: 'application/pdf',
-        byteSize: 5557452,
         docTitle: 'Relatório de Análise da Polícia Federal nº 3298613/2026 (Operação Compliance Zero)',
         docType: 'RELATORIO_POLICIAL',
         docDate: '2026-08-27'
@@ -83,7 +81,6 @@ async function main() {
         textfile: 'pet16662-whatsapp-vorcaro-alexandre-moraes-sigiloderrubado-1set2026.txt',
         sha256: '309704af37d7aa28926c3c3e5acf4d1e7d5f4f0fa2f273bc2554b99273ca8a1d',
         mediaType: 'application/pdf',
-        byteSize: 1258291,
         docTitle: 'Extração Pericial de Mensagens de WhatsApp (Anexo Laudo)',
         docType: 'EXTRACAO_MENSAGENS_OCR',
         docDate: '2025-11-18'
@@ -170,42 +167,79 @@ async function main() {
     }
 
     // 3. Cadastrar Evidências Textuais Locadas
+    // Distinção explícita entre trecho literal, resumo e método de extração.
+    // Todas as evidências iniciam em PENDING_REVIEW até auditoria humana individual.
     const evidences = [
       {
         id: '40000000-0000-0000-0000-000000000001',
         artifactId: '20000000-0000-0000-0000-000000000001',
         documentId: '20000000-0000-0000-0000-000000000001',
-        excerpt: 'CONTRATO DE PRESTAÇÃO DE SERVIÇOS E DE HONORÁRIOS ADVOCATÍCIOS BARCI DE MORAES SOCIEDADE DE ADVOGADOS, ... BANCO MASTER S.A.',
-        locator: { page: 1, section: 'Preâmbulo', exactText: 'CONTRATO DE PRESTAÇÃO DE SERVIÇOS E DE HONORÁRIOS ADVOCATÍCIOS' },
+        // Trecho literal exatamente como extraído do texto do PDF
+        excerpt: 'CONTRATO DE PRESTAÇÃO DE SERVIÇOS E DE HONORÁRIOS ADVOCATÍCIOS BARCI DE MORAES SOCIEDADE DE ADVOGADOS, ... BANCO MASTER S.A. ... CONTRATANTE',
+        locator: {
+          page: 1,
+          section: 'Preâmbulo / Folha 1',
+          literalSnippet: 'CONTRATO DE PRESTAÇÃO DE SERVIÇOS\nE DE HONORÁRIOS ADVOCATÍCIOS\nBARCI DE MORAES\nSOCIEDADE DE ADVOGADOS',
+          summary: 'Instrumento contratual de prestação de serviços e honorários advocatícios indicando Banco Master S.A. como Contratante e Barci de Moraes como Contratada'
+        },
         method: 'DETERMINISTIC_PARSER',
-        status: 'VERIFIED'
+        status: 'PENDING_REVIEW'
       },
       {
         id: '40000000-0000-0000-0000-000000000002',
         artifactId: '20000000-0000-0000-0000-000000000002',
         documentId: '20000000-0000-0000-0000-000000000002',
         excerpt: 'BARCI DE MORAES SOCIEDADE DE ADVOGADOS ... neste ato, representada por seu administrador GUILHERME DE TOLEDO BENAZZI',
-        locator: { page: 1, section: 'Qualificação Contratada', exactText: 'representada por seu administrador GUILHERME DE TOLEDO BENAZZI' },
+        locator: {
+          page: 1,
+          section: 'Qualificação Contratada / Linhas 11-13',
+          literalSnippet: 'neste ato, representada por seu administrador\nGUILHERME DE TOLEDO BENAZZI',
+          summary: 'Qualificação da sociedade de advogados Barci de Moraes representada por Guilherme de Toledo Benazzi'
+        },
         method: 'DETERMINISTIC_PARSER',
-        status: 'VERIFIED'
+        status: 'PENDING_REVIEW'
       },
       {
         id: '40000000-0000-0000-0000-000000000003',
         artifactId: '20000000-0000-0000-0000-000000000002',
         documentId: '20000000-0000-0000-0000-000000000002',
         excerpt: 'VIKING PARTICIPAÇÕES LTDA. ... neste ato, se faz representar por DANIEL BUENO VORCARO',
-        locator: { page: 1, section: 'Qualificação Contratante', exactText: 'neste ato, se faz representar por DANIEL BUENO VORCARO' },
+        locator: {
+          page: 1,
+          section: 'Qualificação Contratante / Linhas 20-22',
+          literalSnippet: 'VIKING PARTICIPAÇÕES LTDA. ... neste ato, se faz representar por DANIEL BUENO VORCARO',
+          summary: 'Qualificação da Viking Participações com representação firmada por Daniel Bueno Vorcaro'
+        },
         method: 'DETERMINISTIC_PARSER',
-        status: 'VERIFIED'
+        status: 'PENDING_REVIEW'
       },
       {
         id: '40000000-0000-0000-0000-000000000004',
         artifactId: '20000000-0000-0000-0000-000000000003',
         documentId: '20000000-0000-0000-0000-000000000003',
-        excerpt: 'FRACTION 024 ADMINISTRAÇÃO DE BEM PRÓPRIO S.A. ... possuidora da aeronave modelo PR-NLR',
-        locator: { page: 1, section: 'Considerando (c)(i)', exactText: 'possuidora da aeronave modelo PR-NLR' },
+        excerpt: 'FRACTION 024 ADMINISTRAÇÃO DE BEM PRÓPRIO S.A., sociedade por ações de capital fechado ... possuidora da aeronave modelo PR-NLR',
+        locator: {
+          page: 1,
+          section: 'Considerando (c)(i) / Folha 1',
+          literalSnippet: 'FRACTION 024 ADMINISTRAÇÃO DE BEM PRÓPRIO S.A. ... possuidora da aeronave modelo',
+          summary: 'Cláusula de dação identificando a Fraction 024 como titular/possuidora de aeronave PR-NLR'
+        },
         method: 'DETERMINISTIC_PARSER',
-        status: 'VERIFIED'
+        status: 'PENDING_REVIEW'
+      },
+      {
+        id: '40000000-0000-0000-0000-000000000005',
+        artifactId: '20000000-0000-0000-0000-000000000005',
+        documentId: '20000000-0000-0000-0000-000000000005',
+        excerpt: 'WhatsApp Chat - Alexandre de Moraes BRASILIA ... 2025-10-01 22:17:06 @ Mensagem apagada pelo remetente',
+        locator: {
+          page: 1,
+          section: 'Cabeçalho e mensagens apagadas OCR / Página 1',
+          literalSnippet: 'WhatsApp Chat - Alexandre de Moraes BRASILIA -\n2025-10-01 22:17:06 -03:00\n@ Mensagem apagada pelo remetente',
+          summary: 'Registro OCR de chat de WhatsApp anexado ao inquérito policial com mensagens apagadas'
+        },
+        method: 'MANUAL_EXTRACTION',
+        status: 'PENDING_REVIEW'
       }
     ];
 
@@ -213,18 +247,24 @@ async function main() {
       await client.query(`
         INSERT INTO evidence (id, artifact_id, document_id, excerpt, locator, extraction_method, review_status)
         VALUES ($1, $2, $3, $4, $5, $6, $7)
-        ON CONFLICT (id) DO UPDATE SET review_status = EXCLUDED.review_status;
+        ON CONFLICT (id) DO UPDATE SET 
+          excerpt = EXCLUDED.excerpt,
+          locator = EXCLUDED.locator,
+          extraction_method = EXCLUDED.extraction_method,
+          review_status = EXCLUDED.review_status;
       `, [ev.id, ev.artifactId, ev.documentId, ev.excerpt, JSON.stringify(ev.locator), ev.method, ev.status]);
     }
 
-    // 4. Cadastrar Relações Documentadas com Evidência de Suporte
+    // 4. Cadastrar Relações Documentadas como CANDIDATAS À REVISÃO (PENDING_REVIEW)
+    // Nenhuma relação é automaticamente promovida para VERIFIED sem validação humana
+    // das premissas: entidade, predicado, trecho, página e período.
     const relations = [
       {
         id: '70000000-0000-0000-0000-000000000001',
         subject: '50000000-0000-0000-0000-000000000001', // Banco Master
         predicate: 'CONTRACTED_WITH',
         object: '50000000-0000-0000-0000-000000000002', // Barci de Moraes
-        status: 'VERIFIED',
+        status: 'PENDING_REVIEW',
         evidenceId: '40000000-0000-0000-0000-000000000001',
         role: 'SUPPORTS'
       },
@@ -233,7 +273,7 @@ async function main() {
         subject: '50000000-0000-0000-0000-000000000005', // Guilherme Benazzi
         predicate: 'ADMINISTRATOR_OF',
         object: '50000000-0000-0000-0000-000000000002', // Barci de Moraes
-        status: 'VERIFIED',
+        status: 'PENDING_REVIEW',
         evidenceId: '40000000-0000-0000-0000-000000000002',
         role: 'SUPPORTS'
       },
@@ -242,7 +282,7 @@ async function main() {
         subject: '50000000-0000-0000-0000-000000000004', // Daniel Vorcaro
         predicate: 'REPRESENTS',
         object: '50000000-0000-0000-0000-000000000003', // Viking Participacoes
-        status: 'VERIFIED',
+        status: 'PENDING_REVIEW',
         evidenceId: '40000000-0000-0000-0000-000000000003',
         role: 'SUPPORTS'
       },
@@ -251,7 +291,7 @@ async function main() {
         subject: '50000000-0000-0000-0000-000000000003', // Viking Participacoes
         predicate: 'CONTRACTED_WITH',
         object: '50000000-0000-0000-0000-000000000002', // Barci de Moraes
-        status: 'VERIFIED',
+        status: 'PENDING_REVIEW',
         evidenceId: '40000000-0000-0000-0000-000000000003',
         role: 'SUPPORTS'
       },
@@ -260,7 +300,7 @@ async function main() {
         subject: '50000000-0000-0000-0000-000000000003', // Viking Participacoes
         predicate: 'SHAREHOLDER_OF',
         object: '50000000-0000-0000-0000-000000000006', // Fraction 024
-        status: 'VERIFIED',
+        status: 'PENDING_REVIEW',
         evidenceId: '40000000-0000-0000-0000-000000000004',
         role: 'SUPPORTS'
       }
@@ -276,12 +316,19 @@ async function main() {
       await client.query(`
         INSERT INTO relationship_evidence (relationship_id, evidence_id, role)
         VALUES ($1, $2, $3)
-        ON CONFLICT (relationship_id, evidence_id) DO NOTHING;
+        ON CONFLICT (relationship_id, evidence_id) DO UPDATE SET role = EXCLUDED.role;
       `, [rel.id, rel.evidenceId, rel.role]);
+
+      // Cadastrar na fila de revisão humana
+      await client.query(`
+        INSERT INTO review_queue (item_type, item_id, status, reason)
+        VALUES ('RELATIONSHIP', $1, 'PENDING_REVIEW', 'Evidência textual locada em documento público. Aguarda conferência de vigência e escopo.')
+        ON CONFLICT DO NOTHING;
+      `, [rel.id]);
     }
 
     await client.query('COMMIT');
-    console.log('Importação concluída com sucesso no banco de dados!');
+    console.log('Seed executado com sucesso: relações mantidas em PENDING_REVIEW na fila de revisão.');
   } catch (err) {
     await client.query('ROLLBACK');
     console.error('Erro na importação documental:', err);

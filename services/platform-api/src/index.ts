@@ -97,7 +97,7 @@ app.get('/api/entities/:id', async (req, res) => {
     `, [id]);
 
     const factsRes = await pool.query(`
-      SELECT field_name, value, valid_from, valid_to
+      SELECT field_name, value, valid_from, valid_until
       FROM entity_facts WHERE entity_id = $1
     `, [id]);
 
@@ -273,6 +273,50 @@ app.get('/api/artifacts/:id/raw', async (req, res) => {
   } catch (err: any) {
     console.error('Erro no download do artefato:', err);
     res.status(500).json({ error: 'Erro ao transmitir arquivo' });
+  }
+});
+// Endpoint Protegido: Fila de Revisão Humana (Exige papel autenticado de analista)
+app.get('/api/admin/review-queue', async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || authHeader !== 'Bearer analyst_secret_token_2026') {
+    return res.status(401).json({ error: 'Acesso negado: exige autenticação de analista' });
+  }
+
+  // Usar conexão com papel de analista para consultar review_queue
+  const analystPool = new Pool({
+    connectionString: process.env.ANALYST_DATABASE_URL || 'postgresql://pig_br_analyst:pig_analyst_secure_pass_2026@db:5432/pig_br'
+  });
+
+  try {
+    const queueRes = await analystPool.query(`
+      SELECT id, item_type, item_id, reason, status, created_at
+      FROM review_queue
+      ORDER BY created_at DESC
+    `);
+    res.json({ items: queueRes.rows });
+  } catch (err: any) {
+    console.error('Erro na fila de revisão:', err);
+    res.status(500).json({ error: 'Erro ao consultar fila de revisão' });
+  } finally {
+    await analystPool.end();
+  }
+});
+
+// Endpoint de Teste: Tentar inserir com o papel restrito da API pública (DEVE FALHAR COM 403)
+app.post('/api/entities', async (req, res) => {
+  try {
+    await pool.query(`
+      INSERT INTO entities (id, canonical_name)
+      VALUES (uuid_generate_v4(), 'Tentativa de Escrita Indevida')
+    `);
+    res.json({ success: true });
+  } catch (err: any) {
+    // Erro de permissão do PostgreSQL (42501 permission denied)
+    res.status(403).json({
+      error: 'Escrita bloqueada para a API pública (permissão restrita)',
+      code: err.code,
+      message: err.message
+    });
   }
 });
 
