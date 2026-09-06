@@ -17,13 +17,17 @@ interface EdgeData {
   date?: string;
 }
 
+export type LayoutMode = 'concentric' | 'breadthfirst' | 'cose' | 'circle';
+
 interface GraphProps {
   nodes: NodeData[];
   edges: EdgeData[];
   selectedEdgeId?: string | null;
   selectedNodeId?: string | null;
+  layoutMode?: LayoutMode;
   onSelectEdge: (edgeId: string) => void;
   onSelectNode: (nodeId: string) => void;
+  onChangeLayout?: (mode: LayoutMode) => void;
 }
 
 export const CytoscapeGraph: React.FC<GraphProps> = ({
@@ -31,8 +35,10 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
   edges,
   selectedEdgeId,
   selectedNodeId,
+  layoutMode = 'concentric',
   onSelectEdge,
-  onSelectNode
+  onSelectNode,
+  onChangeLayout
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<cytoscape.Core | null>(null);
@@ -201,6 +207,54 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
     }
   }, [selectedNodeId]);
 
+  const getLayoutConfig = (mode: LayoutMode) => {
+    switch (mode) {
+      case 'breadthfirst':
+        return {
+          name: 'breadthfirst',
+          directed: true,
+          padding: 40,
+          spacingFactor: 1.4,
+          animate: true,
+          animationDuration: 600
+        };
+      case 'cose':
+        return {
+          name: 'cose',
+          animate: true,
+          animationDuration: 700,
+          nodeRepulsion: () => 450000,
+          idealEdgeLength: () => 140,
+          gravity: 0.25,
+          padding: 40
+        };
+      case 'circle':
+        return {
+          name: 'circle',
+          padding: 40,
+          animate: true,
+          animationDuration: 600
+        };
+      case 'concentric':
+      default:
+        return {
+          name: 'concentric',
+          concentric: (node: any) => (node.data('isRoot') === 'true' ? 10 : 2),
+          levelWidth: () => 1,
+          padding: 50,
+          spacingFactor: 1.6,
+          animate: true,
+          animationDuration: 800
+        };
+    }
+  };
+
+  useEffect(() => {
+    if (!cyRef.current) return;
+    const layout = cyRef.current.layout(getLayoutConfig(layoutMode) as any);
+    layout.run();
+  }, [layoutMode]);
+
   const handleFit = () => {
     if (cyRef.current) cyRef.current.fit(undefined, 40);
   };
@@ -212,12 +266,45 @@ export const CytoscapeGraph: React.FC<GraphProps> = ({
   return (
     <div className="graph-wrapper cosmic-graph">
       <div className="graph-controls">
-        <button className="graph-btn cosmic-btn" onClick={handleFit}>
-          <span className="ctrl-dot"></span> Re-centrar Campo
-        </button>
-        <button className="graph-btn cosmic-btn" onClick={handleResetZoom}>
-          Resetar Zoom
-        </button>
+        <div className="layout-switcher-bar">
+          <button
+            className={`layout-chip ${layoutMode === 'concentric' ? 'active' : ''}`}
+            onClick={() => onChangeLayout && onChangeLayout('concentric')}
+            title="Órbita Cósmica Concêntrica"
+          >
+            Órbita
+          </button>
+          <button
+            className={`layout-chip ${layoutMode === 'breadthfirst' ? 'active' : ''}`}
+            onClick={() => onChangeLayout && onChangeLayout('breadthfirst')}
+            title="Hierarquia de Controle e Poder"
+          >
+            Hierarquia
+          </button>
+          <button
+            className={`layout-chip ${layoutMode === 'cose' ? 'active' : ''}`}
+            onClick={() => onChangeLayout && onChangeLayout('cose')}
+            title="Rede Gravitacional de Força"
+          >
+            Força
+          </button>
+          <button
+            className={`layout-chip ${layoutMode === 'circle' ? 'active' : ''}`}
+            onClick={() => onChangeLayout && onChangeLayout('circle')}
+            title="Anel Periférico Circular"
+          >
+            Anel
+          </button>
+        </div>
+
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button className="graph-btn cosmic-btn" onClick={handleFit}>
+            <span className="ctrl-dot"></span> Re-centrar
+          </button>
+          <button className="graph-btn cosmic-btn" onClick={handleResetZoom}>
+            Resetar
+          </button>
+        </div>
       </div>
       <div id="cy-container" ref={containerRef} />
     </div>

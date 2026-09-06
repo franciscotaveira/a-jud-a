@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import {
   Search, FileText, ExternalLink,
   RefreshCw, AlertTriangle, Bot, Sparkles,
-  Globe2, Orbit, Calendar, Layers, Activity, ChevronRight
+  Globe2, Orbit, Calendar, Layers, Activity, ChevronRight,
+  ShieldAlert, Zap
 } from 'lucide-react';
-import { CytoscapeGraph } from './components/CytoscapeGraph.tsx';
+import { CytoscapeGraph, type LayoutMode } from './components/CytoscapeGraph.tsx';
 
 interface Identifier {
   scheme: string;
@@ -77,12 +78,31 @@ interface GraphData {
     canonical_name: string;
     entity_type: string;
     isRoot?: boolean;
+    metrics?: {
+      degree: number;
+      inDegree: number;
+      outDegree: number;
+      isHub: boolean;
+    };
   }>;
   relationships: RelationshipItem[];
+  forensicAlerts?: Array<{
+    id: string;
+    level: 'HIGH' | 'MEDIUM' | 'INFO';
+    title: string;
+    description: string;
+    relatedEntityIds: string[];
+  }>;
+  topology?: {
+    totalEntities: number;
+    totalRelationships: number;
+    density: string;
+  };
 }
 
 export function App() {
   const [viewMode, setViewMode] = useState<'UNIVERSAL' | 'FOCUS'>('UNIVERSAL');
+  const [layoutMode, setLayoutMode] = useState<LayoutMode>('concentric');
   const [searchQuery, setSearchQuery] = useState('33.923.798/0001-00');
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -348,13 +368,61 @@ export function App() {
               edges={cyEdges}
               selectedEdgeId={selectedRelId}
               selectedNodeId={selectedEntityId}
+              layoutMode={layoutMode}
               onSelectEdge={id => setSelectedRelId(id)}
               onSelectNode={id => {
                 setSelectedEntityId(id);
                 fetch(`/api/entities/${id}`).then(r => r.json()).then(setEntityDetail);
               }}
+              onChangeLayout={mode => setLayoutMode(mode)}
             />
           </section>
+
+          {/* Painel HUD de Alertas Forenses Topológicos */}
+          {graphData?.forensicAlerts && graphData.forensicAlerts.length > 0 && (
+            <section className="glass-panel" style={{ padding: '16px 20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <ShieldAlert size={18} color="#f43f5e" />
+                  <span style={{ fontFamily: 'var(--font-orbitron)', fontSize: '0.84rem', letterSpacing: '0.05em', color: '#f8fafc' }}>
+                    SINAIS FORENSES & ALERTAS DE TOPOLOGIA ({graphData.forensicAlerts.length})
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                  DENSIDADE DO GRAFO: {graphData.topology?.density || '0.333'}
+                </div>
+              </div>
+
+              <div className="forensic-alerts-grid">
+                {graphData.forensicAlerts.map(alert => (
+                  <div
+                    key={alert.id}
+                    className={`forensic-alert-banner level-${alert.level}`}
+                    onClick={() => {
+                      if (alert.relatedEntityIds && alert.relatedEntityIds.length > 0) {
+                        setSelectedEntityId(alert.relatedEntityIds[0]);
+                        fetch(`/api/entities/${alert.relatedEntityIds[0]}`).then(r => r.json()).then(setEntityDetail);
+                      }
+                    }}
+                  >
+                    <span className={`alert-badge badge-${alert.level}`}>{alert.level}</span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '3px' }}>
+                        <Zap size={14} color={alert.level === 'HIGH' ? '#f43f5e' : '#38bdf8'} />
+                        <span style={{ fontFamily: 'var(--font-orbitron)', fontSize: '0.76rem', fontWeight: 700, color: '#f1f5f9' }}>
+                          {alert.title}
+                        </span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: '0.78rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                        {alert.description}
+                      </p>
+                    </div>
+                    <ChevronRight size={16} color="var(--text-muted)" />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Linha do Tempo Espacial Completa */}
           <section className="timeline-cosmos-card">

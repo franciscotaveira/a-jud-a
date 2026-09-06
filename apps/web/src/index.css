@@ -259,10 +259,104 @@ body {
   position: absolute;
   top: 14px;
   right: 14px;
+  left: 14px;
   z-index: 10;
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.layout-switcher-bar {
+  display: flex;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-glow);
+  padding: 3px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+}
+
+.layout-chip {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-orbitron);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.layout-chip:hover {
+  color: var(--neon-cyan);
+}
+
+.layout-chip.active {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* Forensic Alerts HUD */
+.forensic-alerts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.forensic-alert-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  border: 1px solid;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.forensic-alert-banner:hover {
+  transform: translateY(-2px);
+}
+
+.forensic-alert-banner.level-HIGH {
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.5);
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+}
+
+.forensic-alert-banner.level-MEDIUM {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+}
+
+.forensic-alert-banner.level-INFO {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+.alert-badge {
+  font-family: var(--font-orbitron);
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.badge-HIGH { background: #f43f5e; color: #ffffff; }
+.badge-MEDIUM { background: #f59e0b; color: #000000; }
+.badge-INFO { background: #0284c7; color: #ffffff; }
 
 .cosmic-btn {
   background: rgba(15, 23, 42, 0.85);

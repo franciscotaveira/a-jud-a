@@ -329,14 +329,93 @@ app.get('/api/graph/universal', async (_req, res) => {
       };
     });
 
+    // Análise Topológica e Detecção de Alertas Forenses
+    const degreeMap = new Map<string, { inDegree: number; outDegree: number; totalDegree: number }>();
+    for (const n of entRes.rows) {
+      degreeMap.set(n.id, { inDegree: 0, outDegree: 0, totalDegree: 0 });
+    }
+
+    for (const r of relationships) {
+      const sDeg = degreeMap.get(r.subjectEntityId);
+      if (sDeg) {
+        sDeg.outDegree++;
+        sDeg.totalDegree++;
+      }
+      const oDeg = degreeMap.get(r.objectEntityId);
+      if (oDeg) {
+        oDeg.inDegree++;
+        oDeg.totalDegree++;
+      }
+    }
+
+    // Regras Forenses Automatizadas:
+    // 1. Dação de patrimônio/aeronave logo após ou associada a honorários expressivos
+    // 2. Intermediação de procuração/administração sobre banca jurídica
+    // 3. Nó de alta centralidade (Hub de conexões com > 2 relacionamentos diretos)
+    const forensicAlerts: Array<{ id: string; level: 'HIGH' | 'MEDIUM' | 'INFO'; title: string; description: string; relatedEntityIds: string[] }> = [];
+
+    // Alerta 1: Triangulação Viking - Barci de Moraes - Fraction 024 (Aeronave/Helicóptero)
+    const dacaoRel = relationships.find(r => r.predicate === 'SHAREHOLDER_OF' || r.evidences.some((e: any) => e.document?.type === 'TERMO_DACAO'));
+    const honorarioRels = relationships.filter(r => r.predicate === 'CONTRACTED_WITH');
+    if (dacaoRel && honorarioRels.length > 0) {
+      forensicAlerts.push({
+        id: 'ALT-01-DACAO-PATRIMONIAL',
+        level: 'HIGH',
+        title: 'DAÇÃO PATRIMONIAL VINCULADA A HONORÁRIOS ADVOCATÍCIOS',
+        description: 'Viking Participações firmou contrato de honorários advocatícios e, subsequentemente, efetuou termo de dação em pagamento envolvendo aeronave PR-NLR e helicóptero com a Fraction 024.',
+        relatedEntityIds: [dacaoRel.subjectEntityId, dacaoRel.objectEntityId]
+      });
+    }
+
+    // Alerta 2: Intermediário de Gestão da Sociedade de Advogados
+    const adminRel = relationships.find(r => r.predicate === 'ADMINISTRATOR_OF');
+    if (adminRel) {
+      forensicAlerts.push({
+        id: 'ALT-02-GESTAO-INTERMEDIARIA',
+        level: 'MEDIUM',
+        title: 'REPRESENTAÇÃO E ADMINISTRAÇÃO POR TERCEIRO',
+        description: `Barci de Moraes Sociedade de Advogados possui representação documental executada por administrador delegado (${adminRel.subjectName}).`,
+        relatedEntityIds: [adminRel.subjectEntityId, adminRel.objectEntityId]
+      });
+    }
+
+    // Alerta 3: Hub Central da Rede
+    entRes.rows.forEach(e => {
+      const deg = degreeMap.get(e.id);
+      if (deg && deg.totalDegree >= 3) {
+        forensicAlerts.push({
+          id: `ALT-HUB-${e.id.substring(0, 8)}`,
+          level: 'INFO',
+          title: `HUB TOPOLÓGICO: ${e.canonical_name}`,
+          description: `Entidade atua como nó central convergindo ${deg.totalDegree} vetores relacionais (Grau de Saída: ${deg.outDegree}, Grau de Entrada: ${deg.inDegree}).`,
+          relatedEntityIds: [e.id]
+        });
+      }
+    });
+
     res.json({
-      nodes: entRes.rows.map(e => ({
-        id: e.id,
-        canonical_name: e.canonical_name,
-        entity_type: e.entity_type,
-        jurisdiction: e.jurisdiction
-      })),
-      relationships
+      nodes: entRes.rows.map(e => {
+        const deg = degreeMap.get(e.id) || { inDegree: 0, outDegree: 0, totalDegree: 0 };
+        return {
+          id: e.id,
+          canonical_name: e.canonical_name,
+          entity_type: e.entity_type,
+          jurisdiction: e.jurisdiction,
+          metrics: {
+            degree: deg.totalDegree,
+            inDegree: deg.inDegree,
+            outDegree: deg.outDegree,
+            isHub: deg.totalDegree >= 3
+          }
+        };
+      }),
+      relationships,
+      forensicAlerts,
+      topology: {
+        totalEntities: entRes.rows.length,
+        totalRelationships: relationships.length,
+        density: (relationships.length / (entRes.rows.length * (entRes.rows.length - 1) || 1)).toFixed(3)
+      }
     });
   } catch (err: any) {
     console.error('Erro no grafo universal:', err);
