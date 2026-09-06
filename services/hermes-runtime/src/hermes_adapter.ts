@@ -39,7 +39,7 @@ export class ProductionHermesAdapter implements HermesAdapter {
     this.pool = options.pool;
     this.tools = new HermesDomainTools(this.pool);
     this.nvidiaApiKey = options.nvidiaApiKey || process.env.NVIDIA_API_KEY || '';
-    this.modelName = options.modelName || 'deepseek-ai/deepseek-v4-flash-0731';
+    this.modelName = options.modelName || process.env.HERMES_MODEL || 'nvidia/nemotron-3-super-120b-a12b';
     this.apiBaseUrl = options.apiBaseUrl || 'https://integrate.api.nvidia.com/v1';
   }
 
